@@ -1,3 +1,53 @@
 .App {
   text-align: center;
 }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Roboto:wght@500;900&display=swap');
+
+h1 {
+  font-family:'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: 45px;
+  margin: 0;
+}
+
+h2 {
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 35px;
+  margin: 0;
+}
+
+h3 {
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  margin: 0;
+}
+
+h4 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin: 0;
+}
+
+h5 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  margin: 0;
+}
+
+h6 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+}
+
+p {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin: 0;
+}
