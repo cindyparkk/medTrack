@@ -2,14 +2,13 @@ import React from 'react';
 import Backdrop from 'comps/Backdrop';
 
 export default {
-  title: 'medTrack/BackDrop',
+  title: 'medTrack/Back drop',
   component: Backdrop
 };
 
-const Template = (args) => <Backdrop {...args} />;
+const BackDrop = (args) => <Backdrop {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  primary: true,
-  label: 'Default Backdrop',
+export const DefaultBackdrop = BackDrop.bind({});
+BackDrop.args = {
+  label: 'Default Backdrop'
 };
