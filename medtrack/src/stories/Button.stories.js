@@ -1,9 +1,10 @@
 import React from 'react';
-
+// import ButtonBig from 'comps/ButtonBig';
+// import Button from 'comps/Button';
 import { Button } from './Button';
 
 export default {
-  title: 'Example/Button',
+  title: 'medTrack/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
