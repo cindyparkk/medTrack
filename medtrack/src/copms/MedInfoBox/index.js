@@ -15,8 +15,9 @@ const MedInfo = styled.div`
     align-item: center;
     text-align: left; 
     align-content: center;   
-    padding: 5px; 
+    padding: 10px; 
     display: flex;
+
 `;
 const Time = styled.div`    
     max-width: 328px; 
