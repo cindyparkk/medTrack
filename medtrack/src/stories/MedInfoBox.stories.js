@@ -1,5 +1,5 @@
 import React from 'react';
-import MedInfoBox from '../copms/MedInfoBox';
+import MedInfoBox from '../comps/MedInfoBox';
 
 export default {
   title: 'medTrack/MedInfoBox',

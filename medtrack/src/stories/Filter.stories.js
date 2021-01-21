@@ -1,5 +1,5 @@
 import React from 'react';
-import Filter from '../copms/Filter';
+import Filter from '../comps/Filter';
 
 export default {
   title: 'medTrack/Filter',
