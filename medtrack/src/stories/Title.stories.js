@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../copms/Title'
+import Title from '../comps/Title'
 
 export default {
     title: 'medTrack/Title', 

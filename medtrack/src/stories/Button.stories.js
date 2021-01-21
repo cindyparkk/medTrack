@@ -1,7 +1,6 @@
-import React from 'react';
-// import ButtonBig from 'comps/ButtonBig';
-// import Button from 'comps/Button';
-import { Button } from './Button';
+/*import React from 'react';
+import ButtonBig from 'comps/ButtonBig';
+import Button from 'comps/Button';
 
 export default {
   title: 'medTrack/Button',
@@ -34,4 +33,4 @@ export const Small = Template.bind({});
 Small.args = {
   size: 'small',
   label: 'Button',
-};
+}; */
