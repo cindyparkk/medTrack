@@ -19,18 +19,18 @@ const TitleText = styled.div`
     }
 `;
 
-const Title = ({Username}) => {
+const Title = ({username}) => {
 
     return <TitleContainer>
         <TitleText>
-            <h1>Hello {Username}</h1>
+            <h1>Hello {username}</h1>
             <p>Here's yout med schedule:</p>
         </TitleText>
     </TitleContainer>
 }
 
 Title.defaultProps = {
-    Username: "Guest"
+    username: "Guest"
 }
 
 export default Title; 

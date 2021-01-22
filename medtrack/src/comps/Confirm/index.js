@@ -8,6 +8,7 @@ const Container = styled.div`
     border-radius: 10px;
     z-index: 100;
     display: ${props=>props.display ? props.display : "block"};
+    box-shadow: 0px 0px 10px #D9D9D9;
 `;
 
 const TopCont = styled.div`
