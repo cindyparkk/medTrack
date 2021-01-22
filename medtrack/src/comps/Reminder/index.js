@@ -55,10 +55,16 @@ const OptionCon = styled.div`
     align-content: center;
     text-align:center;
     align-items: center;
+    & > div:first-child{
+        border-radius: 0px 0px 0px 10px;
+    }
     & > div:nth-child(2){
         border-width: 1px;  
         border-style: solid;
         border-color: transparent #D9D9D9 ;
+    }
+    & > div:last-child{
+        border-radius: 0px 0px 10px 0px;
     }
 `;
 const Option = styled.div`
@@ -66,15 +72,19 @@ const Option = styled.div`
     max-width: 328px; 
     height: auto;
     padding: 25px 0px 10px; 
+    cursor: pointer;
     img {
         width: 50px;
     }
     p {
         margin-top: 0px;
     }
+    background-color: ${props=>props.clicked ?  "rgba(217, 217, 217, 0.3)" : "none"};
 `;
 
-const Reminder = ({title, name, dosage, icon}) => {
+const Reminder = ({title, name, dosage}) => {
+
+    const[clicked, setClicked] = useState();
 
     return <ReminderCon>
         <Title> 
@@ -89,15 +99,21 @@ const Reminder = ({title, name, dosage, icon}) => {
             <p>{dosage}</p>
         </MedInfo> 
         <OptionCon>
-            <Option>
+            <Option clicked={clicked === 1} onClick={() => {
+               setClicked(1);
+           }}>
                 <img src={Skip} />
                 <p>Skip</p>
             </Option>
-            <Option>
+            <Option clicked={clicked === 2} onClick={() => {
+               setClicked(2);
+           }}>
                 <img src={Reschedule} />
                 <p>Reschedule</p>
             </Option>  
-            <Option>
+            <Option clicked={clicked === 3} onClick={() => {
+               setClicked(3);
+           }}>
                 <img src={Take} />
                 <p>Take</p>
             </Option>

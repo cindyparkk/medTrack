@@ -36,6 +36,9 @@ const OptionCon = styled.div`
         border-style: solid;
         border-color: #D9D9D9 transparent;
     }
+    & > div:last-child{
+        border-radius: 0px 0px 10px 10px;
+    }
 `;
 const Option = styled.div`
     display: flex;
@@ -43,14 +46,18 @@ const Option = styled.div`
     height: auto;
     padding: 10px 35px 10px;
     align-items:center;
+    cursor: pointer;
     img {
         width:50px;
         height:auto;
         margin-right: 20px;
     }
+    background-color: ${props=>props.clicked ?  "rgba(217, 217, 217, 0.3)" : "none"};
 `;
 
 const MarkMeds = () => {
+
+    const[clicked, setClicked] = useState();
 
     return <MarkCon>
         <Title> 
@@ -58,15 +65,21 @@ const MarkMeds = () => {
             <h4>Mark Meds:</h4>
         </Title>
         <OptionCon>
-            <Option>
+            <Option clicked={clicked === 1} onClick={() => {
+               setClicked(1);
+           }}>
                 <img src={Take} />
                 <h4>Take all</h4>
             </Option>
-            <Option>
+            <Option clicked={clicked === 2} onClick={() => {
+               setClicked(2);
+           }}>
                 <img src={Reschedule} />
                 <h4>Reschedule all</h4>
             </Option>  
-            <Option>
+            <Option clicked={clicked === 3} onClick={() => {
+               setClicked(3);
+           }}>
                 <img src={Skip} />
                 <h4>Skip all</h4>
             </Option>
