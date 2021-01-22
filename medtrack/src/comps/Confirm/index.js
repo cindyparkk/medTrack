@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     min-width: 352px;
-    max-height: 441px;
+    min-height: 441px;
     background-color: #fff;
     border-radius: 10px;
     z-index: 100;
-    display: ${props=>props.display ? props.display : "block"};
+    display: ${props=>props.display ? props.display : "inline-flex"};
+    flex-direction: column;
     box-shadow: 0px 0px 10px #D9D9D9;
 `;
 
@@ -32,24 +33,39 @@ const ConfirmTitle = styled.h4`
     text-transform: capitalize;
 `;
 
-const ConfirmSubtitle = styled.p`
+const ConfirmSubtitle = styled.p``;
 
+const BottomCont = styled.div`
+    display: inline-flex;
+    flex-direction: column;   
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
 `;
 
-const Confirm = ({display, onDelete, title, subtitle}) => {
+const ConfirmImage = styled.img`
+    min-width: 115px;
+    height: auto;
+`;
+
+const Confirm = ({display, onDelete, title, subtitle, imgurl}) => {
     return <Container display={display}>
         <TopCont>
             <ConfirmTitle>{title}</ConfirmTitle>
             <ConfirmSubtitle>{subtitle}</ConfirmSubtitle>
         </TopCont>
-    </Container>
+        <BottomCont>
+            <ConfirmImage src={imgurl}/>
+        </BottomCont>
+    </Container> 
 };
 
 Confirm.defaultProps = {
     display: null,
     onDelete:()=>{},
     title:"donepezil",
-    subtitle:"was added successfully"
+    subtitle:"was added successfully",
+    imgurl: "/check-one.png"
 };
 
 export default Confirm;
