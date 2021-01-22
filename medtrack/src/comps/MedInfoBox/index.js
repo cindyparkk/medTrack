@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Appearence from "../../public/pills-1.png";
-import CheckMark from "../../public/check-one.png";
+import Appearence from "../../public/pills-1.svg";
+import CheckMark from "../../public/checked.svg";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 
@@ -12,16 +12,8 @@ const MedInfoCon = styled.div`
 `;
 const MedInfo = styled.div`
     display: flex;
-    align-item: center;
-    text-align: left; 
-    align-content: center; 
     align-items:center;  
-    div{
-        flex:1;
-        padding: 10px; 
-        color: F9C74F;
-        
-    }
+    padding: 10px;
 `;
 const Time = styled.div`    
     max-width: 328px; 
@@ -31,8 +23,26 @@ const Time = styled.div`
     color: white;
     text-align:center;
     h2{
-        padding: 5px;    
+        padding: 20px;     
     }
+`;
+const Icon1 = styled.div`
+    flex: 1;
+    text-align: center;
+    img {
+       fill: #F9C74F; 
+       width:50px;
+    }   
+`;
+const Icon2 = styled.div`
+    flex: 1;
+    text-align: center;
+    img{
+        width:40px;
+    }
+`;
+const MedName = styled.div`
+    flex: 1;
 `;
 
 const MedInfoBox = ({time, medName,dosage}) => {
@@ -42,16 +52,16 @@ const MedInfoBox = ({time, medName,dosage}) => {
             <h2>{time}</h2>
         </Time>
         <MedInfo>
-            <div>
+            <Icon1>
                 <img src={Appearence} />
-            </div>
-            <div>
+            </Icon1>
+            <MedName>
                 <h3>{medName}</h3>
                 <p>{dosage}</p>
-            </div>  
-            <div>
-                <CheckMark img src={CheckMark} />
-            </div>
+            </MedName>  
+            <Icon2>
+                <img src={CheckMark} />
+            </Icon2>
         </MedInfo>
     </MedInfoCon>
 }
