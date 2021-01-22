@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Appearence from "../../public/pills-1.svg";
-import CheckMark from "../../public/checked.svg";
+import Appearence from "../../public/pills-colored.png";
+import CheckMark from "../../public/checked.png";
+import MoreDetails from "../../public/more.png";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 
@@ -22,15 +23,20 @@ const Time = styled.div`
     border-radius: 10px 10px 0px 0px;
     color: white;
     text-align:center;
+    display: flex;
     h2{
         padding: 20px;     
+    }
+    img {
+        width: 50px;
+        height:auto;
+        color:white;
     }
 `;
 const Icon1 = styled.div`
     flex: 1;
-    text-align: center;
+    text-align: center; 
     img {
-       fill: #F9C74F; 
        width:50px;
     }   
 `;
@@ -38,11 +44,11 @@ const Icon2 = styled.div`
     flex: 1;
     text-align: center;
     img{
-        width:40px;
+        width:35px;
     }
 `;
 const MedName = styled.div`
-    flex: 1;
+    flex: 2;
 `;
 
 const MedInfoBox = ({time, medName,dosage}) => {
@@ -50,6 +56,7 @@ const MedInfoBox = ({time, medName,dosage}) => {
     return <MedInfoCon>
         <Time> 
             <h2>{time}</h2>
+            <img src={MoreDetails} />
         </Time>
         <MedInfo>
             <Icon1>
