@@ -27,8 +27,8 @@ const TimeButton = styled.button`
   margin: 4px;
   padding: 10px;
   border-radius: 26px;
-  border:none;
-  background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094d69")}
+  border: none;
+  background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094d69")};
 `;
 const Time = styled.input.attrs({
   type: "time",
@@ -47,14 +47,32 @@ const Time = styled.input.attrs({
   outline: none;
   text-align: center;
 `;
+
 const Input = ({}) => {
+  const [clickedForm, setClickedForm] = useState("AM");
+  const HandleContainerSelect = (name) => {
+    // alert("clicked container "+name);
+    setClickedForm(name);
+  };
   return (
     <Container>
       <TimeContainer>
         <h1>TIME</h1>
         <ButtonContainer>
-          <TimeButton bgcolor={"#63AAC8"}>AM</TimeButton>
-          <TimeButton>PM</TimeButton>
+          <TimeButton
+            onContainerSelect={HandleContainerSelect}
+            name="AM"
+            bgcolor={clickedForm === "AM" ? "#63AAC8" : "#094D69"}
+          >
+            AM
+          </TimeButton>
+          <TimeButton
+            onContainerSelect={HandleContainerSelect}
+            name="PM"
+            bgcolor={clickedForm === "PM" ? "#63AAC8" : "#094D69"}
+          >
+            PM
+          </TimeButton>
         </ButtonContainer>
         <Time />
       </TimeContainer>
@@ -62,7 +80,5 @@ const Input = ({}) => {
   );
 };
 
-Input.defaultProps = {
-    
-};
+Input.defaultProps = {};
 export default Input;
