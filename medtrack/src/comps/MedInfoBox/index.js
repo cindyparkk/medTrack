@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Appearence from "../../public/pills-1.png";
-import CheckMark from "../../public/check-one.png";
+import Appearence from "../../public/pills-colored.png";
+import CheckMark from "../../public/checked.png";
+import MoreDetails from "../../public/more.svg";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 
@@ -12,16 +13,8 @@ const MedInfoCon = styled.div`
 `;
 const MedInfo = styled.div`
     display: flex;
-    align-item: center;
-    text-align: left; 
-    align-content: center; 
     align-items:center;  
-    div{
-        flex:1;
-        padding: 10px; 
-        color: F9C74F;
-        
-    }
+    padding: 10px 20px 10px;
 `;
 const Time = styled.div`    
     max-width: 328px; 
@@ -29,10 +22,36 @@ const Time = styled.div`
     background-color: #06719D;
     border-radius: 10px 10px 0px 0px;
     color: white;
-    text-align:center;
+    align-items:center;  
+    display: flex;
+    padding: 10px;
     h2{
-        padding: 5px;    
+        flex: 1;
+        text-align:center;
+        padding-left: 20px;
     }
+    img {
+        width: 50px;
+        height:auto;
+    }
+`;
+const Icon1 = styled.div`
+    flex: 1;
+    text-align: center; 
+    img {
+       width:50px;
+    }   
+`;
+const Icon2 = styled.div`
+    flex: 1;
+    text-align: center;
+    img{
+        width:35px;
+    }
+`;
+const MedName = styled.div`
+    flex: 2;
+    padding-left: 20px;
 `;
 
 const MedInfoBox = ({time, medName,dosage}) => {
@@ -40,18 +59,20 @@ const MedInfoBox = ({time, medName,dosage}) => {
     return <MedInfoCon>
         <Time> 
             <h2>{time}</h2>
+            <img src={MoreDetails} />
         </Time>
+        
         <MedInfo>
-            <div>
+            <Icon1>
                 <img src={Appearence} />
-            </div>
-            <div>
-                <h3>{medName}</h3>
+            </Icon1>
+            <MedName>
+                <h4>{medName}</h4>
                 <p>{dosage}</p>
-            </div>  
-            <div>
-                <CheckMark img src={CheckMark} />
-            </div>
+            </MedName>  
+            <Icon2>
+                <img src={CheckMark} />
+            </Icon2>
         </MedInfo>
     </MedInfoCon>
 }
