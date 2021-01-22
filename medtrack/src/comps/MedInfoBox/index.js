@@ -61,6 +61,7 @@ const MedInfoBox = ({time, medName,dosage}) => {
             <h2>{time}</h2>
             <img src={MoreDetails} />
         </Time>
+        
         <MedInfo>
             <Icon1>
                 <img src={Appearence} />

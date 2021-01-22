@@ -32,6 +32,8 @@ const Title = styled.div`
     }
 `;
 const OptionCon = styled.div`
+    background-color: #FFFF;
+    border-radius: 0px 0px 10px 10px;
     & > div:nth-child(2){
         border-width: 1px;  
         border-style: solid;
@@ -65,6 +67,7 @@ const MarkMeds = () => {
             <img src={Close} />
             <h4>Mark Meds:</h4>
         </Title>
+        
         <OptionCon>
             <Option clicked={clicked === 1} onClick={() => {
                setClicked(1);

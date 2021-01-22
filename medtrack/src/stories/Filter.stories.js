@@ -6,6 +6,6 @@ export default {
   component: Filter,
 };
 
-export const BasicFilter = () => <Filter />; 
+export const TimeFilter = () => <Filter />; 
 
 

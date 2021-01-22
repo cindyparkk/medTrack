@@ -44,6 +44,7 @@ const MedInfo = styled.div`
     border-width: 1px;  
     border-style: solid;
     border-color: #D9D9D9 transparent;
+    background-color: #FFFF;
     h4{
         margin-bottom: 0px;
     }
@@ -53,9 +54,10 @@ const MedInfo = styled.div`
 `;
 const OptionCon = styled.div`
     display: flex;
-    align-content: center;
     text-align:center;
     align-items: center;
+    background-color: #FFFF;
+    border-radius: 0px 0px 10px 10px;
     & > div:first-child{
         border-radius: 0px 0px 0px 10px;
     }
@@ -80,7 +82,7 @@ const Option = styled.div`
     p {
         margin-top: 0px;
     }
-    background-color: ${props=>props.clicked ?  "rgba(217, 217, 217, 0.3)" : "none"};
+    background-color: ${props=>props.clicked ? "rgba(217, 217, 217, 0.3)" : "none"};
 `;
 
 const Reminder = ({title, name, dosage}) => {
@@ -94,11 +96,13 @@ const Reminder = ({title, name, dosage}) => {
             <img src={Edit} />
             <img src={Delete} />
         </Title>
+
         <MedInfo>
             <img src={Appearence} />
             <h4>{name}</h4>
             <p>{dosage}</p>
         </MedInfo> 
+
         <OptionCon>
             <Option clicked={clicked === 1} onClick={() => {
                setClicked(1);
