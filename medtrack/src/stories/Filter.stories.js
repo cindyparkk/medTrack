@@ -1,11 +1,11 @@
 import React from 'react';
-import Filter from '../comps/Filter';
+import TimeFilter from '../comps/TimeFilter';
 
 export default {
   title: 'medTrack/Filter',
-  component: Filter,
+  component: TimeFilter,
 };
 
-export const TimeFilter = () => <Filter />; 
+export const BasicTimeFilter = () => <TimeFilter />; 
 
 
