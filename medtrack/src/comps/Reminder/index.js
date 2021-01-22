@@ -31,6 +31,7 @@ const Title = styled.div`
         width:28px;
         height:28px;
         padding: 0px 5px 0px;
+        cursor:pointer;
     }
 `;
 const MedInfo = styled.div`

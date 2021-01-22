@@ -28,6 +28,7 @@ const Title = styled.div`
         width:30px;
         height: 30px;
         padding-left: 10px;
+        cursor:pointer;
     }
 `;
 const OptionCon = styled.div`
@@ -44,7 +45,7 @@ const Option = styled.div`
     display: flex;
     max-width: 328px; 
     height: auto;
-    padding: 10px 35px 10px;
+    padding: 10px 50px 10px;
     align-items:center;
     cursor: pointer;
     img {
