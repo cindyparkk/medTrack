@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import Appearence from "../../public/pills-colored.png";
 import CheckMark from "../../public/checked.png";
-import MoreDetails from "../../public/more.png";
+import MoreDetails from "../../public/more.svg";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 
@@ -14,7 +14,7 @@ const MedInfoCon = styled.div`
 const MedInfo = styled.div`
     display: flex;
     align-items:center;  
-    padding: 10px;
+    padding: 10px 20px 10px;
 `;
 const Time = styled.div`    
     max-width: 328px; 
@@ -22,15 +22,17 @@ const Time = styled.div`
     background-color: #06719D;
     border-radius: 10px 10px 0px 0px;
     color: white;
-    text-align:center;
+    align-items:center;  
     display: flex;
+    padding: 10px;
     h2{
-        padding: 20px;     
+        flex: 1;
+        text-align:center;
+        padding-left: 20px;
     }
     img {
         width: 50px;
         height:auto;
-        color:white;
     }
 `;
 const Icon1 = styled.div`
@@ -49,6 +51,7 @@ const Icon2 = styled.div`
 `;
 const MedName = styled.div`
     flex: 2;
+    padding-left: 20px;
 `;
 
 const MedInfoBox = ({time, medName,dosage}) => {
@@ -63,7 +66,7 @@ const MedInfoBox = ({time, medName,dosage}) => {
                 <img src={Appearence} />
             </Icon1>
             <MedName>
-                <h3>{medName}</h3>
+                <h4>{medName}</h4>
                 <p>{dosage}</p>
             </MedName>  
             <Icon2>
