@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Close from "../../public/close.png";
-import Skip from "../../public/skipped.png";
-import Reschedule from "../../public/stopwatch-colored.png";
-import Take from "../../public/checked.png";
+// import Close from "../../public/close.png";
+// import Skip from "../../public/skipped.png";
+// import Reschedule from "../../public/stopwatch-colored.png";
+// import Take from "../../public/checked.png";
 
 const MarkCon = styled.div`    
     max-width: 328px; 
@@ -64,7 +64,7 @@ const MarkMeds = () => {
 
     return <MarkCon>
         <Title> 
-            <img src={Close} />
+            <img src="/close.png" />
             <h4>Mark Meds:</h4>
         </Title>
         
@@ -72,19 +72,19 @@ const MarkMeds = () => {
             <Option clicked={clicked === 1} onClick={() => {
                setClicked(1);
            }}>
-                <img src={Take} />
+                <img src="/checked.png" />
                 <h4>Take all</h4>
             </Option>
             <Option clicked={clicked === 2} onClick={() => {
                setClicked(2);
            }}>
-                <img src={Reschedule} />
+                <img src="/stopwatch-colored.png" />
                 <h4>Reschedule all</h4>
             </Option>  
             <Option clicked={clicked === 3} onClick={() => {
                setClicked(3);
            }}>
-                <img src={Skip} />
+                <img src="/skipped.png" />
                 <h4>Skip all</h4>
             </Option>
         </OptionCon>

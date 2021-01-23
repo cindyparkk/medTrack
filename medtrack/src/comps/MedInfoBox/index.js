@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Appearence from "../../public/pills-colored.png";
-import CheckMark from "../../public/checked.png";
-import MoreDetails from "../../public/more.svg";
+// import Appearence from "../../public/pills-colored.png";
+// import CheckMark from "../../public/checked.png";
+// import MoreDetails from "../../public/more.svg";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 
@@ -60,19 +60,19 @@ const MedInfoBox = ({time, medName,dosage}) => {
     return <MedInfoCon>
         <Time> 
             <h2>{time}</h2>
-            <img src={MoreDetails} />
+            <img src="more.svg" />
         </Time>
 
         <MedInfo>
             <Icon1>
-                <img src={Appearence} />
+                <img src="/pills-colored.png" />
             </Icon1>
             <MedName>
                 <h4>{medName}</h4>
                 <p>{dosage}</p>
             </MedName>  
             <Icon2>
-                <img src={CheckMark} />
+                <img src="/checked.png" />
             </Icon2>
         </MedInfo>
     </MedInfoCon>
