@@ -1,24 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-width:100%;
-margin:0;
+
+
+const Banner = styled.div`
+
+max-width: 414px;
+height: 80px;
 display:flex;
-
-`;
-
-const Banner = styled.button`
-display: inline-flex;
 align-items: center;
+background-color: #06719D;
+color:white;
+padding: 0px 30px 0px;
+text-align: center;
 justify-content: center;
-;
-min-width:414px;
-min-height: 77px;
-max-height: 100px;
-background-color: "#06719D" ;
 
-border: none;
+
+
 `;
 
 const Text = styled.h3`
@@ -31,18 +29,18 @@ position:absolute;
 
 const Sidetext = styled.h6`
 color: #FFFFFF;
-padding-right: 300px;
+padding-right: 350px;
 cursor:pointer;
 `;
 
 const BannerCancel = ({text}) => {
-    return <Container>
+    return <div>
         <Banner>
             <Sidetext>Cancel</Sidetext>
             <Text>{text}</Text>
 
         </Banner>
-    </Container>
+        </div>
 };
 
 BannerCancel.defaultProps = {
