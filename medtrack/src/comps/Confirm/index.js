@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -6,10 +6,9 @@ const Container = styled.div`
     min-height: 441px;
     background-color: #fff;
     border-radius: 10px;
-    z-index: 100;
+    z-index: 5;
     display: ${props=>props.display ? props.display : "inline-flex"};
     flex-direction: column;
-    box-shadow: 0px 0px 10px #D9D9D9;
 `;
 
 const TopCont = styled.div`
@@ -23,10 +22,7 @@ const TopCont = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    & > * {
-        margin: 0.2em 0;
-    }
+
 `;
 
 const ConfirmTitle = styled.h4`
