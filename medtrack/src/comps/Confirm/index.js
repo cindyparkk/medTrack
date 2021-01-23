@@ -65,7 +65,7 @@ Confirm.defaultProps = {
     onDelete:()=>{},
     title:"donepezil",
     subtitle:"was added successfully",
-    imgurl: "/check-one.png"
+    imgurl: "/check-one.svg"
 };
 
 export default Confirm;

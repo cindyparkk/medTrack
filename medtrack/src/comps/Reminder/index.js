@@ -52,6 +52,11 @@ const MedInfo = styled.div`
         width: 50px;
     }
 `;
+
+const MedColor = styled.img`
+    fill: ${props=>props.color ? props.color : null};
+`;
+
 const OptionCon = styled.div`
     display: flex;
     text-align:center;
@@ -85,7 +90,7 @@ const Option = styled.div`
     background-color: ${props=>props.clicked ? "rgba(217, 217, 217, 0.3)" : "none"};
 `;
 
-const Reminder = ({title, name, dosage}) => {
+const Reminder = ({title, name, dosage, color}) => {
 
     const[clicked, setClicked] = useState();
 
@@ -98,7 +103,7 @@ const Reminder = ({title, name, dosage}) => {
         </Title>
 
         <MedInfo>
-            <img src="/pills-colored.png" />
+            <MedColor src="/pill.svg" fill={color}/>
             <h4>{name}</h4>
             <p>{dosage}</p>
         </MedInfo> 

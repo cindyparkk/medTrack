@@ -20,7 +20,8 @@ const Pills = styled.img`
 const MedAppearance = ({}) => {
     return <Container >
         <Box>
-            <Pills></Pills>
+            <Pills src="/pill-circle.svg"></Pills>
+            <Pills src="/pill.svg"></Pills>
         </Box>
         <Box></Box>
     </Container> 
