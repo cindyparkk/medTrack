@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  padding: 10px;
   max-width: 100vw;
   background-color: #e5e5e5;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   h1 {
     margin-bottom: 0px;
@@ -47,7 +48,7 @@ const Time = styled.input.attrs({
   outline: none;
   text-align: center;
 `;
-
+const Text = styled.h1``;
 const Input = ({}) => {
   const [clickedForm, setClickedForm] = useState("AM");
   const HandleContainerSelect = (name) => {
@@ -57,7 +58,7 @@ const Input = ({}) => {
   return (
     <Container>
       <TimeContainer>
-        <h1>TIME</h1>
+        <Text>TIME</Text>
         <ButtonContainer>
           <TimeButton
             onContainerSelect={HandleContainerSelect}
