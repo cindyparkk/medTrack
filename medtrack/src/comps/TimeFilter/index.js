@@ -63,7 +63,7 @@ const CheckMark = styled.img`
     height: auto;
 `;
 
-const Filter = ({filterName, text1, text2, text3, text4}) => {
+const TimeFilter = ({filterName, text1, text2, text3, text4}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
@@ -104,7 +104,7 @@ const Filter = ({filterName, text1, text2, text3, text4}) => {
     </div>
 }   
 
-Filter.defaultProps = {
+TimeFilter.defaultProps = {
     filterName:"Time",
     text1:"All",
     text2:"Next Day",
@@ -113,4 +113,4 @@ Filter.defaultProps = {
     expand: false,
 }
 
-export default Filter; 
+export default TimeFilter; 
