@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-import Close from "../../public/close.png";
-import Edit from "../../public/edit.png";
-import Delete from "../../public/delete.png";
-import Appearence from "../../public/pills-colored.png";
-import Skip from "../../public/skipped.png";
-import Reschedule from "../../public/stopwatch-colored.png";
-import Take from "../../public/checked.png";
+// import Close from "../../public/close.png";
+// import Edit from "../../public/edit.png";
+// import Delete from "../../public/delete.png";
+// import Appearence from "../../public/pills-colored.png";
+// import Skip from "../../public/skipped.png";
+// import Reschedule from "../../public/stopwatch-colored.png";
+// import Take from "../../public/checked.png";
 
 const ReminderCon = styled.div`    
     max-width: 328px; 
@@ -91,14 +91,14 @@ const Reminder = ({title, name, dosage}) => {
 
     return <ReminderCon>
         <Title> 
-            <img src={Close} />
+            <img src="/close.png" />
             <h4>{title}</h4>
-            <img src={Edit} />
-            <img src={Delete} />
+            <img src="/edit.png" />
+            <img src="/delete.png" />
         </Title>
 
         <MedInfo>
-            <img src={Appearence} />
+            <img src="/pills-colored.png" />
             <h4>{name}</h4>
             <p>{dosage}</p>
         </MedInfo> 
@@ -107,19 +107,19 @@ const Reminder = ({title, name, dosage}) => {
             <Option clicked={clicked === 1} onClick={() => {
                setClicked(1);
            }}>
-                <img src={Skip} />
+                <img src="/skipped.png" />
                 <p>Skip</p>
             </Option>
             <Option clicked={clicked === 2} onClick={() => {
                setClicked(2);
            }}>
-                <img src={Reschedule} />
+                <img src="/stopwatch-colored.png" />
                 <p>Reschedule</p>
             </Option>  
             <Option clicked={clicked === 3} onClick={() => {
                setClicked(3);
            }}>
-                <img src={Take} />
+                <img src="/checked.png" />
                 <p>Take</p>
             </Option>
         </OptionCon>   
