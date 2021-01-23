@@ -13,7 +13,9 @@ justify-content: center;
 
 min-width:308px;
 min-height: 81px;
-background:${props=>props.bgcolor ? props.bgcolor : "#094D69" };
+// background-color: #094D69;
+background-color: ${props=>props.bgcolor ?  props.bgcolor : "#094D69"};
+
 border-radius: 10px;
 
 cursor:pointer;
@@ -34,7 +36,7 @@ const Button = ({text,bgcolor}) => {
 
 Button.defaultProps = {
 text:"Go to Home",
-bgcolor: "none",
+bgcolor: null,
 };
 
 export default Button;
