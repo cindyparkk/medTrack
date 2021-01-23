@@ -4,24 +4,21 @@ import styled from 'styled-components';
 // import Appearence from "../../public/pills-colored.png";
 
 
-const Container = styled.div`
-width:100%;
-margin:0;
+const Banner = styled.div`
+max-width: 414px;
+height: 245px;
 display:flex;
-
-`;
-
-const Banner = styled.button`
-display: inline-flex;
 align-items: center;
+background-color: #094D69;
+color:white;
+padding: 0px 30px 0px;
+text-align: center;
 justify-content: center;
-;
-min-width:414px;
-min-height: 245px;
+position: relative;
 
-background-color: "#06719D" ;
 
-border: none;
+
+
 `;
 
 const Text = styled.h4`
@@ -36,19 +33,23 @@ display: flex;
 flex-direction:column;
 align-items: center;
 justify-content: center;
-
+position:absolute;
 `;
 const Para = styled.p`
 color: #FFFFFF;
     text-align: center;
     // padding-right: 40px;
     padding:0px 20px;
-
+    margin:0;
+width:150px;
 `;
 const BackCont = styled.div `
 display: flex;
-margin-left:-80px;
-margin-top:-150px;
+top: 8px;
+left: 16px;
+position: absolute;
+align-items: center;
+
 
 `
 const Sidetext = styled.h6`
@@ -73,7 +74,7 @@ const PillImg = styled.img`
 `;
 
 const MedSpecBanner = ({medinfo,remindertext}) => {
-    return <Container>
+    return <div>
         <Banner>
             <BackCont>
             <div>
@@ -87,7 +88,7 @@ const MedSpecBanner = ({medinfo,remindertext}) => {
             <Para>{remindertext}</Para>
             </ Wrap>
         </Banner>
-    </Container>
+    </div>
 };
 
 MedSpecBanner.defaultProps = {

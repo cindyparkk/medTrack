@@ -2,25 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 // import Arrow from '../../../public/down-white.svg';
 
-const Container = styled.div`
-width:100%;
-margin:0;
+
+const Banner = styled.div`
+max-width: 414px;
+height: 80px;
 display:flex;
-
-`;
-
-const Banner = styled.button`
-display: inline-flex;
 align-items: center;
+background-color: #06719D;
+color:white;
+padding: 0px 30px 0px;
+text-align: center;
 justify-content: center;
-;
-min-width:414px;
-min-height: 77px;
-max-height: 100px;
 
-background-color: "#06719D" ;
 
-border: none;
+
 `;
 
 const Text = styled.h3`
@@ -32,11 +27,12 @@ color: #FFFFFF;
 `;
 const BackCont = styled.div `
 display: flex;
+align-items: center;
 
 `
 const Sidetext = styled.h6`
 color: #FFFFFF;
-padding-right: 300px;
+padding-right: 400px;
 cursor:pointer;
 `;
 
@@ -48,7 +44,7 @@ const RotatedImg = styled.img`
 `;
 
 const BannerBack = ({text}) => {
-    return <Container>
+    return <div>
         <Banner>
             <BackCont>
             <div>
@@ -59,7 +55,7 @@ const BannerBack = ({text}) => {
             <Text>{text}</Text>
 
         </Banner>
-    </Container>
+    </div>
 };
 
 BannerBack.defaultProps = {

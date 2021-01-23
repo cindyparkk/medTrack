@@ -1,34 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-width: 100%;
-height:auto;
-`;
 
-const Banner = styled.button`
-display: flex;
+
+const Banner = styled.div`
+
+
+max-width: 414px;
+height: 80px;
+display:flex;
 align-items: center;
+background-color: #06719D;
+color:white;
+padding: 0px 30px 0px;
+text-align: center;
 justify-content: center;
-
-min-width:414px;
-min-height: 77px;
-max-height: 100px;
-background-color: "#06719D" ;
-
 `;
 
 
 const Text = styled.h1`
 color: #FFFFFF;
+
 `;
 
 const BannerTime = ({text}) => {
-    return <Container>
+    return <div>
         <Banner>
             <Text>{text}</Text>
         </Banner>
-    </Container>
+        </div>
 };
 
 BannerTime.defaultProps = {
