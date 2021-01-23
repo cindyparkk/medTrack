@@ -6,7 +6,7 @@ const Container = styled.div`
     height: 100vh;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 0;
+    z-index: -10;
     display: ${props=>props.display ? props.display : "block"};
     position: absolute;
     top: 0;

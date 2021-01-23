@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'; 
 import styled, {css} from "styled-components";
-import Arrow from '../../public/down-white.svg';
-import TimeIcon from '../../public/time.svg';
-import Check from '../../public/select.png';
+// import Arrow from '../../public/down-white.svg';
+// import TimeIcon from '../../public/time.svg';
+// import Check from '../../public/select.png';
 
 const FilterBox = styled.div`
     max-width: 414px;
@@ -63,16 +63,16 @@ const CheckMark = styled.img`
     height: auto;
 `;
 
-const Filter = ({filterName, text1, text2, text3, text4}) => {
+const TimeFilter = ({filterName, text1, text2, text3, text4}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
 
     return <div>
         <FilterBox onClick={()=>{setExpanded(!expanded);}}>
-            <img src={TimeIcon} />
+            <img src="/time.svg" />
             <h5>{filterName}</h5>
-            <RotateImg expanded={expanded} src={Arrow} />
+            <RotateImg expanded={expanded} src="/down-white.svg" />
         </FilterBox>
 
         <Dropdown expanded={expanded}>
@@ -80,31 +80,31 @@ const Filter = ({filterName, text1, text2, text3, text4}) => {
                setSelected(1);
            }}>
                <h5>{text1}</h5>
-               <CheckMark selected={selected === 1} src={Check} />
+               <CheckMark selected={selected === 1} src="/select.png" />
             </Option>
             <Option selected={selected === 2} onClick={() => {
                setSelected(2);
            }}>
                <h5>{text2}</h5>
-               <CheckMark selected={selected === 2} src={Check} />
+               <CheckMark selected={selected === 2} src="/select.png" />
             </Option>
             <Option selected={selected === 3} onClick={() => {
                setSelected(3);
            }}>
                <h5>{text3}</h5>
-               <CheckMark selected={selected === 3} src={Check} />
+               <CheckMark selected={selected === 3} src="/select.png" />
             </Option>
             <Option selected={selected === 4} onClick={() => {
                setSelected(4);
            }}>
                <h5>{text4}</h5>
-               <CheckMark selected={selected === 4} src={Check} />
+               <CheckMark selected={selected === 4} src="/select.png" />
             </Option>
         </Dropdown>
     </div>
 }   
 
-Filter.defaultProps = {
+TimeFilter.defaultProps = {
     filterName:"Time",
     text1:"All",
     text2:"Next Day",
@@ -113,4 +113,4 @@ Filter.defaultProps = {
     expand: false,
 }
 
-export default Filter; 
+export default TimeFilter; 

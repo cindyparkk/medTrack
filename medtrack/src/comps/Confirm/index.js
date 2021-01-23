@@ -1,29 +1,67 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
     min-width: 352px;
-    max-height: 441px;
+    min-height: 441px;
     background-color: #fff;
     border-radius: 10px;
-    z-index: 100;
-    display: ${props=>props.display ? props.display : "block"};
+    z-index: 5;
+    display: ${props=>props.display ? props.display : "inline-flex"};
+    flex-direction: column;
 `;
 
 const TopCont = styled.div`
-    min-height: 100px;
+    min-height: 77px;
+    max-height: 100px;
     background: #06719D;
     border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    color: #fff;
+    display flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 `;
 
-const Confirm = ({display, onDelete}) => {
+const ConfirmTitle = styled.h4`
+    text-transform: capitalize;
+`;
+
+const ConfirmSubtitle = styled.p``;
+
+const BottomCont = styled.div`
+    display: inline-flex;
+    flex-direction: column;   
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+`;
+
+const ConfirmImage = styled.img`
+    min-width: 115px;
+    height: auto;
+`;
+
+const Confirm = ({display, onDelete, title, subtitle, imgurl}) => {
     return <Container display={display}>
-        <TopCont></TopCont>
-    </Container>
+        <TopCont>
+            <ConfirmTitle>{title}</ConfirmTitle>
+            <ConfirmSubtitle>{subtitle}</ConfirmSubtitle>
+        </TopCont>
+        <BottomCont>
+            <ConfirmImage src={imgurl}/>
+        </BottomCont>
+    </Container> 
 };
 
 Confirm.defaultProps = {
-    display: null
+    display: null,
+    onDelete:()=>{},
+    title:"donepezil",
+    subtitle:"was added successfully",
+    imgurl: "/check-one.svg"
 };
 
 export default Confirm;
