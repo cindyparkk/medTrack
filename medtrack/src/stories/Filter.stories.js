@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeFilter from '../comps/TimeFilter';
+import TimeFilter from '../comps/Filter';
 
 export default {
   title: 'medTrack/Filter',
