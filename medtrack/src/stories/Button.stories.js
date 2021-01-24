@@ -9,6 +9,6 @@ export default {
 
 export const ApplyButton = () => <ButtonBig />; 
 export const RegButton = () => <Button />;
-export const ColorButton = () => <Button text="Back to Medications" bgcolor ={"blue"}/>;
+export const ColorButton = () => <Button text="Back to Medications" bgcolor ={"#63AAC8"}/>;
 
 
