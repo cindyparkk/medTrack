@@ -32,7 +32,7 @@ const Time = styled.input.attrs({
   width: 80%;
   border-radius: 5px;
   height: 45px;
-  border-color: transparent;
+  border-color: #094D69;
   box-shadow: 0px;
   outline: none;
   text-align: center;
