@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-// import Appearence from "../../public/pills-colored.png";
-// import CheckMark from "../../public/checked.png";
-// import MoreDetails from "../../public/more.svg";
 
 const MedInfoCon = styled.div`    
     max-width: 328px; 

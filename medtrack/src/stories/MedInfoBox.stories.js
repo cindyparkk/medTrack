@@ -4,7 +4,7 @@ import MarkMeds from '../comps/MarkMeds';
 import Reminder from '../comps/Reminder';
 
 export default {
-  title: 'medTrack/MedInfoBox',
+  title: 'medTrack/MedInfo',
   component: MedInfoBox,
 };
 
