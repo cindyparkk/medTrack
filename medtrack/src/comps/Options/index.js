@@ -22,10 +22,10 @@ const Label = styled.h6`
 
 const Option = styled.option`
     text-transform: capitalize;
-
+    background-color: #dad;
 `;
 
-const Options = ({text, option1, option2, option3}) => {
+const Options = ({text, option1, option2, option3, optionSelect}) => {
 
     const [clicked, setClicked] = useState();
     const [option, setOption1] = useState();
@@ -35,13 +35,16 @@ const Options = ({text, option1, option2, option3}) => {
             <Label>{text}</Label>
             <select>
                 <Option clicked={clicked} onClick={()=>{
-                    setOption1(option1);
-                    console.log(option1)
-                }}onChange={(e)=>{
-                    setOption1(e.target.clicked);
-                    console.log(option1);
-                }}>{option1 ? option1 : null}</Option>
-                <Option>{option2 ? option2 : null}</Option>
+                    optionSelect("option 1")
+                }}
+                // onChange={(e)=>{
+                //     setOption1(e.target.clicked);
+                //     console.log(option1);
+                // }}
+                >{option1 ? option1 : null}</Option>
+                <Option onClick={()=>{
+                    optionSelect("option 2")
+                }}>{option2 ? option2 : null}</Option>
                 <Option>{option3 ? option3 : null}</Option>
             </select>
         </Form>
