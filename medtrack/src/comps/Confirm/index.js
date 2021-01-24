@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from 'comps/Button';
 
 const Container = styled.div`
     min-width: 352px;
@@ -37,6 +38,10 @@ const BottomCont = styled.div`
     align-items: center;
     justify-content: center; 
     padding: 20px;
+
+    & > * {
+        margin: 10px 0px;
+    }
 `;
 
 const ConfirmImage = styled.img`
@@ -44,7 +49,7 @@ const ConfirmImage = styled.img`
     height: auto;
 `;
 
-const Confirm = ({display, onDelete, title, subtitle, imgurl}) => {
+const Confirm = ({display, title, subtitle, imgurl}) => {
     return <Container display={display}>
         <TopCont>
             <ConfirmTitle>{title}</ConfirmTitle>
@@ -52,6 +57,8 @@ const Confirm = ({display, onDelete, title, subtitle, imgurl}) => {
         </TopCont>
         <BottomCont>
             <ConfirmImage src={imgurl}/>
+            <Button />
+            <Button text="Back to Medications" bgcolor="#63AAC8"/>
         </BottomCont>
     </Container> 
 };
@@ -60,7 +67,7 @@ Confirm.defaultProps = {
     display: null,
     onDelete:()=>{},
     title:"donepezil",
-    subtitle:"was added successfully",
+    subtitle:"was deleted successfully",
     imgurl: "/check-one.svg"
 };
 
