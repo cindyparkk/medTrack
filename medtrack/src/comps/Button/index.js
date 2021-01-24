@@ -28,7 +28,7 @@ color: #FFFFFF;
 
 const Button = ({text,bgcolor}) => {
     return <Container>
-        <NormalButton color={bgcolor}>
+        <NormalButton bgcolor={bgcolor}>
             <Text>{text}</Text>
         </NormalButton>
     </Container>
