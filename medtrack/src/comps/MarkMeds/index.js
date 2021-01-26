@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react'; 
 import styled from "styled-components";
-// import Close from "../../public/close.png";
-// import Skip from "../../public/skipped.png";
-// import Reschedule from "../../public/stopwatch-colored.png";
-// import Take from "../../public/checked.png";
 
 const MarkCon = styled.div`    
     max-width: 328px; 

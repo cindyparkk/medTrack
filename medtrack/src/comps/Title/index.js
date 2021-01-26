@@ -24,7 +24,7 @@ const Title = ({username}) => {
     return <TitleContainer>
         <TitleText>
             <h1>Hello {username}</h1>
-            <p>Here's yout med schedule:</p>
+            <p>Here's your med schedule:</p>
         </TitleText>
     </TitleContainer>
 }

@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react'; 
 import styled, {css} from "styled-components";
-// import Arrow from '../../public/down-white.svg';
-// import TimeIcon from '../../public/time.svg';
-// import Check from '../../public/select.png';
 
 const FilterBox = styled.div`
     max-width: 414px;
@@ -56,22 +53,48 @@ const Option = styled.div`
     h5 {
         flex: 1;
     }
+    ${props=>props.reMove === true && css`
+        display: none;
+    `}
 `;
+
 const CheckMark = styled.img`
     display:${props=>props.selected ? "inline-block" : "none"};
     width: 30px;
     height: auto;
 `;
 
-const TimeFilter = ({filterName, text1, text2, text3, text4}) => {
+const Title = styled.div`
+    display:flex;
+    align-items:center;
+    flex: 1;
+    img {
+        width: 35px; 
+        padding-right: 10px;
+    }   
+    ${props=>props.changeIcon1 === true && css`
+        display: none;
+    `}
+    ${props=>props.changeIcon2 === true && css`
+        display: none;
+    `}
+`;
+
+const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon2}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
 
     return <div>
         <FilterBox onClick={()=>{setExpanded(!expanded);}}>
-            <img src="/time.svg" />
-            <h5>{filterName}</h5>
+            <Title changeIcon1={changeIcon1}>
+                <img src="/time.svg" alt="Time"/>
+                <h5>Time</h5>
+            </Title>
+            <Title changeIcon2={changeIcon2}>
+                <img src="/symptom.png" alt="MedCond"/>
+                <h5>Medical Conditions</h5>
+            </Title>
             <RotateImg expanded={expanded} src="/down-white.svg" />
         </FilterBox>
 
@@ -82,35 +105,76 @@ const TimeFilter = ({filterName, text1, text2, text3, text4}) => {
                <h5>{text1}</h5>
                <CheckMark selected={selected === 1} src="/select.png" />
             </Option>
+
             <Option selected={selected === 2} onClick={() => {
                setSelected(2);
            }}>
                <h5>{text2}</h5>
                <CheckMark selected={selected === 2} src="/select.png" />
             </Option>
+
             <Option selected={selected === 3} onClick={() => {
                setSelected(3);
            }}>
                <h5>{text3}</h5>
                <CheckMark selected={selected === 3} src="/select.png" />
             </Option>
+
             <Option selected={selected === 4} onClick={() => {
                setSelected(4);
            }}>
                <h5>{text4}</h5>
                <CheckMark selected={selected === 4} src="/select.png" />
             </Option>
+
+            <Option reMove={reMove} selected={selected === 5} onClick={() => {
+               setSelected(5);
+           }}>
+               <h5>Dementia</h5>
+               <CheckMark selected={selected === 5} src="/select.png" />
+            </Option>
+
+            <Option reMove={reMove} selected={selected === 6} onClick={() => {
+               setSelected(6);
+           }}>
+               <h5>Diabetes</h5>
+               <CheckMark selected={selected === 6} src="/select.png" />
+            </Option>
+
+            <Option reMove={reMove} selected={selected === 7} onClick={() => {
+               setSelected(7);
+           }}>
+               <h5>Epilepsy</h5>
+               <CheckMark selected={selected === 7} src="/select.png" />
+            </Option>
+
+            <Option reMove={reMove} selected={selected === 8} onClick={() => {
+               setSelected(8);
+           }}>
+               <h5>High Blood Pressure</h5>
+               <CheckMark selected={selected === 8} src="/select.png" />
+            </Option>
+
+            <Option reMove={reMove} selected={selected === 9} onClick={() => {
+               setSelected(9);
+           }}>
+               <h5>Hypertension</h5>
+               <CheckMark selected={selected === 9} src="/select.png" />
+            </Option>
+
         </Dropdown>
     </div>
 }   
 
 TimeFilter.defaultProps = {
-    filterName:"Time",
     text1:"All",
     text2:"Next Day",
     text3:"Next 2 Days",
     text4:"Upcoming Week",
     expand: false,
+    reMove: true,
+    changeIcon1: true,
+    changeIcon2: true
 }
 
 export default TimeFilter; 
