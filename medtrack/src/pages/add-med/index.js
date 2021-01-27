@@ -11,9 +11,16 @@ function AddMed() {
           <div className="breadcrumb">
             <h6>1/9</h6>
           </div>
-          {/* <h6 className="addMed_title">medical conditions</h6> */}
+          <h6 className="addMed_title">medical conditions</h6>
           <Options />
-          <Filter />
+          <Options text="angina"/>
+          <Options text="arthritis"/>
+          <Options text="asthma"/>
+          <Options text="dementia"/>
+          <Options text="diabetes"/>
+          <Options text="epilepsy"/>
+          <Options text="high blood pressure"/>
+          <Options text="hypertension"/>
           <div className="bigButton">
             <ButtonBig />
           </div>
