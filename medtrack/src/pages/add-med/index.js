@@ -4,8 +4,16 @@ import Filter from "comps/Filter";
 import Options from "comps/Options";
 import ButtonBig from "comps/ButtonBig";
 
-function AddMed() {
+import {  
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link } from "react-router-dom";
+import AddMedInfo from "pages/add-med-info";
+
+export default function AddMed() {
     return (
+      <Router>
       <div className="addMed">
           <BannerCancel text="medical conditions"/>
           <div className="breadcrumb">
@@ -22,10 +30,18 @@ function AddMed() {
           <Options text="high blood pressure"/>
           <Options text="hypertension"/>
           <div className="bigButton">
-            <ButtonBig />
+            <Link to="/add-med-info">
+              <ButtonBig />
+            </Link>
           </div>
       </div>
+
+      <Switch>
+        <Route path="/add-med-info">
+          <AddMedInfo />
+        </Route>
+      </Switch>
+    </Router>
     );
   }
   
-  export default AddMed;
