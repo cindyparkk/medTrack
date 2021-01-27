@@ -30,9 +30,9 @@ export default function AddMed() {
           <Options text="high blood pressure"/>
           <Options text="hypertension"/>
           <div className="bigButton">
-            <Link to="/add-med-info">
+            {/* <Link to="/add-med-info"> */}
               <ButtonBig />
-            </Link>
+            {/* </Link> */}
           </div>
       </div>
 

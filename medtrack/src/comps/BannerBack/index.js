@@ -10,7 +10,7 @@ const Banner = styled.div`
     align-items: center;
     background-color: #06719D;
     color:white;
-    padding: 0px 10px 0px;
+    // padding: 0px 10px 0px;
     text-align: center;
     justify-content: space-around;
 `;
@@ -22,6 +22,7 @@ const Text = styled.h3`
     // padding-right: 40px;
     // position: absolute;
     z-index: 1;
+    text-transform: capitalize;
 `;
 const BackCont = styled.div `
     display: flex;
@@ -34,6 +35,7 @@ const BackCont = styled.div `
 const Sidetext = styled.h6`
     color: #FFFFFF;
     // padding-right: 400px;
+    margin-left: -10px;
 `;
 
 const RotatedImg = styled.img`
