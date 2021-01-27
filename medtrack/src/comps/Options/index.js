@@ -33,7 +33,7 @@ const Option = styled.div`
     text-align: left;
     display: flex;
     padding: 0px 30px 0px 75px;
-    background-color: ${props=>props.selected ? "#094D69" : "none"};
+    background-color: ${props=>props.selected ? "#094D69" : "#fff"};
     h5 {
         flex: 1;
     }
@@ -51,11 +51,11 @@ const CheckMark = styled.img`
 `;
 
 const Text = styled.h5`
-    text-transform: capitalize;
+    text-transform: ${props=>props.textTransform ? props.textTransform : "capitalize"};
     color: ${props=>props.selected ? "#fff" : "000"};
 `;
 
-const Options = ({text, option1, option2, option3, optionSelect}) => {
+const Options = ({text, textTransform, optionSelect}) => {
 
     const [clicked, setClicked] = useState();
     const [option, setOption1] = useState();
@@ -65,7 +65,7 @@ const Options = ({text, option1, option2, option3, optionSelect}) => {
         <Option selected={selected === true} onClick={() => {
                setSelected(!selected);
            }}>
-               <Text selected={selected === true}>{text}</Text>
+               <Text selected={selected === true} textTransform={textTransform}>{text}</Text>
                <CheckMark selected={selected === true} src="/select.png" />
         </Option>
         {/* <Form>
@@ -92,7 +92,8 @@ const Options = ({text, option1, option2, option3, optionSelect}) => {
 // if option[n] dne, do not show
 
 Options.defaultProps = {
-    text:"alzheimer's"
+    text:"alzheimer's",
+    textTransform: null
 };
 
 export default Options;

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import BannerCancel from "comps/BannerCancel";
-import Filter from "comps/Filter";
 import Options from "comps/Options";
 import ButtonBig from "comps/ButtonBig";
 
@@ -31,7 +30,7 @@ export default function AddMed() {
           <Options text="hypertension"/>
           <div className="bigButton">
             {/* <Link to="/add-med-info"> */}
-              <ButtonBig />
+              <ButtonBig text="next"/>
             {/* </Link> */}
           </div>
       </div>

@@ -8,6 +8,7 @@ Link } from "react-router-dom";
 
 import AddMed from "pages/add-med";
 import AddMedInfo from "pages/add-med-info";
+import AddMedDosage from "pages/add-med-dosage";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/add-med-info">
             <AddMedInfo />
+          </Route>
+          <Route path="/add-med-dosage">
+            <AddMedDosage />
           </Route>
         </Switch>
       </Router>

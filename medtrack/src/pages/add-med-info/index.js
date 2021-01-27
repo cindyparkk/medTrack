@@ -16,7 +16,7 @@ export default function AddMedInfo() {
           <InputMed />
           <div className="bigButton">
             <Link to="/">
-              <ButtonBig />
+              <ButtonBig text="next" />
             </Link>
           </div>
       </div>
