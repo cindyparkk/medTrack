@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'; 
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const Container = styled.div`
-    width: 100%;
+    min-width: 414px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    margin: 0;
 `;
 
 const Form = styled.form`
@@ -17,21 +17,58 @@ const Form = styled.form`
 
 const Label = styled.h6`
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin: 15px;
 `;
 
-const Option = styled.option`
+// const Option = styled.option`
+//     text-transform: capitalize;
+//     background-color: #dad;
+// `;
+
+const Option = styled.div`
+    // min-width: 414px;
+    height: 70px;
+    border: 1px solid #D9D9D9;
+    align-items:center;
+    text-align: left;
+    display: flex;
+    padding: 0px 30px 0px 75px;
+    background-color: ${props=>props.selected ? "#094D69" : "none"};
+    h5 {
+        flex: 1;
+    }
+    ${props=>props.reMove === true && css`
+        display: none;
+    `}
+    margin: -1px;
+    cursor: pointer;
+`;
+
+const CheckMark = styled.img`
+    display:${props=>props.selected ? "flex" : "none"};
+    width: 30px;
+    height: auto;
+`;
+
+const Text = styled.h5`
     text-transform: capitalize;
-    background-color: #dad;
+    color: ${props=>props.selected ? "#fff" : "000"};
 `;
 
 const Options = ({text, option1, option2, option3, optionSelect}) => {
 
     const [clicked, setClicked] = useState();
     const [option, setOption1] = useState();
+    const[selected, setSelected] = useState(false);
 
     return <Container >
-        <Form>
+        <Option selected={selected === true} onClick={() => {
+               setSelected(!selected);
+           }}>
+               <Text selected={selected === true}>{text}</Text>
+               <CheckMark selected={selected === true} src="/select.png" />
+        </Option>
+        {/* <Form>
             <Label>{text}</Label>
             <select>
                 <Option clicked={clicked} onClick={()=>{
@@ -47,14 +84,15 @@ const Options = ({text, option1, option2, option3, optionSelect}) => {
                 }}>{option2 ? option2 : null}</Option>
                 <Option>{option3 ? option3 : null}</Option>
             </select>
-        </Form>
+        </Form> */}
+
     </Container> 
 };
 
 // if option[n] dne, do not show
 
 Options.defaultProps = {
-    text: "medical conditions"
+    text:"alzheimer's"
 };
 
 export default Options;

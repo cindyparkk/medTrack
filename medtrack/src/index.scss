@@ -1,13 +1,21 @@
-// body {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+// --------- Add Medicaiton ----------
+.breadcrumb {
+  min-height: 33px;
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 15px 0px;
+}
 
-// code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-//     monospace;
-// }
+.addMed_title {
+  text-transform: uppercase;
+  margin: 15px;
+  text-align: left;
+}
+
+.bigButton {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
