@@ -15,7 +15,7 @@ const Box = styled.div`
     // justify-content: space-around;
     padding-left: 20px;
     align-items: center;
-
+background-color: #FFFFFF;
     & > * {
         margin: 0px 15px;
     }
