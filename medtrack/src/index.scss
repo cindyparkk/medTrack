@@ -18,4 +18,17 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  button {
+    margin: 10px 0;
+  }
+}
+
+.container {
+  max-width: 100vw;
+  height: 245px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
