@@ -43,7 +43,7 @@ const Time = styled.input.attrs({
   outline: none;
   text-align: center;
 `;
-const Text = styled.h1``;
+const Text = styled.h6``;
 
 const Input = ({ imgurl }) => {
   return (

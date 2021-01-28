@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  max-width: 100vw;
-  display: inline-flex;
+  min-width: 100vw;
+  display: flex;
   flex-direction: column;
 `;
 const ContainerInner = styled.div`
@@ -12,6 +12,8 @@ const ContainerInner = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
+  text-align: left;
 `;
 
 const IconLeft = styled.img`
@@ -32,7 +34,7 @@ const InnerContainer = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h1`
+const Title = styled.h5`
   margin: 0px 10px;
   padding: 0px;
 `;
@@ -41,7 +43,7 @@ const Subtext = styled.p`
   padding: 0px;
 `;
 const Divide = styled.hr`
-  display: block;
+  display: ${(props) => (props.display ? props.display : "block")};
   height: 1px;
   border: 0;
   border-top: 2px solid #ccc;
@@ -49,7 +51,7 @@ const Divide = styled.hr`
   padding: 0;
 `;
 
-const Info = ({ leftimgurl, title, subtext, rightimgurl }) => {
+const Info = ({ leftimgurl, title, subtext, rightimgurl, display }) => {
   return (
     <Container>
       <ContainerInner>
@@ -66,8 +68,8 @@ const Info = ({ leftimgurl, title, subtext, rightimgurl }) => {
 };
 
 Info.defaultProps = {
-  leftimgurl: "/stopwatch.png",
-  rightimgurl: "/right.png",
+  leftimgurl: "",
+  rightimgurl: "",
   title: "Title Content",
   subtext: "08:00 AM/15mg",
 };
