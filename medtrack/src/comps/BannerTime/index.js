@@ -2,10 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-
 const Banner = styled.div`
-
-
 max-width: 414px;
 height: 80px;
 display:flex;
@@ -18,10 +15,9 @@ justify-content: center;
 box-sizing:border-box;
 `;
 
-
 const Text = styled.h1`
-color: #FFFFFF;
-
+    color: #FFFFFF;
+    font-weight: 300;
 `;
 
 const BannerTime = ({text}) => {

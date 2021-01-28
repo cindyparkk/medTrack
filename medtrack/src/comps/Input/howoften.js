@@ -15,10 +15,21 @@ const Container = styled.div`
   // }
 `;
 
+const Wrapper = styled.div`
+  min-width: 90%;
+ display: flex;
+ align-items: center;
+`;
+
+const Texttwo = styled.div`
+margin-left: 4%;
+  `;
+
+
 const Time = styled.input.attrs({
   type: "number",
   // value:"1",
-  placeholder: "mg",
+  placeholder: "number",
   min: "1",
   max: "99",
 })`
@@ -41,14 +52,19 @@ const Text = styled.h6`
   margin: 20px 0px;
 `;
 
-const Input = ({}) => {
+const HowOftenInput = ({}) => {
   return (
     <Container>
-      <Text>DOSE AMOUNT</Text>
+      <Text>EVERY:</Text>
+      <Wrapper>
       <Time />
+      <Texttwo>
+      <h6>Days</h6>
+      </Texttwo>
+      </Wrapper>
     </Container>
   );
 };
 
-Input.defaultProps = {};
-export default Input;
+HowOftenInput.defaultProps = {};
+export default HowOftenInput;

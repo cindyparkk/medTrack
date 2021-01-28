@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'; 
 import styled, {css} from "styled-components";
 
+const Container = styled.div`
+    min-width: 414px;
+`;
+
 const FilterBox = styled.div`
-    max-width: 414px;
+    min-width: 414px;
     height: 80px;
     box-sizing:border-box;
     display:flex;
@@ -21,7 +25,7 @@ const FilterBox = styled.div`
 `;
 
 const Dropdown = styled.div`
-    max-width: 414px;
+    // max-width: 414px;
     height: auto;
     box-sizing:border-box;
     background-color: #FFFF;
@@ -43,10 +47,11 @@ const RotateImg = styled.img`
     height: auto;
 `;
 const Option = styled.div`
-    max-width: 414px;
+    // max-width: 414px;
     height: 70px;
     border: 1px solid #D9D9D9;
     align-items:center;
+    text-align: left;
     display: flex;
     padding: 0px 30px 0px 75px;
     background-color: ${props=>props.selected ? "#A5BFCA" : "none"};
@@ -56,10 +61,11 @@ const Option = styled.div`
     ${props=>props.reMove === true && css`
         display: none;
     `}
+    margin-top: -1px;
 `;
 
 const CheckMark = styled.img`
-    display:${props=>props.selected ? "inline-block" : "none"};
+    display:${props=>props.selected ? "inline-flex" : "none"};
     width: 30px;
     height: auto;
 `;
@@ -80,19 +86,21 @@ const Title = styled.div`
     `}
 `;
 
+const Icon = styled.img``;
+
 const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon2}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
 
-    return <div>
+    return <Container>
         <FilterBox onClick={()=>{setExpanded(!expanded);}}>
             <Title changeIcon1={changeIcon1}>
-                <img src="/time.svg" alt="Time"/>
+                <Icon src="/time.svg" alt="Time"/>
                 <h5>Time</h5>
             </Title>
             <Title changeIcon2={changeIcon2}>
-                <img src="/symptom.png" alt="MedCond"/>
+                <Icon src="/symptom.png" alt="MedCond"/>
                 <h5>Medical Conditions</h5>
             </Title>
             <RotateImg expanded={expanded} src="/down-white.svg" />
@@ -163,7 +171,7 @@ const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon
             </Option>
 
         </Dropdown>
-    </div>
+    </Container>
 }   
 
 TimeFilter.defaultProps = {

@@ -1,39 +1,49 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-width:100%;
-margin:0;
+   min-width: 414px;
+    margin: 0;
 `;
 
 const Button = styled.button`
-display: inline-flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-min-width:414px;
-min-height: 151px;
-background-color:${props=>props.bgcolor ? props.bgcolor : "#094D69" };
+    width: 100%;
+    min-height: 151px;
+    background-color:${props=>props.dis ? "#094D69" : "#D9D9D9" };
 
-cursor:pointer;
-border: none;
+    cursor:pointer;
+    border: none;
 `;
 
 const Text = styled.h1`
-color: #FFFFFF;
+    color: #FFFFFF;
+    text-transform: capitalize;
 `;
 
-const ButtonBig = ({text,bgcolor}) => {
+const ButtonBig = ({text, disable}) => {
+
+    const[disabled, setDisabled] = useState(false);
+
+    useEffect(()=>{
+        setDisabled(disable)
+    }, [disable]);
+
     return <Container>
-        <Button color={bgcolor}>
+        <Button dis={disabled} onClick={()=>{
+            setDisabled(!disabled);
+        }}>
             <Text>{text}</Text>
         </Button>
     </Container>
 };
 
 ButtonBig.defaultProps = {
-text:"Apply",
-bgcolor: "none",
+    text:"Apply",
+    disable: false
 };
 
 export default ButtonBig;
