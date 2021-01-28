@@ -11,6 +11,7 @@ import AddMedInfo from "pages/add-med-info";
 import AddMedDosage from "pages/add-med-dosage";
 import AddMedFreq from "pages/add-med-frequency";
 import SpecificDays from "pages/specific-days";
+import SpecificTimes from "pages/specific-times";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/specific-days">
             <SpecificDays />
+          </Route>
+          <Route path="/specific-times">
+            <SpecificTimes />
           </Route>
         </Switch>
       </Router>
