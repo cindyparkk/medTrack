@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styled, {css} from "styled-components";
 
 const FilterBox = styled.div`
-    max-width: 414px;
-    height: 80px;
+    min-width: 414px;
+    min-height: 80px;
     box-sizing:border-box;
     display:flex;
     cursor:pointer;

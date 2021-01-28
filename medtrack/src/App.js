@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import AddMed from "pages/add-med";
 import Home from "pages/home";
+import FilterPage from "pages/Filter";
 import ListMed from "pages/list-med";
 import MedicationInfo from "pages/medication-info";
 import MedicationPop from "pages/medication-popup";
@@ -28,6 +29,9 @@ function App() {
         <Switch>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/filter">
+            <FilterPage />
           </Route>
           <Route path="/add-med">
             <AddMed />

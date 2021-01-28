@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 
 const Banner = styled.div`
-max-width: 414px;
-height: 80px;
+min-width: 414px;
+min-height: 80px;
 display:flex;
 align-items: center;
 background-color: #06719D;
