@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import BannerBack from 'comps/BannerBack';
 import Filter from 'comps/Filter';
+import ButtonBig from 'comps/ButtonBig';
 
 function FilterPage() {
     return (
@@ -15,6 +16,7 @@ function FilterPage() {
             reMove="false"
             changeIcon2="false"
         />; 
+        <ButtonBig />
       </div>
     );
   }
