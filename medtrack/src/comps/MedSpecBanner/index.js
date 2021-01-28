@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 const Banner = styled.div`
-max-width: 414px;
+max-width: 100vw;
 height: 245px;
 display:flex;
 align-items: center;
