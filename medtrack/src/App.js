@@ -3,8 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import AddMed from "pages/add-med";
-import Home from "pages/home";
-import FilterPage from "pages/Filter";
 import ListMed from "pages/list-med";
 import MedicationInfo from "pages/medication-info";
 import MedicationPop from "pages/medication-popup";
@@ -12,27 +10,19 @@ import AddMedInfo from "pages/add-med-info";
 import AddMedDosage from "pages/add-med-dosage";
 import AddMedFreq from "pages/add-med-frequency";
 import SpecificDays from "pages/specific-days";
-import AddMedTimes from "pages/add-med-timesday";
-import AddMedInstructions from "pages/add-med-instructions";
+
 import SpecificTimes from "pages/specific-times";
 import SpecificIns from "pages/specific-instructions";
 import SpecificDos from "pages/specific-dosage";
 import SpecificAppear from "pages/specific-appearance";
-import AddMedAppearance from "pages/add-med-appearance";
 import SpecificOverview from "pages/specific-overview";
-import AddMedHowOften from "pages/add-med-howoften";
+
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/filter">
-            <FilterPage />
-          </Route>
           <Route path="/add-med">
             <AddMed />
           </Route>
@@ -54,18 +44,6 @@ function App() {
           <Route path="/add-med-frequency">
             <AddMedFreq />
           </Route>
-          <Route path="/add-med-timesday">
-            <AddMedTimes />
-          </Route>
-          <Route path="/add-med-instructions">
-            <AddMedInstructions />
-          </Route>
-          <Route path="/add-med-appearance">
-            <AddMedAppearance />
-          </Route>
-          <Route path="/add-med-howoften">
-            <AddMedHowOften />
-          </Route>
           <Route path="/specific-days">
             <SpecificDays />
           </Route>
@@ -83,6 +61,13 @@ function App() {
           </Route>
           <Route path="/specific-overview">
             <SpecificOverview />
+          </Route>
+          <Route exact path="/">
+            <div>
+              <Link to="/add-med">
+                Add Meds
+              </Link>
+            </div>
           </Route>
         </Switch>
       </Router>
