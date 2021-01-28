@@ -7,6 +7,7 @@ const MedInfoCon = styled.div`
     border-radius: 10px;
     box-shadow: 0px 0px 10px #D9D9D9;
     box-sizing:border-box;
+    background-color: white;
 `;
 const MedInfo = styled.div`
     display: flex;
@@ -34,7 +35,6 @@ const Time = styled.div`
     }
 `;
 const Icon1 = styled.div`
-    flex: 1;
     text-align: center; 
     img {
        width:50px;
@@ -45,10 +45,10 @@ const Icon2 = styled.div`
     text-align: center;
     img{
         width:35px;
+        display: none;
     }
 `;
 const MedName = styled.div`
-    flex: 2;
     padding-left: 20px;
 `;
 

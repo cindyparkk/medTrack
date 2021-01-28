@@ -15,6 +15,7 @@ color:white;
 padding: 0px 30px 0px;
 text-align: center;
 justify-content: center;
+box-sizing:border-box;
 `;
 
 

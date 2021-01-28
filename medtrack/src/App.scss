@@ -1,5 +1,5 @@
 .App, body {
-  text-align: center;
+  //text-align: center;
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
@@ -54,4 +54,17 @@ p {
   font-weight: 300;
   font-size: 18px;
   margin: 0;
+}
+
+.bg {
+  max-width: 414px;
+  max-height: 1112px;
+  background: #F4F5F5;
+  margin: auto;
+}
+.content{
+  display: flex;
+  flex-direction:column;
+  //align-content: center;
+  align-items: center;
 }

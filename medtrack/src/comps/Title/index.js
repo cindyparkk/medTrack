@@ -4,6 +4,7 @@ import styled from "styled-components"
 const TitleContainer = styled.div`    
     max-width: 100vw; 
     max-height: 85px;
+    padding: 20px;
 `;
 const TitleText = styled.div`
     display: flex;
@@ -14,7 +15,7 @@ const TitleText = styled.div`
     h1{
         margin-bottom: 0px;
     }
-    p{
+    h4{
         margin-top: 0px;
     }
 `;
@@ -24,7 +25,7 @@ const Title = ({username}) => {
     return <TitleContainer>
         <TitleText>
             <h1>Hello {username}</h1>
-            <p>Here's your med schedule:</p>
+            <h4>Here's your med schedule:</h4>
         </TitleText>
     </TitleContainer>
 }
