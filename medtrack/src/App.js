@@ -10,12 +10,13 @@ import AddMedInfo from "pages/add-med-info";
 import AddMedDosage from "pages/add-med-dosage";
 import AddMedFreq from "pages/add-med-frequency";
 import SpecificDays from "pages/specific-days";
-
+import AddMedTimes from "pages/add-med-timesday";
+import AddMedInstructions from "pages/add-med-instructions";
 import SpecificTimes from "pages/specific-times";
 import SpecificIns from "pages/specific-instructions";
 import SpecificDos from "pages/specific-dosage";
 import SpecificAppear from "pages/specific-appearance";
-
+import AddMedAppearance from "pages/add-med-appearance";
 
 function App() {
   return (
@@ -42,6 +43,15 @@ function App() {
           </Route>
           <Route path="/add-med-frequency">
             <AddMedFreq />
+          </Route>
+          <Route path="/add-med-timesday">
+            <AddMedTimes />
+          </Route>
+          <Route path="/add-med-instructions">
+            <AddMedInstructions />
+          </Route>
+          <Route path="/add-med-appearance">
+            <AddMedAppearance />
           </Route>
           <Route path="/specific-days">
             <SpecificDays />
