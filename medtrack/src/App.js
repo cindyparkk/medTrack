@@ -18,6 +18,7 @@ import SpecificDos from "pages/specific-dosage";
 import SpecificAppear from "pages/specific-appearance";
 import AddMedAppearance from "pages/add-med-appearance";
 import SpecificOverview from "pages/specific-overview";
+import AddMedHowOften from "pages/add-med-howoften";
 
 
 function App() {
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route path="/add-med-appearance">
             <AddMedAppearance />
+          </Route>
+          <Route path="/add-med-howoften">
+            <AddMedHowOften />
           </Route>
           <Route path="/specific-days">
             <SpecificDays />
