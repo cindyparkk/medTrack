@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  padding: 10px;
-  max-width: 100vw;
-  background-color: #e5e5e5;
+  // padding: 10px;
+  min-width: 100%;
+  // background-color: #e5e5e5;
   display: inline-flex;
   flex-direction: column;
-  h1 {
-    margin-bottom: 0px;
-    margin-left: 15px;
-  }
+  justify-content: flex-start;
+  // h1 {
+  //   margin-bottom: 0px;
+  //   margin-left: 15px;
+  // }
 `;
 
 const TimeContainer = styled.div`
   flex-direction: column;
+  justify-content: flex-start;
 `;
 const ButtonContainer = styled.div`
   background-color: #094d69;
@@ -23,13 +25,15 @@ const ButtonContainer = styled.div`
   margin: 10px;
 `;
 const TimeButton = styled.button`
-  min-height: 40px;
-  min-width: 70px;
+  min-height: 54px;
+  min-width: 100px;
   margin: 4px;
   padding: 10px;
   border-radius: 26px;
   border: none;
   background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094d69")};
+  color: #fff;
+  font-size: 28px;
 `;
 const Time = styled.input.attrs({
   type: "time",
@@ -46,9 +50,12 @@ const Time = styled.input.attrs({
   border-color: transparent;
   box-shadow: 0px;
   outline: none;
-  text-align: center;
+  text-align: left;
 `;
-const Text = styled.h1``;
+// const Text = styled.h6`
+//   text-align: left;
+// `;
+
 const Input = ({}) => {
   const [clickedForm, setClickedForm] = useState("AM");
   const HandleContainerSelect = (name) => {
@@ -58,7 +65,7 @@ const Input = ({}) => {
   return (
     <Container>
       <TimeContainer>
-        <Text>TIME</Text>
+        {/* <Text>TIME</Text> */}
         <ButtonContainer>
           <TimeButton
             onContainerSelect={HandleContainerSelect}
