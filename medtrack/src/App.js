@@ -6,6 +6,11 @@ import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
 import MedicationInfo from "pages/medication-info";
 import MedicationPop from "pages/medication-popup";
+import AddMedInfo from "pages/add-med-info";
+import AddMedDosage from "pages/add-med-dosage";
+import AddMedFreq from "pages/add-med-frequency";
+import SpecificDays from "pages/specific-days";
+
 
 function App() {
   return (
@@ -23,6 +28,21 @@ function App() {
           </Route>
           <Route path="/medication-popup">
             <MedicationPop />
+        </Route>
+          <Route path="/add-med-info">
+            <AddMedInfo />
+          </Route>
+          <Route path="/add-med-dosage">
+            <AddMedDosage />
+          </Route>
+          <Route path="/add-med-frequency">
+            <AddMedFreq />
+          </Route>
+          <Route path="/specific-days">
+            <SpecificDays />
+          </Route>
+          <Route path="/specific-times">
+            <SpecificTimes />
           </Route>
         </Switch>
       </Router>
