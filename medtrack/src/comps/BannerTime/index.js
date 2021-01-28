@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-
 const Banner = styled.div`
     min-width: 414px;
     height: 80px;
@@ -10,7 +9,7 @@ const Banner = styled.div`
     align-items: center;
     background-color: #06719D;
     color:white;
-    padding: 0px 30px 0px;
+    // padding: 0px 30px 0px;
     text-align: center;
     justify-content: center;
 `;

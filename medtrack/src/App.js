@@ -15,6 +15,7 @@ import SpecificTimes from "pages/specific-times";
 import SpecificIns from "pages/specific-instructions";
 import SpecificDos from "pages/specific-dosage";
 import SpecificAppear from "pages/specific-appearance";
+import SpecificOverview from "pages/specific-overview";
 
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path="/specific-appearance">
             <SpecificAppear />
+          </Route>
+          <Route path="/specific-overview">
+            <SpecificOverview />
           </Route>
         </Switch>
       </Router>
