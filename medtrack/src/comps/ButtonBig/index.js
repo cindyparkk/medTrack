@@ -24,7 +24,7 @@ const Text = styled.h1`
     text-transform: capitalize;
 `;
 
-const ButtonBig = ({text, disable}) => {
+const ButtonBig = ({text, disable, onClick}) => {
 
     const[disabled, setDisabled] = useState(false);
 
@@ -35,6 +35,7 @@ const ButtonBig = ({text, disable}) => {
     return <Container>
         <Button dis={disabled} onClick={()=>{
             setDisabled(!disabled);
+            onClick();
         }}>
             <Text>{text}</Text>
         </Button>

@@ -62,6 +62,13 @@ function App() {
           <Route path="/specific-overview">
             <SpecificOverview />
           </Route>
+          <Route exact path="/">
+            <div>
+              <Link to="/add-med">
+                Add Meds
+              </Link>
+            </div>
+          </Route>
         </Switch>
       </Router>
     </div>
