@@ -3,6 +3,7 @@ import BannerTime from 'comps/BannerTime';
 import FilterBy from 'comps/FilterBy';
 import Title from 'comps/Title';
 import MedInfoBox from 'comps/MedInfoBox';
+import Button from 'comps/Button';
 
 function Home() {
     return (
@@ -11,11 +12,13 @@ function Home() {
         <FilterBy /> 
         <div className="content">
           <Title />
-          <div>
-            <MedInfoBox />
-            <MedInfoBox />
-          </div>   
+          <MedInfoBox />
+          <MedInfoBox />
         </div> 
+        <div>
+          <Button text="+ Add Med"/>
+          <Button text="See All Meds" bgcolor={"#63AAC8"}/>
+        </div>
       </div>
     );
   }

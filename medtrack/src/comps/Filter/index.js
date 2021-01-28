@@ -3,6 +3,7 @@ import styled, {css} from "styled-components";
 
 const Container = styled.div`
     min-width: 414px;
+    margin: 0;
 `;
 
 const FilterBox = styled.div`
