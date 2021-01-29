@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import BannerBack from "comps/BannerBack";
 import Filter from "comps/Filter";
 import ButtonBig from "comps/ButtonBig";
-import StepWizard from "react-step-wizard";
 import BannerCancel from "comps/BannerCancel";
 
+import StepWizard from "react-step-wizard";
 
 const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   return (

@@ -50,7 +50,7 @@ function App() {
               <Link to="/add-med">
                 <Button text="+ Add Med" />
               </Link>
-              <Link>
+              <Link to="/list-med">
                 <Button text="See All Meds" bgcolor={"#63AAC8"} />
               </Link>
             </div>

@@ -5,6 +5,7 @@ const Container = styled.div`
   min-width: 100vw;
   display: flex;
   flex-direction: column;
+  backgroun-color: #fff;
 `;
 const ContainerInner = styled.div`
   max-width: 100vw;
@@ -12,8 +13,10 @@ const ContainerInner = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  // margin: 10px 0;
   text-align: left;
+  background-color: #fff;
+  padding: 10px 0px;
 `;
 
 const IconLeft = styled.img`
@@ -46,7 +49,7 @@ const Divide = styled.hr`
   display: ${(props) => (props.display ? props.display : "block")};
   height: 1px;
   border: 0;
-  border-top: 2px solid #ccc;
+  border-top: 2px solid #d9d9d9;
   margin: 1px 0;
   padding: 0;
 `;
