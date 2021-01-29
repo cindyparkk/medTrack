@@ -89,7 +89,7 @@ const Title = styled.div`
 
 const Icon = styled.img``;
 
-const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon2}) => {
+const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon2, onClick}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
