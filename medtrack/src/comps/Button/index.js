@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-width:100%;
-margin:0;
+    width:100%;
+    margin: 10px 0px;
 `;
 
 const NormalButton = styled.button`

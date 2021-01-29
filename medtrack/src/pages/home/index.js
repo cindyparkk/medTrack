@@ -7,7 +7,7 @@ import Button from 'comps/Button';
 
 function Home() {
     return (
-      <div className="bg">
+      <div className="page">
         <BannerTime />
         <FilterBy /> 
         <div className="content">
@@ -24,3 +24,7 @@ function Home() {
   }
   
   export default Home;
+
+
+
+

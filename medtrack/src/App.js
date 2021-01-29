@@ -69,20 +69,18 @@ function App() {
             <SpecificOverview />
           </Route>
           <Route exact path="/">
-              <div className="bg">
+              <div className="page">
                 <BannerTime />
                 <FilterBy /> 
-              <div className="content">
                 <Title />
                 <MedInfoBox />
                 <MedInfoBox />
-              </div> 
-              <div>
                 <Link to="/add-med">
                   <Button text="+ Add Med"/>
                 </Link>
-                <Button text="See All Meds" bgcolor={"#63AAC8"}/>
-              </div>
+                <Link>
+                  <Button text="See All Meds" bgcolor={"#63AAC8"}/>
+                </Link>
             </div>
           </Route>
         </Switch>
