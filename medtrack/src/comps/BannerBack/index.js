@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import Arrow from '../../../public/down-white.svg';
-
 
 const Banner = styled.div`
     min-width: 414px;
@@ -43,10 +41,10 @@ const RotatedImg = styled.img`
     cursor:pointer;
 `;
 
-const BannerBack = ({text}) => {
+const BannerBack = ({text, onClick}) => {
     return <div>
         <Banner>
-            <BackCont>
+            <BackCont onClick={onClick}>
                 <RotatedImg src="/down-white.svg" />
                 <Sidetext>Back</Sidetext>
             </BackCont>

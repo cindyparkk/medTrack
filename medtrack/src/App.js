@@ -17,6 +17,12 @@ import SpecificDos from "pages/specific-dosage";
 import SpecificAppear from "pages/specific-appearance";
 import SpecificOverview from "pages/specific-overview";
 
+import BannerTime from 'comps/BannerTime';
+import FilterBy from 'comps/FilterBy';
+import Title from 'comps/Title';
+import MedInfoBox from 'comps/MedInfoBox';
+import Button from 'comps/Button';
+
 
 function App() {
   return (
@@ -63,10 +69,20 @@ function App() {
             <SpecificOverview />
           </Route>
           <Route exact path="/">
-            <div>
-              <Link to="/add-med">
-                Add Meds
-              </Link>
+              <div className="bg">
+                <BannerTime />
+                <FilterBy /> 
+              <div className="content">
+                <Title />
+                <MedInfoBox />
+                <MedInfoBox />
+              </div> 
+              <div>
+                <Link to="/add-med">
+                  <Button text="+ Add Med"/>
+                </Link>
+                <Button text="See All Meds" bgcolor={"#63AAC8"}/>
+              </div>
             </div>
           </Route>
         </Switch>
