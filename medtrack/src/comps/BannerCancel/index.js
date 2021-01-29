@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
 const Banner = styled.div`
     min-width: 414px;
     min-height: 80px;
@@ -38,16 +36,16 @@ const Sidetext = styled.h6`
     margin-left: -20px;
 `;
 
-const BannerCancel = ({text}) => {
+const BannerCancel = ({text, onClick}) => {
     return <Banner>
-            <Sidetext>Cancel</Sidetext>
+            <Sidetext onClick={onClick}>Cancel</Sidetext>
             <Text>{text}</Text>
             <div></div>
         </Banner>
 };
 
 BannerCancel.defaultProps = {
-text:"Edit Med",
+    text:"Edit Med",
 };
 
 export default BannerCancel;

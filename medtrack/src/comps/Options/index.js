@@ -55,7 +55,7 @@ const Text = styled.h5`
     color: ${props=>props.selected ? "#fff" : "000"};
 `;
 
-const Options = ({text, textTransform, optionSelect}) => {
+const Options = ({text, textTransform, optionSelect, onClick}) => {
 
     const [clicked, setClicked] = useState();
     const [option, setOption1] = useState();
@@ -64,6 +64,7 @@ const Options = ({text, textTransform, optionSelect}) => {
     return <Container >
         <Option selected={selected === true} onClick={() => {
                setSelected(!selected);
+               onClick();
            }}>
                <Text selected={selected === true} textTransform={textTransform}>{text}</Text>
                <CheckMark selected={selected === true} src="/select.png" />
