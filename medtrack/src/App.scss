@@ -4,8 +4,16 @@
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background-color: #F4F5F5;
+  background-color: #F4F5F5;;
 }
+
+@mixin flexIt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Roboto:wght@300;500;900&display=swap');
 
 h1 {
@@ -56,4 +64,7 @@ p {
   font-size: 18px;
   margin: 0;
 }
+.page {
+  @include flexIt();
 
+}

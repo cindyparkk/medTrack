@@ -20,14 +20,13 @@ const FilterBox = styled.div`
     }
 `;
 
-const FilterBy = ({}) => {
+const FilterBy = ({onClick}) => {
 
     return <div>
-        <FilterBox>
+        <FilterBox onClick={onClick}>
             <h5>Filter By</h5>
             <img src="/down-white.svg" alt="arrow" />
         </FilterBox>
-
     </div>
 }   
 

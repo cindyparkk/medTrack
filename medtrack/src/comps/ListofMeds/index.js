@@ -4,8 +4,8 @@ import styled from "styled-components";
 const MedInfoCon = styled.div`
   max-width: 100vw;
   height: auto;
-  border-radius: 10px;
   box-sizing: border-box;
+  background-color: #fff;
 `;
 const MedInfo = styled.div`
   display: flex;
@@ -30,9 +30,9 @@ const MedName = styled.div`
   padding-left: 20px;
 `;
 
-const ListMeds = ({ medName, time }) => {
+const ListMeds = ({ medName, time, onClick }) => {
   return (
-    <MedInfoCon>
+    <MedInfoCon onClick={onClick}>
       <MedInfo>
         <Icon1>
           <img src="/pills-colored.png" />

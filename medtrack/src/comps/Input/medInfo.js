@@ -5,9 +5,9 @@ const Container = styled.div`
   max-width: 100%;
   // min-width: ${(props) => (props.width ? props.width : "50%")};
   min-width: 80%;
-  padding: 10px;
+  padding: 0px 20px;
   // background-color: #e5e5e5;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

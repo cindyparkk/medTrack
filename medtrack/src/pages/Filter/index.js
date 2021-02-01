@@ -1,24 +1,38 @@
-import React, {useState, useEffect} from 'react';
-import BannerBack from 'comps/BannerBack';
-import Filter from 'comps/Filter';
-import ButtonBig from 'comps/ButtonBig';
+import React, { useState, useEffect } from "react";
+import BannerBack from "comps/BannerBack";
+import Filter from "comps/Filter";
+import ButtonBig from "comps/ButtonBig";
+import BannerCancel from "comps/BannerCancel";
 
-function FilterPage() {
-    return (
-      <div className="">
-        <BannerBack text="Filter by"/>
-        <Filter changeIcon1="false"/>; 
-        <Filter 
-            text1="Alzheimer’s"
-            text2="Angina"
-            text3="Arthritis"
-            text4="Asthma"
-            reMove="false"
-            changeIcon2="false"
-        />; 
+import StepWizard from "react-step-wizard";
+
+const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
+  return (
+    <div>
+      <BannerCancel text="Filter by" />
+      <Filter changeIcon1="false" />
+      <Filter
+        text1="Alzheimer’s"
+        text2="Angina"
+        text3="Arthritis"
+        text4="Asthma"
+        reMove="false"
+        changeIcon2="false"
+      />
+      <div className="bigButton">
         <ButtonBig />
       </div>
-    );
-  }
-  
-  export default FilterPage;
+    </div>
+  );
+};
+
+
+export default function FilterPage() {
+  return (
+    <div className="page">
+      <StepWizard>
+        <Step1 />
+      </StepWizard>
+    </div>
+  );
+}

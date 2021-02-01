@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 const MedInfoCon = styled.div`    
-    max-width: 328px; 
+    min-width: 328px; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #D9D9D9;
     box-sizing:border-box;
-    background-color: white;
+    background-color: #fff;
+    margin: 15px 0px;
 `;
 const MedInfo = styled.div`
     display: flex;
