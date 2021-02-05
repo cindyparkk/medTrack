@@ -25,13 +25,15 @@ import MedicationPop from "pages/medication-popup";
 // import SpecificOverview from "pages/specific-overview";
 import FilterPage from "pages/Filter";
 
+
 function App() {
   //backend functions
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
 
+
   const getData = async () => {
-    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    var resp = await axios.get("http://localhost:8888/api/meds");
     console.log("get data", resp);
     var arr = resp.data;
     setAll(resp.data);
@@ -74,7 +76,7 @@ function App() {
               <Link to="/add-med">
                 <Button text="+ Add Med" />
               </Link>
-              <Link to="/list-med">
+              <Link to="/list-med" >
                 <Button text="See All Meds" bgcolor={"#63AAC8"} />
               </Link>
             </div>
@@ -100,14 +102,34 @@ const sortByTime = (a, b) => {
   }
 };
 
-// display everything of this week
-const nextWeek = (a) => {
-  if (a.frequency == "Every Day" || a.frequency == "Specific Days") {
-    //return the info as normal
-  } else {
-    //only show the dates selected????????????
-  }
-};
+// App functions - FILTER
+const sortByCondition = (a) => {
+  var clicked;
+  if (clicked == a.cond){
+    //show all meds of the input
+    // if whatever option is clicked matches ANY of meds in db
+  } 
+  return;
+}
 
-// var resp = await.get();
-// if resp.data.days == 1 => "Sunday"
+
+
+// console.log(sortCondition);
+
+
+// let sortByAm = med.filter(function (e) {
+// return e.time > 12:00;
+// })
+
+
+
+{/* <Options text="arthritis" onClick={() => setCond("arthritis")} />
+<Options text="asthma" onClick={() => setCond("asthma")} />
+<Options text="dementia" onClick={() => setCond("dementia")} />
+<Options text="diabetes" onClick={() => setCond("diabetes")} />
+<Options text="epilepsy" onClick={() => setCond("epilepsy")} />
+<Options
+  text="high blood pressure"
+  onClick={() => setCond("high blood pressure")}
+/>
+<Options text="hypertension" onClick={() => setCond("hypertension")} /> */}
