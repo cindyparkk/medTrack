@@ -310,6 +310,7 @@ const Step4 = ({ nextStep, goToStep, onNext, previousStep }) => {
           onClick={() => {
             nextStep();
             onNext(days);
+            // console.log(days)
           }}
           text="next"
         />
