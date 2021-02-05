@@ -50,20 +50,21 @@ const Time = styled.input.attrs({
 `;
 const Text = styled.h6``;
 
-const Input = ({ imgurl }) => {
+const Input = ({ imgurl, onChange }) => {
   return (
     <Container>
       <InnerContainer>
         <ConfirmImage src={imgurl} />
         <Text>MED INFO</Text>
       </InnerContainer>
-      <Time />
+      <Time onChange={onChange}/>
     </Container>
   );
 };
 
 Input.defaultProps = {
   imgurl: "/file-text.png",
+  onChange:()=>{}
 };
 
 export default Input;

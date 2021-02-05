@@ -10,7 +10,7 @@ const Banner = styled.div`
     align-items: center;
     background-color: #094D69;
     color:white;
-    padding: 0px 30px 0px;
+    padding: 10px 30px 10px;
     text-align: center;
     justify-content: center;
     // position: relative;
@@ -62,9 +62,11 @@ const PillImg = styled.img`
     background-color: white;
     width:68px;
     height: auto;
+    padding: 10px;
+    margin-bottom: 2%;
 `;
 
-const MedSpecBanner = ({medinfo, remindertext, onClick}) => {
+const MedSpecBanner = ({medName, dosage, unit, time, text, onClick}) => {
     return <Banner>
             <BackCont onClick={onClick}>
                 <div>
@@ -74,15 +76,18 @@ const MedSpecBanner = ({medinfo, remindertext, onClick}) => {
             </BackCont>
             <Wrap>
                 <PillImg src="/pills-colored.png" />
-                <Text>{medinfo}</Text>
-                <Para>{remindertext}</Para>
+                <Text>{medName} ({dosage}{unit})</Text>
+                <Para>{text} {time}</Para>
             </ Wrap>
         </Banner>
 };
 
 MedSpecBanner.defaultProps = {
-medinfo:"Donepezil(15mg)",
-remindertext:"Next Reminder: Tomorrow, 8:00AM"
+    medName: "Donepezil",
+    dosage: 15,
+    unit: "mg",
+    text:"Next Reminder:",
+    time: "8:00"
 };
 
 export default MedSpecBanner;

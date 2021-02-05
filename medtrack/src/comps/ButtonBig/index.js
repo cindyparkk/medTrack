@@ -1,50 +1,54 @@
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
-   min-width: 414px;
-    margin: 0;
+  min-width: 414px;
+  margin: 0;
 `;
 
 const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 100%;
-    min-height: 151px;
-    background-color:${props=>props.dis ? "#094D69" : "#D9D9D9" };
+  width: 100%;
+  min-height: 151px;
+  background-color: ${(props) => (props.disable ? "#D9D9D9" : "#094D69")};
 
-    cursor:pointer;
-    border: none;
+  cursor: pointer;
+  border: none;
 `;
 
 const Text = styled.h1`
-    color: #FFFFFF;
-    text-transform: capitalize;
+  color: #ffffff;
+  text-transform: capitalize;
 `;
 
-const ButtonBig = ({text, disable, onClick}) => {
+const ButtonBig = ({ text, disable, onClick }) => {
+  const [disabled, setDisabled] = useState(false);
 
-    const[disabled, setDisabled] = useState(false);
+  useEffect(() => {
+    setDisabled(disable);
+  }, [disable]);
 
-    useEffect(()=>{
-        setDisabled(disable)
-    }, [disable]);
-
-    return <Container>
-        <Button dis={disabled} onClick={()=>{
-            setDisabled(!disabled);
-            onClick();
-        }}>
-            <Text>{text}</Text>
-        </Button>
+  return (
+    <Container>
+      <Button
+        disable={disabled}
+        onClick={() => {
+          setDisabled(!disabled);
+          onClick();
+        }}
+      >
+        <Text>{text}</Text>
+      </Button>
     </Container>
+  );
 };
 
 ButtonBig.defaultProps = {
-    text:"Apply",
-    disable: false
+  text: "Apply",
+  disable: false,
 };
 
 export default ButtonBig;

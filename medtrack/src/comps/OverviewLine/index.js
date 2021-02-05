@@ -32,7 +32,7 @@ const Option = styled.div`
     align-items:center;
     text-align: left;
     display: flex;
-    padding: 0px 30px 0px 75px;
+    padding: 0px 30px 0px 25px;
     background-color: #FFFFF;
     h5 {
         flex: 1;
@@ -55,8 +55,8 @@ const Text = styled.h5`
 `;
 
 const TextTwo = styled.h5`
-position: absolute;
-right:200px;
+// position: absolute;
+// right:200px;
 color: #979797;
 `;
 
@@ -67,15 +67,12 @@ const OverviewLine = ({text, text2, optionSelect, onClick}) => {
     // const [option, setOption1] = useState();
     // const[selected, setSelected] = useState(false);
 
-    return <Container >
+    return <Container onClick={onClick}>
         <Option>
-        
                <Text>{text}</Text>
                <TextTwo>{text2}</TextTwo>
                <CheckMark src="/right.png" />
         </Option>
-        
-
     </Container> 
 };
 
@@ -83,7 +80,7 @@ const OverviewLine = ({text, text2, optionSelect, onClick}) => {
 
 OverviewLine.defaultProps = {
     text:"Once a Day",
-text2:"Days Interval",
+    text2:"Days Interval",
 };
 
 export default OverviewLine;

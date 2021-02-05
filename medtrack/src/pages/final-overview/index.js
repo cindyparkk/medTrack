@@ -23,6 +23,8 @@ export default function FinalOverViewOne() {
           <OverviewLine />
           <h6 className="addMed_title">SET TIME AND DOSE</h6>
           <OverviewTime />
+          <h6 className="addMed_title">WHICH DAYS?</h6>
+          <OverviewTime />
 
 
 

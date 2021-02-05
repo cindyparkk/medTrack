@@ -69,28 +69,8 @@ const Options = ({text, textTransform, optionSelect, onClick}) => {
                <Text selected={selected === true} textTransform={textTransform}>{text}</Text>
                <CheckMark selected={selected === true} src="/select.png" />
         </Option>
-        {/* <Form>
-            <Label>{text}</Label>
-            <select>
-                <Option clicked={clicked} onClick={()=>{
-                    optionSelect("option 1")
-                }}
-                // onChange={(e)=>{
-                //     setOption1(e.target.clicked);
-                //     console.log(option1);
-                // }}
-                >{option1 ? option1 : null}</Option>
-                <Option onClick={()=>{
-                    optionSelect("option 2")
-                }}>{option2 ? option2 : null}</Option>
-                <Option>{option3 ? option3 : null}</Option>
-            </select>
-        </Form> */}
-
     </Container> 
 };
-
-// if option[n] dne, do not show
 
 Options.defaultProps = {
     text:"alzheimer's",

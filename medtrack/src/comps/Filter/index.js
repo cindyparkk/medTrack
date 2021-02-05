@@ -89,7 +89,7 @@ const Title = styled.div`
 
 const Icon = styled.img``;
 
-const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon2, onClick}) => {
+const TimeFilter = ({text1, text2, reMove, changeIcon1, changeIcon2, onClick}) => {
 
     const [expanded, setExpanded] = useState(false);
     const[selected, setSelected] = useState();
@@ -122,17 +122,17 @@ const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon
                <CheckMark selected={selected === 2} src="/select.png" />
             </Option>
 
-            <Option selected={selected === 3} onClick={() => {
+            <Option reMove={reMove} selected={selected === 3} onClick={() => {
                setSelected(3);
            }}>
-               <h5>{text3}</h5>
+               <h5>Arthritis</h5>
                <CheckMark selected={selected === 3} src="/select.png" />
             </Option>
 
-            <Option selected={selected === 4} onClick={() => {
+            <Option reMove={reMove} selected={selected === 4} onClick={() => {
                setSelected(4);
            }}>
-               <h5>{text4}</h5>
+               <h5>Asthma</h5>
                <CheckMark selected={selected === 4} src="/select.png" />
             </Option>
 
@@ -176,10 +176,8 @@ const TimeFilter = ({text1, text2, text3, text4, reMove, changeIcon1, changeIcon
 }   
 
 TimeFilter.defaultProps = {
-    text1:"All",
-    text2:"Next Day",
-    text3:"Next 2 Days",
-    text4:"Upcoming Week",
+    text1:"AM",
+    text2:"PM",
     expand: false,
     reMove: true,
     changeIcon1: true,
