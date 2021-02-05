@@ -8,35 +8,75 @@ import Button from "comps/Button";
 import ButtonBig from "comps/ButtonBig";
 
 import StepWizard from "react-step-wizard";
+import axios from "axios";
 
 const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
+  // backend functions
+  const [meds, setMeds] = useState([]);
+  const [allmeds, setAll] = useState([]);
+
+  const getData = async () => {
+    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    console.log("get data", resp);
+    var arr = resp.data;
+    setAll(resp.data);
+  };
+
+  // backend functions
   return (
     <div className="addMed">
       <BannerCancel text="list of meds" />
       <h6 className="addMed_title">Currently Taking</h6>
       <div>
+        {/* {meds.map((o) => (
+        <ListMeds
+        medName={o.name}
+        time={o.time}
+          onClick={() => {
+            nextStep();
+          }}
+        />
+      ))} */}
         <ListMeds
           onClick={() => {
             nextStep();
           }}
         />
-        <ListMeds />
-        <ListMeds />
       </div>
     </div>
   );
 };
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
+  const [meds, setMeds] = useState([]);
+  const [allmeds, setAll] = useState([]);
+
+  const getData = async () => {
+    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    console.log("get data", resp);
+    var arr = resp.data;
+    setAll(resp.data);
+  };
+
   return (
     <div className="page">
-      <MedSpecBanner onClick={()=>{
-        previousStep();
-      }}/>
-      <div className="container">
-        <Info title="Reminders" />
-        <Info title="Instructions" subtext="Take with food" />
-      </div>
+      {meds.map((o) => (
+        <MedSpecBanner
+          medName={o.name}
+          dosage={o.dos}
+          unit={o.unit}
+          time={o.time}
+          onClick={() => {
+            previousStep();
+          }}
+        />
+      ))}
+      {meds.map((o) => (
+        <div className="container">
+          <Info title="Reminders" />
+          <Info title="Instructions" subtext="Take with food" />
+        </div>
+      ))}
       <div className="buttons">
         <Button
           text="Edit"
@@ -84,6 +124,20 @@ const Step3 = ({ nextStep, goToStep, onNext, previousStep }) => {
 };
 
 function ListMed() {
+  const [meds, setMeds] = useState([]);
+  const [allmeds, setAll] = useState([]);
+
+  const getData = async () => {
+    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    console.log("get data", resp);
+    var arr = resp.data;
+    setAll(resp.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="page">
       <StepWizard>

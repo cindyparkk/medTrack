@@ -72,7 +72,7 @@ const OverviewTime = ({text, text2, optionSelect, onClick}) => {
     // const [option, setOption1] = useState();
     // const[selected, setSelected] = useState(false);
 
-    return <Container >
+    return <Container onClick={onClick}>
         <Option>
         <Wrapper>
                <Text>{text}</Text>

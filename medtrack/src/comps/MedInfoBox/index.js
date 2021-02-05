@@ -53,7 +53,7 @@ const MedName = styled.div`
     padding-left: 20px;
 `;
 
-const MedInfoBox = ({time, medName,dosage}) => {
+const MedInfoBox = ({time, medName,dos, unit, amount}) => {
 
     return <MedInfoCon>
         <Time> 
@@ -67,7 +67,7 @@ const MedInfoBox = ({time, medName,dosage}) => {
             </Icon1>
             <MedName>
                 <h4>{medName}</h4>
-                <p>{dosage}</p>
+                <p>{dos}{unit}, take {amount}</p>
             </MedName>  
             <Icon2>
                 <img src="/checked.png" />
@@ -79,7 +79,9 @@ const MedInfoBox = ({time, medName,dosage}) => {
 MedInfoBox.defaultProps = {
     time: "8:30AM",
     medName:"Donepezil",
-    dosage: "15mg, take 1"
+    dos: "15",
+    unit: "mg",
+    amount: "1",
 }
 
 export default MedInfoBox; 

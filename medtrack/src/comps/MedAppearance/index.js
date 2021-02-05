@@ -67,9 +67,11 @@ const MedAppearance = ({color}) => {
         <Box>
             <Colors clicked={clicked === 1} onClick={()=>{
                 setClicked(1);
-            }}onChange={(e)=>{
-                setColor1(e.target.clicked);
-            }}></Colors>
+            }} 
+            // onChange={(e)=>{
+            //     setColor1(e.target.clicked);
+            // }}
+            ></Colors>
             <Colors bgcolor="#F9C74F" clicked={clicked === 2} onClick={()=>{
                 setClicked(2);
             }}

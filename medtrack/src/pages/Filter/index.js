@@ -20,7 +20,9 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
         changeIcon2="false"
       />
       <div className="bigButton">
-        <ButtonBig />
+        <ButtonBig 
+        // disable={!this.state.value}
+        />
       </div>
     </div>
   );

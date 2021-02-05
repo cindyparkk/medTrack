@@ -41,14 +41,16 @@ const Text = styled.h6`
   margin: 20px 0px;
 `;
 
-const Input = ({}) => {
+const Input = ({onChange}) => {
   return (
     <Container>
       <Text>DOSE AMOUNT</Text>
-      <Time />
+      <Time onChange={onChange} />
     </Container>
   );
 };
 
-Input.defaultProps = {};
+Input.defaultProps = {
+  onChange:()=>{}
+};
 export default Input;

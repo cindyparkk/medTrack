@@ -37,8 +37,7 @@ const TimeButton = styled.button`
 `;
 const Time = styled.input.attrs({
   type: "time",
-  value: "8:00",
-  step: "900",
+  max: "12:59",
 })`
   color: #000000;
   cursor: pointer;
@@ -46,18 +45,20 @@ const Time = styled.input.attrs({
   text-transform: uppercase;
   max-width: 100%;
   border-radius: 5px;
-  height: 35px;
-  border-color: transparent;
+  height: 40px;
+  border: 1px #06719d solid;
+  padding: 10px;
   box-shadow: 0px;
   outline: none;
   text-align: left;
+  font-size: 2em;
 `;
 
 // const Text = styled.h6`
 //   text-align: left;
 // `;
 
-const Input = ({}) => {
+const Input = ({ onChange }) => {
   const [clickedForm, setClickedForm] = useState("AM");
   const HandleContainerSelect = (name) => {
     // alert("clicked container "+name);
@@ -68,7 +69,7 @@ const Input = ({}) => {
       <TimeContainer>
         {/* <Text>TIME</Text> */}
         <ButtonContainer>
-          <TimeButton
+          {/* <TimeButton
             onContainerSelect={HandleContainerSelect}
             name="AM"
             bgcolor={clickedForm === "AM" ? "#63AAC8" : "#094D69"}
@@ -81,9 +82,9 @@ const Input = ({}) => {
             bgcolor={clickedForm === "PM" ? "#63AAC8" : "#094D69"}
           >
             PM
-          </TimeButton>
+          </TimeButton> */}
         </ButtonContainer>
-        <Time />
+        <Time onChange={onChange} />
       </TimeContainer>
     </Container>
   );

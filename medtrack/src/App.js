@@ -1,5 +1,6 @@
+import React, { useState, useEffect } from "react";
 import "./App.scss";
-import React from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import BannerTime from "comps/BannerTime";
@@ -25,6 +26,23 @@ import MedicationPop from "pages/medication-popup";
 import FilterPage from "pages/Filter";
 
 function App() {
+  //backend functions
+  const [meds, setMeds] = useState([]);
+  const [allmeds, setAll] = useState([]);
+
+  const getData = async () => {
+    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    console.log("get data", resp);
+    var arr = resp.data;
+    setAll(resp.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  //end of backend functions
+
   return (
     <div className="App">
       <Router>
@@ -44,9 +62,15 @@ function App() {
               <Link to="/Filter">
                 <FilterBy />
               </Link>
-              <Title />
-              <MedInfoBox />
-              <MedInfoBox />
+              {meds.map((o) => (
+                <MedInfoBox 
+                medName={o.name}
+                dos={o.dos}
+                unit={o.unit}
+                amount={o.amt}
+                time={o.time}
+                />
+              ))}
               <Link to="/add-med">
                 <Button text="+ Add Med" />
               </Link>
@@ -62,3 +86,28 @@ function App() {
 }
 
 export default App;
+
+//App functions - SORT
+
+// by time (i.e. 11:00 - use 24h clock)
+const sortByTime = (a, b) => {
+  if (a.time < b.time) {
+    return -1;
+  } else if (a.time > b.time) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+// display everything of this week
+const nextWeek = (a) => {
+  if (a.frequency == "Every Day" || a.frequency == "Specific Days") {
+    //return the info as normal
+  } else {
+    //only show the dates selected????????????
+  }
+};
+
+// var resp = await.get();
+// if resp.data.days == 1 => "Sunday"
