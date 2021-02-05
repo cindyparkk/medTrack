@@ -24,19 +24,25 @@ import MedicationPop from "pages/medication-popup";
 // import SpecificAppear from "pages/specific-appearance";
 // import SpecificOverview from "pages/specific-overview";
 import FilterPage from "pages/Filter";
-
+const medsData = require("./meds.json");
 
 function App() {
   //backend functions
   const [meds, setMeds] = useState([]);
+  // const [allmeds, setAll] = useState([]);
   const [allmeds, setAll] = useState([]);
+  
+  
+  // const getData = async () => {
+  //   // var resp = await axios.get("http://localhost:8888/api/meds");
+  //   // console.log("get data", resp);
+  //   // var arr = resp.data;
+  //   // setAll(resp.data);
+  // };
 
-
-  const getData = async () => {
-    var resp = await axios.get("http://localhost:8888/api/meds");
-    console.log("get data", resp);
-    var arr = resp.data;
-    setAll(resp.data);
+  const getData = () => {
+    setAll(medsData);
+    console.log("get data", medsData);
   };
 
   useEffect(() => {
@@ -64,7 +70,7 @@ function App() {
               <Link to="/Filter">
                 <FilterBy />
               </Link>
-              {meds.map((o) => (
+              {medsData.map((o) => (
                 <MedInfoBox 
                 medName={o.name}
                 dos={o.dos}
@@ -106,7 +112,7 @@ const sortByTime = (a, b) => {
 const sortByCondition = (a) => {
   var clicked;
   if (clicked == a.cond){
-    //show all meds of the input
+    //show all Data of the input
     // if whatever option is clicked matches ANY of meds in db
   } 
   return;

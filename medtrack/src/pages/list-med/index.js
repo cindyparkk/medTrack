@@ -10,17 +10,28 @@ import ButtonBig from "comps/ButtonBig";
 import StepWizard from "react-step-wizard";
 import axios from "axios";
 
+const medsData = require("../../../src/meds.json");
+
 const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   // backend functions
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
 
-  const getData = async () => {
-    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
-    console.log("get data", resp);
-    var arr = resp.data;
-    setAll(resp.data);
-  };
+  // const getData = async () => {
+  //   var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+  //   console.log("get data", resp);
+  //   var arr = resp.data;
+  //   setAll(resp.data);
+  // };
+
+  // const getData = async () => {
+  //   setAll(medsData);
+  //   console.log("get data", medsData);
+  // };
+  
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   // backend functions
   return (
@@ -28,7 +39,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
       <BannerCancel text="list of meds" />
       <h6 className="addMed_title">Currently Taking</h6>
       <div>
-        {/* {meds.map((o) => (
+        {medsData.map((o) => (
         <ListMeds
         medName={o.name}
         time={o.time}
@@ -36,7 +47,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
             nextStep();
           }}
         />
-      ))} */}
+      ))}
         <ListMeds
           onClick={() => {
             nextStep();
@@ -51,16 +62,18 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
 
-  const getData = async () => {
-    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
-    console.log("get data", resp);
-    var arr = resp.data;
-    setAll(resp.data);
-  };
+  // const getData = async () => {
+  //   var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+  //   console.log("get data", resp);
+  //   var arr = resp.data;
+  //   setAll(resp.data);
+  // };
+
+
 
   return (
     <div className="page">
-      {meds.map((o) => (
+      {medsData.map((o) => (
         <MedSpecBanner
           medName={o.name}
           dosage={o.dos}

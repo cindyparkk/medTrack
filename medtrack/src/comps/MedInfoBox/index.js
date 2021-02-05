@@ -51,6 +51,9 @@ const Icon2 = styled.div`
 `;
 const MedName = styled.div`
     padding-left: 20px;
+    & > h4 {
+        text-transform: capitalize;
+    }
 `;
 
 const MedInfoBox = ({time, medName,dos, unit, amount}) => {

@@ -17,13 +17,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import StepWizard from "react-step-wizard";
 import axios from "axios";
 
+const medsData = require("../../../src/meds.json");
+
 const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   const [cond, setCond] = useState(null);
 
   return (
     <div className="addMed">
       <BannerCancel
-        onClick={() => {          goToStep();
+        onClick={() => {goToStep();
           // previous page - route?
         }}
         text="medical conditions"
