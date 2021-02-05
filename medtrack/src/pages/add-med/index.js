@@ -23,8 +23,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   return (
     <div className="addMed">
       <BannerCancel
-        onClick={() => {
-          goToStep();
+        onClick={() => {          goToStep();
           // previous page - route?
         }}
         text="medical conditions"
