@@ -19,7 +19,8 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
     const [cond, setCond] = useState(null);
   
     const getData = async () => {
-      var resp = await axios.get("http://localhost:8888/api/meds");
+      // var resp = await axios.get("http://localhost:8888/api/meds");
+      var resp = await axios.get("https://medtrack-midterm.herokuapp.com/");
       console.log("get data", resp);
       var arr = resp.data;
       setAll(resp.data);
@@ -107,7 +108,7 @@ export default function FilterPage() {
     <div className="page">
       <StepWizard>
         <Step1 onNext={(n) => {
-            setData({filteroption: n});
+            // setData({filteroption: n});
           }}/>
         <Step2 />
       </StepWizard>

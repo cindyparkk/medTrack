@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "cond": "alzheimer's",
+        "name": "Hydrocodone",
+        "unit": "mg",
+        "dos": 30,
+        "days": ["sun"],
+        "timesaday": 3,
+        "ins": "Take with food",
+        "time": "11:30",
+        "amt": 1,
+        "taken": false
+    },
+    {
+        "id": 2,
+        "cond": "angina",
+        "name": "Aspirin",
+        "unit": "mg",
+        "dos": 10,
+        "days": ["sat"],
+        "timesaday": 4,
+        "ins": "After food",
+        "time": "1:30",
+        "amt": 2,
+        "taken": false
+    },
+    {
+        "id": 3,
+        "cond": "Asthma",
+        "name": "Advil",
+        "unit": "mg",
+        "dos": 25,
+        "days": ["mon"],
+        "timesaday": 1,
+        "ins": "Take with food",
+        "time": "11:30",
+        "amt": 1,
+        "taken": false
+    },
+    {
+        "id": 4,
+        "cond": "hypertension",
+        "name": "Hydrocodone",
+        "unit": "mg",
+        "dos": 30,
+        "days": ["sun"],
+        "timesaday": 30,
+        "ins": "Take with food",
+        "time": "11:30",
+        "amt": 1,
+        "taken": false
+    },
+    {
+        "id": 5,
+        "cond": "stress",
+        "name": "BCIT",
+        "unit": "tons",
+        "dos": 300,
+        "days": ["sun"],
+        "timesaday": 30,
+        "ins": "Take with food",
+        "time": "1:30",
+        "amt": 20,
+        "taken": false
+    }
+]
