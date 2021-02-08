@@ -33,17 +33,17 @@ function App() {
   const [allmeds, setAll] = useState([]);
   
   
-  // const getData = async () => {
-  //   // var resp = await axios.get("http://localhost:8888/api/meds");
-  //   // console.log("get data", resp);
-  //   // var arr = resp.data;
-  //   // setAll(resp.data);
-  // };
-
-  const getData = () => {
-    setAll(medsData);
-    console.log("get data", medsData);
+  const getData = async () => {
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    console.log("get data", resp);
+    var arr = resp.data;
+    setAll(resp.data);
   };
+
+  // const getData = () => {
+  //   setAll(medsData);
+  //   console.log("get data", medsData);
+  // };
 
   useEffect(() => {
     getData();
@@ -70,7 +70,7 @@ function App() {
               <Link to="/Filter">
                 <FilterBy />
               </Link>
-              {medsData.map((o) => (
+              {allmeds.map((o) => (
                 <MedInfoBox 
                 medName={o.name}
                 dos={o.dos}
