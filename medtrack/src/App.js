@@ -36,8 +36,7 @@ function App() {
   const getData = async () => {
     var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
     console.log("get data", resp);
-    var arr = resp.data;
-    setAll(resp.data);
+    setAll(resp.data.meds);
   };
 
   // const getData = () => {
