@@ -12,7 +12,7 @@ import axios from "axios";
 
 const medsData = require("../../../src/meds.json");
 
-const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
+const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect }) => {
   // backend functions
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
@@ -34,6 +34,12 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   // }, []);
 
   // backend functions
+
+  const HandleClick = (id) =>{
+    if(onSelect){onSelect(id)}
+    nextStep();
+  }
+
   return (
     <div className="addMed">
       <BannerCancel text="list of meds" />
@@ -43,9 +49,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
         <ListMeds
         medName={o.name}
         time={o.time}
-          onClick={() => {
-            nextStep();
-          }}
+          onClick={HandleClick.bind(this, o.id)}
         />
       ))}
         <ListMeds
@@ -154,7 +158,7 @@ function ListMed() {
   return (
     <div className="page">
       <StepWizard>
-        <Step1 />
+        <Step1 onSelect={(id)=>{console.log(id)}} />
         <Step2 />
         <Step3 />
       </StepWizard>
