@@ -12,6 +12,7 @@ import Confirm from "comps/Confirm";
 import StepWizard from "react-step-wizard";
 import axios from "axios";
 import styled from 'styled-components';
+import {Link, useParams} from 'react-router-dom';
 
 const Container = styled.div`
 .open {
@@ -27,17 +28,18 @@ const Container = styled.div`
 
 const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
   // backend functions
-  const [meds, setMeds] = useState([]);
+  // const [meds, setMeds] = useState({});
   const [allmeds, setAll] = useState([]);
-  const [allids, setIds] = useState([]);
+  // const [allids, setIds] = useState([]);
 
   const getData = async () => {
     var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
     // console.log("get data", resp);
     // var arr = resp.data;
-    setAll(resp.data.meds);
-    setIds(resp.data.meds[0]);
-    console.log("setId", allids);
+    setAll([...resp.data.meds]);
+    // setIds(resp.data.meds[0]);
+    // console.log("setId", allids);
+    console.log(resp.data.meds)
   };
   
   useEffect(() => {
@@ -45,8 +47,6 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
   }, []);
 
   // backend functions
-
-  // const [sendid, setId] = useState(null);
 
   const HandleClick = (id) =>{
   // setIds(id)    
@@ -59,8 +59,9 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
       <BannerCancel text="list of meds" />
       <h6 className="addMed_title">Currently Taking</h6>
       <div>
-        {allmeds.map((o) => (
+        {allmeds.map((o, i) => (
         <ListMeds
+        key={i}
         medName={o.name}
         time={o.time}
         onClick={HandleClick.bind(this, o.id)}
@@ -72,11 +73,11 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
 };
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid }) => {
-  const [meds, setMeds] = useState([]);
-  const [allmeds, setAll] = useState([]);
-  const [allids, setIds] = useState([]);
+  const [meds, setMeds] = useState({});
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(true);
+  const params = useParams();
+  console.log("PARAMS", params);
   const showPopup = () =>{
     setShow(true);
     console.log("clicked")
@@ -88,10 +89,10 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid 
   // };
 
   const getData = async () => {
-    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds"+params.id);
     console.log("get data", resp);
     // if (resp.data.meds.id == id){
-      setMeds(resp.data.meds);
+      setMeds({...resp.data[0]});
       // setIds(resp.data.meds[0]);
     // }
   };
@@ -117,27 +118,25 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid 
   const handleDelete = (dis) => {
 
   }
-
-  // let obj = allmeds.find(obj => obj.id == id);
   return ( <Container>
 <div className="page">
-      {meds.map((o, id) => (
+      {/* {meds.map((o, id) => ( */}
         <MedSpecBanner
-          medName={o.name}
-          dosage={o.dos}
-          unit={o.unit}
-          time={o.time}
+          medName={meds.name}
+          dosage={meds.dos}
+          unit={meds.unit}
+          time={meds.time}
           onClick={() => {
             previousStep();
           }}
         />
-      ))}
-      {meds.map((o) => (
+      {/* ))} */}
+      {/* {meds.map((o) => ( */}
         <div className="container">
           <Info title="Reminders" />
-          <Info title="Instructions" subtext="Take with food" />
+          <Info title="Instructions"  subtext={meds.ins}/>
         </div>
-      ))}
+      {/* ))} */}
       <div className="buttons">
         <Button
           text="Edit"
@@ -196,8 +195,8 @@ const Step3 = ({ nextStep, goToStep, onNext, previousStep }) => {
       <div className="bigButton">
         <ButtonBig text="Update" />
       </div>
-      <Confirm />
-      <Backdrop />
+      {/* <Confirm />
+      <Backdrop /> */}
     </div>
   );
 };

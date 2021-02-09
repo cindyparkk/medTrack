@@ -20,16 +20,15 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   
     const getData = async () => {
       // var resp = await axios.get("http://localhost:8888/api/meds");
-      var resp = await axios.get("https://medtrack-midterm.herokuapp.com/");
+      var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
       console.log("get data", resp);
-      var arr = resp.data;
-      setAll(resp.data);
+      setAll(resp.data.meds);
     };
     
-    const FilteringPage = (name) => {
+    const FilterCond = (cond) => {
       setMeds(
         allmeds.filter((o) => {
-          return o.name.includes(name)
+          return o.cond.includes(cond)
         })
         )
       };
@@ -38,9 +37,9 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
           getData();
         }, []);
 
-    const handleSelect = (name) => {
-      setCond(name);
-      console.log(name);
+    const handleSelect = (cond) => {
+      setCond(cond);
+      console.log(cond);
     }
       //end of backend functions
 
@@ -73,24 +72,41 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
   );
 };
 
-const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
-  const [meds, setMeds] = useState([]);
+const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
+  const [meds, setMeds] = useState({});
+
+  const getData = async () => {
+    // var resp = await axios.get("http://localhost:8888/api/meds");
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    console.log("get data", resp);
+    if(cond == resp.data.meds.cond){
+      setMeds({...resp.data.meds});
+    }
+    console.log("is this working", cond)
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return(
     <div className="page">
               <BannerTime />
-              <Link to="/Filter">
-                <FilterBy />
-              </Link>
-              {meds.map((o) => (
+              {/* <Link to="/Filter"> */}
+                <FilterBy onClick={previousStep}/>
+              {/* </Link> */}
+              {/* {meds.map((o) => ( */}
                 <MedInfoBox 
-                medName={o.name}
-                dos={o.dos}
-                unit={o.unit}
-                amount={o.amt}
-                time={o.time}
+                medName="hello"
+                dos={meds.dos}
+                unit={meds.unit}
+                amount={meds.amt}
+                time={meds.time}
+                onChange={(cond)=>{
+                  FilterPage(cond)
+                }}
                 />
-              ))}
+              {/* ))} */}
               <Link to="/add-med">
                 <Button text="+ Add Med" />
               </Link>
@@ -103,14 +119,16 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
 
 export default function FilterPage() {
   const [filteroption, setFilteroption] = useState();
+  const [cond, setCond] = useState("");
   
   return (
     <div className="page">
       <StepWizard>
-        <Step1 onNext={(n) => {
+        <Step1 onNext={(cond) => {
             // setData({filteroption: n});
+            setCond(cond);
           }}/>
-        <Step2 />
+        <Step2 cond={cond}/>
       </StepWizard>
     </div>
   );

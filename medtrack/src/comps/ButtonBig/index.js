@@ -49,6 +49,7 @@ const ButtonBig = ({ text, disable, onClick }) => {
 ButtonBig.defaultProps = {
   text: "Apply",
   disable: false,
+  onClick:()=>{}
 };
 
 export default ButtonBig;
