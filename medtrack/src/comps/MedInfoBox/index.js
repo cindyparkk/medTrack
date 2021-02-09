@@ -56,9 +56,9 @@ const MedName = styled.div`
     }
 `;
 
-const MedInfoBox = ({time, medName,dos, unit, amount}) => {
+const MedInfoBox = ({time, medName,dos, unit, amount, onChange}) => {
 
-    return <MedInfoCon>
+    return <MedInfoCon onChange={onChange}>
         <Time> 
             <h2>{time}</h2>
             <img src="more.svg" />
@@ -85,6 +85,7 @@ MedInfoBox.defaultProps = {
     dos: "15",
     unit: "mg",
     amount: "1",
+    onChange:()=>{}
 }
 
 export default MedInfoBox; 

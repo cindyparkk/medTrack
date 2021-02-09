@@ -54,14 +54,14 @@ const Divide = styled.hr`
   padding: 0;
 `;
 
-const Info = ({ leftimgurl, title, subtext, rightimgurl, display }) => {
+const Info = ({ leftimgurl, title, subtext, rightimgurl, display, dosage, unit }) => {
   return (
     <Container>
       <ContainerInner>
         <IconLeft src={leftimgurl} />
         <InnerContainer>
           <Title>{title}</Title>
-          <Subtext>{subtext}</Subtext>
+          <Subtext>{subtext} {dosage}{unit}</Subtext>
         </InnerContainer>
         <IconRight src={rightimgurl} />
       </ContainerInner>
@@ -74,6 +74,8 @@ Info.defaultProps = {
   leftimgurl: "",
   rightimgurl: "",
   title: "Title Content",
-  subtext: "08:00 AM/15mg",
+  subtext: "08:00 AM",
+  dosage: "15",
+  unit:"mg"
 };
 export default Info;

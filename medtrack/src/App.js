@@ -5,26 +5,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import BannerTime from "comps/BannerTime";
 import FilterBy from "comps/FilterBy";
-import Title from "comps/Title";
 import MedInfoBox from "comps/MedInfoBox";
 import Button from "comps/Button";
 
 import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
-import MedicationInfo from "pages/medication-info";
-import MedicationPop from "pages/medication-popup";
-// import AddMedInfo from "pages/add-med-info";
-// import AddMedDosage from "pages/add-med-dosage";
-// import AddMedFreq from "pages/add-med-frequency";
-// import SpecificDays from "pages/specific-days";
 
-// import SpecificTimes from "pages/specific-times";
-// import SpecificIns from "pages/specific-instructions";
-// import SpecificDos from "pages/specific-dosage";
-// import SpecificAppear from "pages/specific-appearance";
-// import SpecificOverview from "pages/specific-overview";
 import FilterPage from "pages/Filter";
-const medsData = require("./meds.json");
+// const medsData = require("./meds.json");
 
 function App() {
   //backend functions
@@ -97,7 +85,7 @@ export default App;
 //App functions - SORT
 
 // by time (i.e. 11:00 - use 24h clock)
-const sortByTime = (a, b) => {
+const sortEarliest = (a, b) => {
   if (a.time < b.time) {
     return -1;
   } else if (a.time > b.time) {
@@ -105,6 +93,7 @@ const sortByTime = (a, b) => {
   } else {
     return 0;
   }
+  // return a.time - b.time;
 };
 
 // App functions - FILTER

@@ -7,7 +7,6 @@ import InputMed from "comps/Input/medInfo";
 import InputAmount from "comps/Input/doseAmount";
 import HowOftenInput from "comps/Input/howoften";
 import Input from "comps/Input/time";
-import MedAppearance from "comps/MedAppearance";
 import OverviewLine from "comps/OverviewTime";
 import OverviewOften from "comps/OverviewOften";
 import OverviewTime from "comps/OverviewTime";
@@ -59,7 +58,6 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, addMedData }) => {
           onClick={() => {
             nextStep();
             onNext(cond);
-            addMedData();
           }}
         />
       </div>
@@ -212,14 +210,6 @@ const Step4 = ({ nextStep, goToStep, onNext, previousStep }) => {
   const [days, setDays] = useState([]);
   const [status, setStatus] = useState(true);
 
-  // put everything that returns TRUE into the array
-
-  // when clicked, change TRUE
-  // var status = false;
-
-  // const dayFunction = () => {
-  //   status = !status;
-  // };
 
   return (
     <div className="addMed">
@@ -472,31 +462,7 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep }) => {
   );
 };
 
-//const Step8 = ({ nextStep, goToStep, onNext, previousStep }) => {
-//   const [shape, setShape] = useState(false);
-//   const [color, setColor] = useState(null);
-
-//   return (
-//     <div className="addMed">
-//       <BannerBack onClick={previousStep} text="appearance" />
-//       <div className="breadcrumb">
-//         <h6>8/8</h6>
-//       </div>
-//       <h6 className="addMed_title">shape &amp; color</h6>
-//       <MedAppearance />
-//       <div className="bigButton">
-//         <ButtonBig
-//           onClick={() => {
-//             nextStep();
-//             onNext();
-//           }}
-//           text="next"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-const Step8 = ({ nextStep, goToStep, onNext, previousStep }) => {
+const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
 
   //  a get function
 
@@ -515,7 +481,7 @@ const Step8 = ({ nextStep, goToStep, onNext, previousStep }) => {
       <OverviewLine />
       <div className="bigButton">
         <Link to="/">
-          <ButtonBig text="Save" />
+          <ButtonBig text="Save" onClick={addData}/>
         </Link>
       </div>
     </div>
@@ -536,40 +502,23 @@ export default function AddMed() {
     taken: false,
   });
 
-  // const [name, setName] = useState(null);
-  // const [cond, setCond] = useState(null);
-  // const [unit, setUnit] = useState(null);
-  // const [dos, setDos] = useState(null);
-  // const [days, setDays] = useState(null);
-  // const [timesaday, setTimesaday] = useState(null);
-
-  // const [ins, setIns] = useState(null);
-  // const [time, setTime] = useState(null);
-
-  // const [dose, setDose] = useState(null);
-
-  // const [taken, setTaken] = useState(false);
+  console.log(data)
 
   const addMedData = async (c, n, d, u, days, i, t, a) => {
-    var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds", {
-      name: n,
-      cond: c,
-      dosage: d,
-      unit: u,
-      days: days,
-      ins: i,
-      time: t,
-      amt: a
+    var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/", {
+      name: data.name,
+      cond: data.cond,
+      dosage: data.dos,
+      unit: data.unit,
+      days: data.days,
+      ins: data.ins,
+      time: data.time,
+      amt: data.amt
       // data
     });
     //checking array status
-    setData()
-    console.log(data);
+    console.log(resp.data)
   };
-
-  // const showData = () => {
-  //   console.log(data);
-  // };
 
   return (
     <div>
@@ -581,7 +530,7 @@ export default function AddMed() {
               cond: c,
             });
           }}
-          addMedData={addMedData}
+          // addMedData={addMedData}
         />
         <Step2
           onNext={(n) => {
@@ -633,7 +582,7 @@ export default function AddMed() {
             });
           }}
         />
-        <Step8 />
+        <Step8 addData={addMedData}/>
         {/* <Step9 />
         <Step10 /> */}
       </StepWizard>
