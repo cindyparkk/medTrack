@@ -10,6 +10,8 @@ import Button from "comps/Button";
 
 import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
+import Med from "pages/list-med/med"
+import Edit from "pages/list-med/edit"
 
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
@@ -17,7 +19,6 @@ import FilterPage from "pages/Filter";
 function App() {
   //backend functions
   const [meds, setMeds] = useState([]);
-  // const [allmeds, setAll] = useState([]);
   const [allmeds, setAll] = useState([]);
   
   
@@ -56,7 +57,7 @@ function App() {
           <Route path="/Filter">
             <FilterPage />
           </Route>
-          <Route path="/list-med">
+          <Route exact path="/list-med">
             <ListMed />
           </Route>
           <Route exact path="/">
@@ -83,6 +84,12 @@ function App() {
               </Link>
             </div>
           </Route>
+          <Route exact path="/med/:id">
+              <Med />
+            </Route>
+          <Route exact path="/edit/:id">
+              <Edit />
+            </Route>
         </Switch>
       </Router>
     </div>
@@ -94,11 +101,11 @@ export default App;
 //App functions - SORT
 
 // by time (i.e. 11:00 - use 24h clock)
-const sortByTime = (a, b) => {
+function sortByTime(a, b){
   if (a.time < b.time) {
-    return -1;
-  } else if (a.time > b.time) {
     return 1;
+  } else if (a.time > b.time) {
+    return -1;
   } else {
     return 0;
   }

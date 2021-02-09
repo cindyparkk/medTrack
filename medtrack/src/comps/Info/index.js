@@ -40,10 +40,12 @@ const InnerContainer = styled.div`
 const Title = styled.h5`
   margin: 0px 10px;
   padding: 0px;
+  text-transform: capitalize;
 `;
 const Subtext = styled.p`
   margin: 5px 11px;
   padding: 0px;
+  text-transform: capitalize;
 `;
 const Divide = styled.hr`
   display: ${(props) => (props.display ? props.display : "block")};
