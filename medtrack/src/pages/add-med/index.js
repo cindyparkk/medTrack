@@ -10,6 +10,7 @@ import Input from "comps/Input/time";
 import OverviewLine from "comps/OverviewTime";
 import OverviewOften from "comps/OverviewOften";
 import OverviewTime from "comps/OverviewTime";
+import Breadcrumb from "comps/Breadcrumb";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -36,6 +37,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, addMedData }) => {
         text="medical conditions"
       />
       <div className="breadcrumb">
+        <Breadcrumb />
         <h6>1/8</h6>
       </div>
       <h6 className="addMed_title">medical conditions</h6>
