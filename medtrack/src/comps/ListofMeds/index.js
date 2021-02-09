@@ -28,6 +28,7 @@ const IconRight = styled.img`
 const MedName = styled.div`
   flex: 2;
   padding-left: 20px;
+  text-transform: capitalize;
 `;
 
 const ListMeds = ({ medName, time, onClick }) => {

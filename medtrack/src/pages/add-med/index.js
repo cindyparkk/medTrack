@@ -17,10 +17,16 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import StepWizard from "react-step-wizard";
 import axios from "axios";
 
-const medsData = require("../../../src/meds.json");
+// const medsData = require("../../../src/meds.json");
 
-const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
+const Step1 = ({ nextStep, goToStep, onNext, previousStep, addMedData }) => {
   const [cond, setCond] = useState(null);
+
+  // const addMedData = async () => {
+  //   var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds", {
+  //   cond: cond
+  //   })
+  // console.log(resp.data)};
 
   return (
     <div className="addMed">
@@ -53,6 +59,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
           onClick={() => {
             nextStep();
             onNext(cond);
+            addMedData();
           }}
         />
       </div>
@@ -62,6 +69,12 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
   const [name, setName] = useState(null);
+
+  // const addMedData = async () => {
+  //   var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds", {
+  //   name: name
+  //   })
+  // console.log(resp.data)};
 
   return (
     <div className="addMed">
@@ -80,6 +93,7 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
           onClick={() => {
             nextStep();
             onNext(name);
+            // addMedData()
           }}
           text="next"
         />
@@ -483,6 +497,9 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep }) => {
 //   );
 // };
 const Step8 = ({ nextStep, goToStep, onNext, previousStep }) => {
+
+  //  a get function
+
   return (
     <div className="addMed_info">
       <BannerBack onClick={previousStep} text="Schedule Overview" />
@@ -519,33 +536,34 @@ export default function AddMed() {
     taken: false,
   });
 
-  const [name, setName] = useState(null);
-  const [cond, setCond] = useState(null);
-  const [unit, setUnit] = useState(null);
-  const [dos, setDos] = useState(null);
-  const [days, setDays] = useState(null);
-  const [timesaday, setTimesaday] = useState(null);
+  // const [name, setName] = useState(null);
+  // const [cond, setCond] = useState(null);
+  // const [unit, setUnit] = useState(null);
+  // const [dos, setDos] = useState(null);
+  // const [days, setDays] = useState(null);
+  // const [timesaday, setTimesaday] = useState(null);
 
-  const [ins, setIns] = useState(null);
-  const [time, setTime] = useState(null);
+  // const [ins, setIns] = useState(null);
+  // const [time, setTime] = useState(null);
 
-  const [dose, setDose] = useState(null);
+  // const [dose, setDose] = useState(null);
 
-  const [taken, setTaken] = useState(false);
+  // const [taken, setTaken] = useState(false);
 
-  const addMedData = async () => {
-    var resp = await axios.post("", {
-      name: name,
-      condition: cond,
-      dosage: dos,
-      unit: unit,
+  const addMedData = async (c, n, d, u, days, i, t, a) => {
+    var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds", {
+      name: n,
+      cond: c,
+      dosage: d,
+      unit: u,
       days: days,
-      ins: ins,
-      time: time,
-      dose: dose,
-      taken: taken,
+      ins: i,
+      time: t,
+      amt: a
+      // data
     });
     //checking array status
+    setData()
     console.log(data);
   };
 
@@ -562,8 +580,8 @@ export default function AddMed() {
               ...data,
               cond: c,
             });
-            console.log(data);
           }}
+          addMedData={addMedData}
         />
         <Step2
           onNext={(n) => {
@@ -583,10 +601,10 @@ export default function AddMed() {
           }}
         />
         <Step4
-          onNext={(d) => {
+          onNext={(days) => {
             setData({
               ...data,
-              days: d,
+              days: days,
             });
           }}
         />
@@ -607,12 +625,11 @@ export default function AddMed() {
           }}
         />
         <Step7
-          onNext={(t, a, d) => {
+          onNext={(t, a) => {
             setData({
               ...data,
               time: t,
-              am: a,
-              dose: d,
+              amt: a
             });
           }}
         />

@@ -20,6 +20,11 @@ const NormalButton = styled.button`
 
   cursor: pointer;
   border: none;
+
+  &:hover, &:select {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
 `;
 
 const Text = styled.h2`

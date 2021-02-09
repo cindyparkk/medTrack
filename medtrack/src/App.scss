@@ -72,5 +72,25 @@ input {
 
 .page {
   @include flexIt();
+  z-index: 0;
 
+  .open {
+    display: none;
+  }
+  
+  .open.open {
+    display: block;
+  }
+}
+
+#blockColorblindContent {
+  display: none;
+}
+
+.open {
+  display: none;
+}
+
+.open.open {
+  display: block;
 }

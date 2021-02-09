@@ -4,12 +4,14 @@ import Button from 'comps/Button';
 
 const Container = styled.div`
     min-width: 352px;
-    min-height: 441px;
+    min-height: 241px;
     background-color: #fff;
     border-radius: 10px;
-    z-index: 5;
-    display: ${props=>props.display ? props.display : "inline-flex"};
+    z-index: 20;
+    // display: ${props=>props.display ? "inline-flex" : "none"};
     flex-direction: column;
+    position: absolute;
+    top: 10%;
 `;
 
 const TopCont = styled.div`
@@ -49,16 +51,18 @@ const ConfirmImage = styled.img`
     height: auto;
 `;
 
-const Confirm = ({display, title, subtitle, imgurl}) => {
-    return <Container display={display}>
+const Confirm = ({display, title, subtitle, imgurl, text1, text2, onDelete, onCancel}) => {
+
+    return <Container display={display}
+    >
         <TopCont>
             <ConfirmTitle>{title}</ConfirmTitle>
             <ConfirmSubtitle>{subtitle}</ConfirmSubtitle>
         </TopCont>
         <BottomCont>
             <ConfirmImage src={imgurl}/>
-            <Button />
-            <Button text="Back to Medications" bgcolor="#63AAC8"/>
+            <Button text={text1} onClick={onDelete}/>
+            <Button text={text2} bgcolor="#63AAC8" onClick={onCancel}/>
         </BottomCont>
     </Container> 
 };
@@ -68,7 +72,9 @@ Confirm.defaultProps = {
     onDelete:()=>{},
     title:"donepezil",
     subtitle:"was deleted successfully",
-    imgurl: "/check-one.svg"
+    imgurl: "/check-one.svg",
+    text1: "Go to Home",
+    text2: "Back to Meds"
 };
 
 export default Confirm;
