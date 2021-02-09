@@ -69,6 +69,7 @@ const BannerBack = ({ text, onClick, disable, previousStep }) => {
 
 BannerBack.defaultProps = {
   text: "Edit Med",
+  onClick:()=>{}
 };
 
 export default BannerBack;

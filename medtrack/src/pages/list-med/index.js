@@ -6,78 +6,122 @@ import MedSpecBanner from "comps/MedSpecBanner";
 import Info from "comps/Info";
 import Button from "comps/Button";
 import ButtonBig from "comps/ButtonBig";
+import Backdrop from "comps/Backdrop";
+import Confirm from "comps/Confirm";
 
 import StepWizard from "react-step-wizard";
 import axios from "axios";
+import styled from 'styled-components';
 
-const medsData = require("../../../src/meds.json");
+const Container = styled.div`
+.open {
+ display: none;
+}
 
-const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect }) => {
+.open.open{
+  display: block;
+}
+`;
+
+// const medsData = require("../../../src/meds.json");
+
+const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
   // backend functions
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
+  const [allids, setIds] = useState([]);
 
-  // const getData = async () => {
-  //   var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
-  //   console.log("get data", resp);
-  //   var arr = resp.data;
-  //   setAll(resp.data);
-  // };
-
-  // const getData = async () => {
-  //   setAll(medsData);
-  //   console.log("get data", medsData);
-  // };
+  const getData = async () => {
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    // console.log("get data", resp);
+    // var arr = resp.data;
+    setAll(resp.data.meds);
+    setIds(resp.data.meds[0]);
+    console.log("setId", allids);
+  };
   
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
   // backend functions
 
+  // const [sendid, setId] = useState(null);
+
   const HandleClick = (id) =>{
-    if(onSelect){onSelect(id)}
+  // setIds(id)    
+    onSelect(id)
     nextStep();
   }
 
   return (
-    <div className="addMed">
+    <div>
       <BannerCancel text="list of meds" />
       <h6 className="addMed_title">Currently Taking</h6>
       <div>
-        {medsData.map((o) => (
+        {allmeds.map((o) => (
         <ListMeds
         medName={o.name}
         time={o.time}
-          onClick={HandleClick.bind(this, o.id)}
+        onClick={HandleClick.bind(this, o.id)}
         />
       ))}
-        <ListMeds
-          onClick={() => {
-            nextStep();
-          }}
-        />
       </div>
     </div>
   );
 };
 
-const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
+const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid }) => {
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
-
-  // const getData = async () => {
-  //   var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
-  //   console.log("get data", resp);
-  //   var arr = resp.data;
-  //   setAll(resp.data);
+  const [allids, setIds] = useState([]);
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(true);
+  const showPopup = () =>{
+    setShow(true);
+    console.log("clicked")
+  }
+  // const [clickedForm, setClickedForm] = useState(null);
+  // const HandleContainerSelect = (name) => {
+  //   // alert("clicked container "+name);
+  //   setClickedForm(name);
   // };
 
+  const getData = async () => {
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    console.log("get data", resp);
+    // if (resp.data.meds.id == id){
+      setMeds(resp.data.meds);
+      // setIds(resp.data.meds[0]);
+    // }
+  };
 
+  // const getId = () => {
+  //   {meds.map((o)=>(
+  //     id = o.id
+  //   ))}
+  // }
 
-  return (
-    <div className="page">
-      {medsData.map((o) => (
+  const HandleClick = (id) =>{
+    // setIds(id)    
+      onSelect(id)
+      // nextStep();
+    }
+
+  useEffect(() => {
+    getData();
+    // getId();
+    console.log( "id", id)
+  }, []);
+
+  const handleDelete = (dis) => {
+
+  }
+
+  // let obj = allmeds.find(obj => obj.id == id);
+  return ( <Container>
+<div className="page">
+      {meds.map((o, id) => (
         <MedSpecBanner
           medName={o.name}
           dosage={o.dos}
@@ -107,16 +151,32 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep }) => {
           // onClick={() => {
           //   goToStep(4);
           // }}
+
+          // onContainerSelect={HandleContainerSelect}
+          // name="register"
+          // bgcolor={clickedForm === "register" ? "inline-flex" : null}
+
+          onClick={()=>{
+            setOpen(!open);
+            showPopup();
+          }}
         />
       </div>
+      <div className={open ? "open" : null}>
+        {/* <Confirm  title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
+        <Backdrop /> */}
+        Hi
+      </div>
     </div>
+    </Container>
+    
   );
 };
 
 const Step3 = ({ nextStep, goToStep, onNext, previousStep }) => {
   return (
     <div className="addMed">
-      <BannerBack />
+      <BannerBack onClick={previousStep}/>
       <div className="container">
         <Info
           leftimgurl={"/file-text.png"}
@@ -126,12 +186,43 @@ const Step3 = ({ nextStep, goToStep, onNext, previousStep }) => {
       </div>
       <h6 className="addMed_title">med info</h6>
       <div className="fatass">
-        <Info leftimgurl={"/symptom-blu.png"} />
-        <Info leftimgurl={"/pill-blu.png"} />
-        <Info leftimgurl={"/calandarcheck.png"} />
-        <Info leftimgurl={"/food.png"} />
-        <Info leftimgurl={"/time-blu.png"} />
-        <Info leftimgurl={"/appearance.png"} />
+        <Info title="Medical Condition" leftimgurl={"/symptom-blu.png"} />
+        <Info title="Dosage" leftimgurl={"/pill-blu.png"} />
+        <Info title="Frequency" leftimgurl={"/calandarcheck.png"} />
+        <Info title="Instructions" leftimgurl={"/food.png"} />
+        <Info title="Time" leftimgurl={"/time-blu.png"} />
+        {/* <Info title="Dosage" leftimgurl={"/appearance.png"} /> */}
+      </div>
+      <div className="bigButton">
+        <ButtonBig text="Update" />
+      </div>
+      <Confirm />
+      <Backdrop />
+    </div>
+  );
+};
+const Step4 = ({ nextStep, goToStep, onNext, previousStep }) => {
+  return (
+    <div className="addMed">
+      {/* <div className="popup"> 
+      
+      </div> */}
+      <BannerBack onClick={previousStep}/>
+      <div className="container">
+        <Info
+          leftimgurl={"/file-text.png"}
+          rightimgurl={""}
+          title="Donepezil"
+        />
+      </div>
+      <h6 className="addMed_title">med info</h6>
+      <div className="fatass">
+        <Info title="Medical Condition" leftimgurl={"/symptom-blu.png"} />
+        <Info title="Dosage" leftimgurl={"/pill-blu.png"} />
+        <Info title="Frequency" leftimgurl={"/calandarcheck.png"} />
+        <Info title="Instructions" leftimgurl={"/food.png"} />
+        <Info title="Time" leftimgurl={"/time-blu.png"} />
+        {/* <Info title="Dosage" leftimgurl={"/appearance.png"} /> */}
       </div>
       <div className="bigButton">
         <ButtonBig text="Update" />
@@ -140,16 +231,23 @@ const Step3 = ({ nextStep, goToStep, onNext, previousStep }) => {
   );
 };
 
+
 function ListMed() {
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
 
   const getData = async () => {
-    var resp = await axios.get("https://advdyn2021.herokuapp.com/allbooks");
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
     console.log("get data", resp);
-    var arr = resp.data;
-    setAll(resp.data);
+    setAll(resp.data.meds);
   };
+
+  // const idthatwaspassedin = .id
+
+  // where /  if allmeds[id that was passed in -1].name
+  //   allmeds.name
+  // }
 
   useEffect(() => {
     getData();
@@ -158,12 +256,20 @@ function ListMed() {
   return (
     <div className="page">
       <StepWizard>
-        <Step1 onSelect={(id)=>{console.log(id)}} />
-        <Step2 />
+        <Step1 onClick={(id)=>{
+          setSelectedId(id);
+        }} onSelect={(id)=>{console.log(id)}} />
+        <Step2 onSelect={(id)=>{console.log(id)}}/> 
         <Step3 />
+        {/* <Step4 />
+        <Step5 /> */}
       </StepWizard>
     </div>
   );
+}
+
+ListMed.defaultProps = {
+  id:null
 }
 
 export default ListMed;
