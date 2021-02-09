@@ -37,7 +37,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, addMedData }) => {
         text="medical conditions"
       />
       <div className="breadcrumb">
-        <Breadcrumb />
+        {/* <Breadcrumb /> */}
         <h6>1/8</h6>
       </div>
       <h6 className="addMed_title">medical conditions</h6>
