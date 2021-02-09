@@ -73,7 +73,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id }) => {
 };
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid }) => {
-  const [meds, setMeds] = useState({});
+  const [meds, setMeds] = useState([]);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(true);
   const params = useParams();
@@ -89,19 +89,14 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid 
   // };
 
   const getData = async () => {
-    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds"+params.id);
+    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds/"+params.id);
     console.log("get data", resp);
-    // if (resp.data.meds.id == id){
-      setMeds({...resp.data[0]});
+    // if (id == 1){
+      // setMeds({...resp.data[0]});
+      setMeds(resp.data.meds)
       // setIds(resp.data.meds[0]);
     // }
   };
-
-  // const getId = () => {
-  //   {meds.map((o)=>(
-  //     id = o.id
-  //   ))}
-  // }
 
   const HandleClick = (id) =>{
     // setIds(id)    
@@ -120,17 +115,18 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid 
   }
   return ( <Container>
 <div className="page">
-      {/* {meds.map((o, id) => ( */}
+      {id == id ? meds.map((o, id) => ( 
         <MedSpecBanner
-          medName={meds.name}
-          dosage={meds.dos}
-          unit={meds.unit}
-          time={meds.time}
+        key={id}
+          medName={id.name}
+          dosage={id.dos}
+          unit={id.unit}
+          time={id.time}
           onClick={() => {
             previousStep();
           }}
         />
-      {/* ))} */}
+       )) : null} 
       {/* {meds.map((o) => ( */}
         <div className="container">
           <Info title="Reminders" />
@@ -164,7 +160,6 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, onSelect, id, passid 
       <div className={open ? "open" : null}>
         {/* <Confirm  title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
         <Backdrop /> */}
-        Hi
       </div>
     </div>
     </Container>
@@ -235,6 +230,7 @@ function ListMed() {
   const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
+  const [id, setId] = useState(null);
 
   const getData = async () => {
     var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
@@ -255,20 +251,20 @@ function ListMed() {
   return (
     <div className="page">
       <StepWizard>
-        <Step1 onClick={(id)=>{
-          setSelectedId(id);
-        }} onSelect={(id)=>{console.log(id)}} />
-        <Step2 onSelect={(id)=>{console.log(id)}}/> 
+        <Step1 
+        // onClick={(id)=>{
+        //   setSelectedId(id);
+        // }} 
+        onSelect={(id)=>{
+          setId(id);
+          console.log(id)}} />
+        <Step2 id={id}/> 
         <Step3 />
         {/* <Step4 />
         <Step5 /> */}
       </StepWizard>
     </div>
   );
-}
-
-ListMed.defaultProps = {
-  id:null
 }
 
 export default ListMed;

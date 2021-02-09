@@ -32,11 +32,19 @@ function App() {
   //   console.log("get data", medsData);
   // };
 
+  const sortEarliest = () => {
+    setAll(
+      allmeds.sort(sortByTime)
+    );
+    console.log("clicked")
+  }
+
   useEffect(() => {
     getData();
   }, []);
 
   //end of backend functions
+
 
   return (
     <div className="App">
@@ -57,6 +65,7 @@ function App() {
               <Link to="/Filter">
                 <FilterBy />
               </Link>
+              <button onClick={sortEarliest}>Sort Earliest</button>
               {allmeds.map((o) => (
                 <MedInfoBox 
                 medName={o.name}
@@ -85,7 +94,7 @@ export default App;
 //App functions - SORT
 
 // by time (i.e. 11:00 - use 24h clock)
-const sortEarliest = (a, b) => {
+const sortByTime = (a, b) => {
   if (a.time < b.time) {
     return -1;
   } else if (a.time > b.time) {
