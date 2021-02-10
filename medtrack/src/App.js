@@ -96,8 +96,8 @@ function App() {
               {/* <button onClick={sortEarliest}>Sort Earliest</button> */}
               {/* <button onClick={sortLatest}>Sort Latest</button> */}
               <div className="home_buttons">
-                <Button width="120px" text="Earliest" />
-                <Button width="120px" text="Latest" />
+                <Button width="200px"text="Earliest" />
+                <Button width="200px" text="Latest" />
               </div>
               <Title />
               {/* <button onClick={Filter}>Filter</button> */}
@@ -111,10 +111,10 @@ function App() {
                 />
               ))}
               <Link to="/add-med">
-                <Button text="+ Add Med" />
+                <Button margin="10px 0px" text="+ Add Med" />
               </Link>
               <Link to="/list-med">
-                <Button text="See All Meds" bgcolor={"#63AAC8"} />
+                <Button margin="10px 0px" text="See All Meds" bgcolor={"#63AAC8"} />
               </Link>
             </div>
           </Route>
