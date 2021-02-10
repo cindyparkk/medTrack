@@ -12,36 +12,38 @@ import StepWizard from "react-step-wizard";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
-    //backend functions
-    const [meds, setMeds] = useState([]);
-    const [allmeds, setAll] = useState([]);
-    const [cond, setCond] = useState(null);
-  
-    const getData = async () => {
-      // var resp = await axios.get("http://localhost:8888/api/meds");
-      var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
-      console.log("get data", resp);
-      setAll(resp.data.meds);
-    };
-    
-    const FilterCond = (cond) => {
-      setMeds(
-        allmeds.filter((o) => {
-          return o.cond.includes(cond)
-        })
-        )
-      };
-      
-        useEffect(() => {
-          getData();
-        }, []);
+const Step1 = ({ nextStep, goToStep, onNext, previousStep, onSortEarliest }) => {
+  //backend functions
+  const [meds, setMeds] = useState([]);
+  const [allmeds, setAll] = useState([]);
+  const [cond, setCond] = useState(null);
 
-    const handleSelect = (cond) => {
-      setCond(cond);
-      console.log(cond);
-    }
-      //end of backend functions
+  const getData = async () => {
+    // var resp = await axios.get("http://localhost:8888/api/meds");
+    var resp = await axios.get(
+      "https://medtrack-midterm.herokuapp.com/api/meds"
+    );
+    console.log("get data", resp);
+    setAll(resp.data.meds);
+  };
+
+  const FilterCond = (cond) => {
+    setMeds(
+      allmeds.filter((o) => {
+        return o.cond.includes(cond);
+      })
+    );
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const handleSelect = (cond) => {
+    setCond(cond);
+    console.log(cond);
+  };
+  //end of backend functions
 
   return (
     <div>
@@ -60,12 +62,15 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
         // }}
       />
       <div className="bigButton">
-        <ButtonBig 
-        disable={cond === null}
-        onClick={()=>{
-          nextStep();
-          onNext(cond);
-        }}
+        <ButtonBig
+          disable={cond === null}
+          onClick={() => {
+            nextStep();
+            if (cond == "earliest") {
+              onNext(cond)
+            }
+            // onNext(cond);
+          }}
         />
       </div>
     </div>
@@ -73,65 +78,79 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
 };
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
-  const [meds, setMeds] = useState({});
+  const [meds, setMeds] = useState([]);
+  // const [allmeds, setAll] = useState([]);
 
   const getData = async () => {
     // var resp = await axios.get("http://localhost:8888/api/meds");
-    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
+    var resp = await axios.get(
+      "https://medtrack-midterm.herokuapp.com/api/meds"
+    );
     console.log("get data", resp);
-    if(cond == resp.data.meds.cond){
-      setMeds({...resp.data.meds});
-    }
-    console.log("is this working", cond)
+    // if (cond == resp.data.meds.cond) {
+    setMeds([...resp.data.meds]);
+    // }
+    console.log("is this working", cond);
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  return(
+  const sortEarliest = (cond) => {
+    setMeds(meds.sort(sortByTime));
+  };
+
+  return (
     <div className="page">
-              <BannerTime />
-              {/* <Link to="/Filter"> */}
-                <FilterBy onClick={previousStep}/>
-              {/* </Link> */}
-              {/* {meds.map((o) => ( */}
-                <MedInfoBox 
-                medName="hello"
-                dos={meds.dos}
-                unit={meds.unit}
-                amount={meds.amt}
-                time={meds.time}
-                onChange={(cond)=>{
-                  FilterPage(cond)
-                }}
-                />
-              {/* ))} */}
-              <Link to="/add-med">
-                <Button text="+ Add Med" />
-              </Link>
-              <Link to="/list-med" >
-                <Button text="See All Meds" bgcolor={"#63AAC8"} />
-              </Link>
-            </div>
-  )
-}
+      <BannerTime />
+      {/* <Link to="/Filter"> */}
+      <FilterBy onClick={previousStep} />
+      {/* </Link> */}
+      {meds.map((o) => (
+        <MedInfoBox
+          medName={o.name}
+          dos={o.dos}
+          unit={o.unit}
+          amount={o.amt}
+          time={o.time}
+          onChange={(cond) => {
+            FilterPage(cond);
+          }}
+        />
+      ))}
+      <Link to="/add-med">
+        <Button text="+ Add Med" />
+      </Link>
+      <Link to="/list-med">
+        <Button text="See All Meds" bgcolor={"#63AAC8"} />
+      </Link>
+    </div>
+  );
+};
 
 export default function FilterPage() {
   const [filteroption, setFilteroption] = useState();
   const [cond, setCond] = useState("");
-  
+
   return (
     <div className="page">
       <StepWizard>
-        <Step1 onNext={(cond) => {
+        <Step1
+          onNext={(cond) => {
             // setData({filteroption: n});
             setCond(cond);
-          }}/>
-        <Step2 cond={cond}/>
+          }}
+        />
+        <Step2 cond={cond} />
       </StepWizard>
     </div>
   );
 }
 
-
+function sortByTime(a, b) {
+  return parseInt(a.time) - parseInt(b.time);
+}
+// function sortByTime(a, b) {
+//   return parseInt(a.time) - parseInt(b.time);
+// }

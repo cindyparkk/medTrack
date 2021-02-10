@@ -27,16 +27,23 @@ function App() {
   // };
 
   const sortEarliest = () => {
-    //   console.log("before sort: meds", meds);
-    //   console.log("before sort: allmeds", allmeds);
-    setMeds(allmeds.sort(sortByTime));
+    // console.log("before sort: meds", meds);
+    // console.log("before sort: allmeds", allmeds);
+    setMeds(
+      allmeds.sort(sortByTime)
+      
+      );
     // console.log("after sort: meds", meds);
     // console.log("after sort: allmeds", allmeds);
   };
+
+  //this doesn't work
   const sortLatest = () => {
     //   console.log("before sort: meds", meds);
     //   console.log("before sort: allmeds", allmeds);
-    setMeds(allmeds.reverse(sortByTime));
+    setMeds(
+      allmeds.sort(sortByTimeReverse)
+      );
     // console.log("after sort: meds", meds);
     // console.log("after sort: allmeds", allmeds);
   };
@@ -44,7 +51,7 @@ function App() {
   const Filter = () => {
     // let result = "";
     setMeds(
-      allmeds.filter((o) => {
+      meds.filter((o) => {
         // console.log("filtering?");
         return o.name.includes("Aspirin");
         // result = o.name.includes("Aspirin");
@@ -124,15 +131,28 @@ export default App;
 
 // by time (i.e. 11:00 - use 24h clock)
 function sortByTime(a, b) {
-  if (a.time > b.time) {
-    console.log("I'm sorting things a > b");
-    return -1;
-  } else if (a.time < b.time) {
-    console.log("I'm sorting things a < b");
-    return 1;
-  } else {
-    return 0;
-  }
+  // if (parseInt(a.time) < parseInt(b.time)) {
+  //   // console.log("I'm sorting things a > b");
+  //   return -1;
+  // } else if (parseInt(a.time) > parseInt(b.time)) {
+  //   // console.log("I'm sorting things a < b");
+  //   return 1;
+  // } else {
+  //   return 0;
+  // }
+  return parseInt(a.time) - parseInt(b.time);
+}
+function sortByTimeReverse(a, b) {
+  // if (parseInt(a.time) < parseInt(b.time)) {
+  //   // console.log("I'm sorting things a > b");
+  //   return 1;
+  // } else if (parseInt(a.time) > parseInt(b.time)) {
+  //   // console.log("I'm sorting things a < b");
+  //   return -1;
+  // } else {
+  //   return 0;
+  // }
+  return parseInt(b.time) - parseInt(a.time);
 }
 
 // App functions - FILTER
@@ -162,4 +182,5 @@ const sortByCondition = (a) => {
   onClick={() => setCond("high blood pressure")}
 />
 <Options text="hypertension" onClick={() => setCond("hypertension")} /> */
+
 }
