@@ -33,7 +33,7 @@ const Option = styled.div`
     text-align: left;
     display: flex;
     padding: 0px 30px 0px 25px;
-    background-color: #FFFFF;
+    background-color: #FFF;
     h5 {
         flex: 1;
     }
