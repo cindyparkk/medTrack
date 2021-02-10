@@ -96,8 +96,8 @@ function App() {
               {/* <button onClick={sortEarliest}>Sort Earliest</button> */}
               {/* <button onClick={sortLatest}>Sort Latest</button> */}
               <div className="home_buttons">
-                <Button width="200px"text="Earliest" />
-                <Button width="200px" text="Latest" />
+                <Button width="200px"text="Earliest" onClick={sortEarliest}/>
+                <Button width="200px" text="Latest" onClick={sortLatest}/>
               </div>
               <Title />
               {/* <button onClick={Filter}>Filter</button> */}
