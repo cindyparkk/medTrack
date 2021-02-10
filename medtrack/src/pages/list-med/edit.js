@@ -4,11 +4,7 @@ import Info from "comps/Info";
 import ButtonBig from "comps/ButtonBig";
 import axios from "axios";
 import styled from 'styled-components';
-import {Link, useParams} from 'react-router-dom';
-import { LastLocationProvider } from 'react-router-last-location';
-import {useHistory} from "react-router-dom";
-
-
+import {Link, useParams, useHistory} from 'react-router-dom';
 
 function Edit({}) {
     const [meds, setMeds] = useState({});
@@ -31,16 +27,6 @@ function Edit({}) {
         console.log("loading")
       }, []);
 
-// class Page1 extends Component {
-
-//   constructor(props){
-//     super(props);
-//     this.goBack = this.goBack.bind(this);
-//  }
-
-  // handleBack =() => {
-  //   this.props.history.go(1);
-  // }
 
     return (
       <div className="addMed">

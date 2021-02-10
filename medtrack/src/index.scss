@@ -48,3 +48,17 @@
 .content {
   margin-bottom: 150px;
 }
+
+.page_popup {
+  width: 100%;
+}
+
+.home_buttons {
+  width: 100%;
+  display: flex;
+  // justify-content: center;
+  background-color: pink;
+  & > * {
+    margin: 0px 10px;
+  }
+}

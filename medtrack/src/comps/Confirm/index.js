@@ -9,9 +9,11 @@ const Container = styled.div`
     border-radius: 10px;
     z-index: 20;
     // display: ${props=>props.display ? "inline-flex" : "none"};
+    display: inline-flex;
     flex-direction: column;
-    position: absolute;
-    top: 10%;
+    position: relative;
+    top: -60vh;
+    right: -7vw;
 `;
 
 const TopCont = styled.div`
