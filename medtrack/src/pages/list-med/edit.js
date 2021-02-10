@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import BannerBack from "comps/BannerBack";
 import Info from "comps/Info";
 import ButtonBig from "comps/ButtonBig";
 import axios from "axios";
 import styled from 'styled-components';
 import {Link, useParams} from 'react-router-dom';
+import { LastLocationProvider } from 'react-router-last-location';
+import {useHistory} from "react-router-dom";
+
 
 
 function Edit({}) {
     const [meds, setMeds] = useState({});
     const params = useParams();
     console.log("PARAMS", params);
+
     const getData = async () => {
         var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds/med_by_id/"+params.id);
         console.log("get data2222", resp);
@@ -26,24 +30,39 @@ function Edit({}) {
         console.log("loading")
       }, []);
 
+// class Page1 extends Component {
+
+//   constructor(props){
+//     super(props);
+//     this.goBack = this.goBack.bind(this);
+//  }
+
+  // handleBack =() => {
+  //   this.props.history.go(1);
+  // }
 
     return (
       <div className="addMed">
-        <BannerBack/>
+        <Link to={"/med/"+meds.id}>
+        <BannerBack 
+        // onClick= {this.handleBack}
+        />
+        </Link >
         <div className="container">
           <Info
             leftimgurl={"/file-text.png"}
             rightimgurl={""}
-            title="Donepezil"
+            title={meds.name}
+            subtext=""
+            dosage="" unit=""
           />
         </div>
         <h6 className="addMed_title">med info</h6>
-        <div className="fatass">
-          <Info title="Medical Condition" leftimgurl={"/symptom-blu.png"} />
-          <Info title="Dosage" leftimgurl={"/pill-blu.png"} />
-          <Info title="Frequency" leftimgurl={"/calandarcheck.png"} />
-          <Info title="Instructions" leftimgurl={"/food.png"} />
-          <Info title="Time" leftimgurl={"/time-blu.png"} />
+        <div className="content">
+          <Info title="Medical Condition" subtext={meds.cond} dosage="" unit="" leftimgurl={"/symptom-blu.png"} />
+          <Info title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} />
+          <Info title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} />
+          <Info title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} />
           {/* <Info title="Dosage" leftimgurl={"/appearance.png"} /> */}
         </div>
         <div className="bigButton">

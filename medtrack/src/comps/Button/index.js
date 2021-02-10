@@ -11,7 +11,7 @@ const NormalButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  min-width: 308px;
+  min-width: ${props=>props.width ? props.width: "308px"};
   min-height: 81px;
   // background-color: #094D69;
   background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094D69")};
@@ -31,10 +31,10 @@ const Text = styled.h2`
   color: #ffffff;
 `;
 
-const Button = ({ text, bgcolor, onClick }) => {
+const Button = ({ text, bgcolor, onClick, width }) => {
   return (
     <Container onClick={onClick}>
-      <NormalButton bgcolor={bgcolor}>
+      <NormalButton bgcolor={bgcolor} width={width}>
         <Text>{text}</Text>
       </NormalButton>
     </Container>
@@ -44,6 +44,7 @@ const Button = ({ text, bgcolor, onClick }) => {
 Button.defaultProps = {
   text: "Go to Home",
   bgcolor: null,
+  width: null
 };
 
 export default Button;

@@ -94,3 +94,13 @@ input {
 .open.open {
   display: block;
 }
+
+.home_buttons {
+  width: 100%;
+  display: flex;
+  // justify-content: center;
+  background-color: pink;
+  & > * {
+    margin: 0px 10px;
+  }
+}

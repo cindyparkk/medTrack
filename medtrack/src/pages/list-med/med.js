@@ -5,7 +5,7 @@ import Button from "comps/Button";
 
 import axios from "axios";
 import styled from 'styled-components';
-import { useParams, BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { useParams, BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
 
 // const Container = styled.div`
 // .open {
@@ -75,22 +75,20 @@ function Med({ onSelect, id, passid }) {
           </div>
         {/* ))} */}
         <div className="buttons">
-        {/* <Route exact path="/edit/:id"> */}
-            <Link to={"/edit/"+id}>
+            <Link to={"/edit/"+meds.id}>
             <Button
                 text="Edit"
                 onClick={() => {
-                //   nextStep();
                 }}
             />
             </Link>
-            {/* </Route> */}
           <Button
             text="Delete Med"
             bgcolor={"#63AAC8"}  
             onClick={()=>{
-              setOpen(!open);
-              showPopup();
+              
+              // setOpen(!open);
+              // showPopup();
             }}
           />
         </div>

@@ -7,26 +7,23 @@ import BannerTime from "comps/BannerTime";
 import FilterBy from "comps/FilterBy";
 import MedInfoBox from "comps/MedInfoBox";
 import Button from "comps/Button";
+import Filter from "comps/Filter";
 
 import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
-import Med from "pages/list-med/med"
-import Edit from "pages/list-med/edit"
+import Med from "pages/list-med/med";
+import Edit from "pages/list-med/edit";
+import Title from "comps/Title";
 
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
 
+
+
 function App() {
   //backend functions
-  const [meds, setMeds] = useState([]);
   const [allmeds, setAll] = useState([]);
-  
-  
-  const getData = async () => {
-    var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds");
-    console.log("get data", resp);
-    setAll(resp.data.meds);
-  };
+  const [meds, setMeds] = useState([]);
 
   // const getData = () => {
   //   setAll(medsData);
@@ -34,18 +31,47 @@ function App() {
   // };
 
   const sortEarliest = () => {
-    setAll(
-      allmeds.sort(sortByTime)
-    );
-    console.log("clicked")
-  }
+    // console.log("before sort: meds", meds);
+    // console.log("before sort: allmeds", allmeds);
+    setMeds(allmeds.sort(sortByTime));
+    // console.log("after sort: meds", meds);
+    // console.log("after sort: allmeds", allmeds);
+  };
 
+  //this doesn't work
+  const sortLatest = () => {
+    //   console.log("before sort: meds", meds);
+    //   console.log("before sort: allmeds", allmeds);
+    setMeds(allmeds.sort(sortByTimeReverse));
+    // console.log("after sort: meds", meds);
+    // console.log("after sort: allmeds", allmeds);
+  };
+
+  const Filter = (text) => {
+    // let result = "";
+    setMeds(
+      meds.filter((o) => {
+        // console.log("filtering?");
+        return o.name.includes(text);
+        // result = o.name.includes("Aspirin");
+      })
+    );
+    // return console.log(result) + result;
+  };
+
+  const getData = async () => {
+    var resp = await axios.get(
+      "https://medtrack-midterm.herokuapp.com/api/meds"
+    );
+    // console.log("get data", resp);
+    setAll([...resp.data.meds]);
+    setMeds([...resp.data.meds]);
+  };
   useEffect(() => {
     getData();
   }, []);
 
   //end of backend functions
-
 
   return (
     <div className="App">
@@ -54,42 +80,49 @@ function App() {
           <Route path="/add-med">
             <AddMed />
           </Route>
-          <Route path="/Filter">
+          {/* <Route path="/Filter">
             <FilterPage />
-          </Route>
+          </Route> */}
           <Route exact path="/list-med">
             <ListMed />
           </Route>
           <Route exact path="/">
             <div className="page">
               <BannerTime />
-              <Link to="/Filter">
+              {/* <Link to="/Filter">
                 <FilterBy />
-              </Link>
-              <button onClick={sortEarliest}>Sort Earliest</button>
-              {allmeds.map((o) => (
-                <MedInfoBox 
-                medName={o.name}
-                dos={o.dos}
-                unit={o.unit}
-                amount={o.amt}
-                time={o.time}
+              </Link> */}
+              {/* <button onClick={sortEarliest}>Sort Earliest</button> */}
+              {/* <button onClick={sortLatest}>Sort Latest</button> */}
+              <div className="home_buttons">
+                <Button width="120px" text="Earliest" />
+                <Button width="120px" text="Latest" />
+              </div>
+              <Title />
+              {/* <button onClick={Filter}>Filter</button> */}
+              {meds.map((o) => (
+                <MedInfoBox
+                  medName={o.name}
+                  dos={o.dos}
+                  unit={o.unit}
+                  amount={o.amt}
+                  time={o.time}
                 />
               ))}
               <Link to="/add-med">
                 <Button text="+ Add Med" />
               </Link>
-              <Link to="/list-med" >
+              <Link to="/list-med">
                 <Button text="See All Meds" bgcolor={"#63AAC8"} />
               </Link>
             </div>
           </Route>
           <Route exact path="/med/:id">
-              <Med />
-            </Route>
+            <Med />
+          </Route>
           <Route exact path="/edit/:id">
-              <Edit />
-            </Route>
+            <Edit />
+          </Route>
         </Switch>
       </Router>
     </div>
@@ -101,45 +134,43 @@ export default App;
 //App functions - SORT
 
 // by time (i.e. 11:00 - use 24h clock)
-function sortByTime(a, b){
-  if (a.time < b.time) {
-    return 1;
-  } else if (a.time > b.time) {
-    return -1;
-  } else {
-    return 0;
-  }
-  // return a.time - b.time;
-};
+function sortByTime(a, b) {
+  // if (parseInt(a.time) < parseInt(b.time)) {
+  //   // console.log("I'm sorting things a > b");
+  //   return -1;
+  // } else if (parseInt(a.time) > parseInt(b.time)) {
+  //   // console.log("I'm sorting things a < b");
+  //   return 1;
+  // } else {
+  //   return 0;
+  // }
+  return parseInt(a.time) - parseInt(b.time);
+}
+function sortByTimeReverse(a, b) {
+  // if (parseInt(a.time) < parseInt(b.time)) {
+  //   // console.log("I'm sorting things a > b");
+  //   return 1;
+  // } else if (parseInt(a.time) > parseInt(b.time)) {
+  //   // console.log("I'm sorting things a < b");
+  //   return -1;
+  // } else {
+  //   return 0;
+  // }
+  return parseInt(b.time) - parseInt(a.time);
+}
 
 // App functions - FILTER
 const sortByCondition = (a) => {
   var clicked;
-  if (clicked == a.cond){
+  if (clicked == a.cond) {
     //show all Data of the input
     // if whatever option is clicked matches ANY of meds in db
-  } 
+  }
   return;
-}
-
-
+};
 
 // console.log(sortCondition);
-
 
 // let sortByAm = med.filter(function (e) {
 // return e.time > 12:00;
 // })
-
-
-
-{/* <Options text="arthritis" onClick={() => setCond("arthritis")} />
-<Options text="asthma" onClick={() => setCond("asthma")} />
-<Options text="dementia" onClick={() => setCond("dementia")} />
-<Options text="diabetes" onClick={() => setCond("diabetes")} />
-<Options text="epilepsy" onClick={() => setCond("epilepsy")} />
-<Options
-  text="high blood pressure"
-  onClick={() => setCond("high blood pressure")}
-/>
-<Options text="hypertension" onClick={() => setCond("hypertension")} /> */}
