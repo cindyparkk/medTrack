@@ -41,18 +41,17 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep, addMedData }) => {
         <h6>1/8</h6>
       </div>
       <h6 className="addMed_title">medical conditions</h6>
-      <Options onClick={() => setCond("alzheimer's")} />
-      <Options text="angina" onClick={() => setCond("angina")} />
-      <Options text="arthritis" onClick={() => setCond("arthritis")} />
-      <Options text="asthma" onClick={() => setCond("asthma")} />
-      <Options text="dementia" onClick={() => setCond("dementia")} />
-      <Options text="diabetes" onClick={() => setCond("diabetes")} />
-      <Options text="epilepsy" onClick={() => setCond("epilepsy")} />
-      <Options
-        text="high blood pressure"
-        onClick={() => setCond("high blood pressure")}
-      />
-      <Options text="hypertension" onClick={() => setCond("hypertension")} />
+      <div className="content">
+        <Options onClick={() => setCond("alzheimer's")} />
+        <Options text="angina" onClick={() => setCond("angina")} />
+        <Options text="arthritis" onClick={() => setCond("arthritis")} />
+        <Options text="asthma" onClick={() => setCond("asthma")} />
+        <Options text="dementia" onClick={() => setCond("dementia")} />
+        <Options text="diabetes" onClick={() => setCond("diabetes")} />
+        <Options text="epilepsy" onClick={() => setCond("epilepsy")} />
+        <Options text="high blood pressure" onClick={() => setCond("high blood pressure")}/>
+        <Options text="hypertension" onClick={() => setCond("hypertension")} />
+      </div>
       <div className="bigButton">
         <ButtonBig
           text="next"
@@ -471,10 +470,10 @@ const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
   return (
     <div className="addMed_info">
       <BannerBack onClick={previousStep} text="Schedule Overview" />
-      <div className="breadcrumb">
-        <h6></h6>
-      </div>
-      <OverviewLine text="Frequency" text2="Specific Days" />
+      <h6 className="addMed_title">medication name</h6>
+      <OverviewLine />
+      <h6 className="addMed_title">condition</h6>
+      <OverviewLine />
       <h6 className="addMed_title">HOW MANY TIMES A DAY?</h6>
       <OverviewLine />
       <h6 className="addMed_title">SET TIME AND DOSE</h6>
@@ -506,21 +505,21 @@ export default function AddMed() {
 
   console.log(data)
 
-  const addMedData = async (c, n, d, u, days, i, t, a) => {
-    var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/", {
-      name: data.name,
-      cond: data.cond,
-      dosage: data.dos,
-      unit: data.unit,
-      days: data.days,
-      ins: data.ins,
-      time: data.time,
-      amt: data.amt
-      // data
-    });
-    //checking array status
-    console.log(resp.data)
-  };
+  // const addMedData = async (c, n, d, u, days, i, t, a) => {
+  //   var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/", {
+  //     name: data.name,
+  //     cond: data.cond,
+  //     dosage: data.dos,
+  //     unit: data.unit,
+  //     days: data.days,
+  //     ins: data.ins,
+  //     time: data.time,
+  //     amt: data.amt
+  //     // data
+  //   });
+  //   //checking array status
+  //   console.log(resp.data)
+  // };
 
   return (
     <div>
@@ -584,7 +583,9 @@ export default function AddMed() {
             });
           }}
         />
-        <Step8 addData={addMedData}/>
+        <Step8 
+        // addData={addMedData}
+        />
         {/* <Step9 />
         <Step10 /> */}
       </StepWizard>

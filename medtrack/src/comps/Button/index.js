@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  margin: 10px 0px;
+  // margin: 10px 0px;
+  margin: ${props=>props.margin ? props.margin : null}
 `;
 
 const NormalButton = styled.button`
@@ -31,9 +32,9 @@ const Text = styled.h2`
   color: #ffffff;
 `;
 
-const Button = ({ text, bgcolor, onClick, width }) => {
+const Button = ({ text, bgcolor, onClick, width, margin}) => {
   return (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} margin={margin}>
       <NormalButton bgcolor={bgcolor} width={width}>
         <Text>{text}</Text>
       </NormalButton>
@@ -44,7 +45,8 @@ const Button = ({ text, bgcolor, onClick, width }) => {
 Button.defaultProps = {
   text: "Go to Home",
   bgcolor: null,
-  width: null
+  width: null,
+  margin: null
 };
 
 export default Button;

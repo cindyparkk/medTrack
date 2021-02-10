@@ -6,7 +6,7 @@ import Confirm from "comps/Confirm";
 import Backdrop from "comps/Backdrop";
 import axios from "axios";
 import styled from 'styled-components';
-import { useParams, BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
+import { useParams, useHistory, BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 // const Container = styled.div`
 // .open {
@@ -26,6 +26,8 @@ function Med({ onSelect, id, passid }) {
 
     const params = useParams();
     console.log("PARAMS", params);
+
+    const history = useHistory();
 
     const showPopup = () =>{
       setShow(true);
@@ -57,7 +59,7 @@ function Med({ onSelect, id, passid }) {
       setOpen(state => !state);
     }
 
-    const handleDelete = (dis) => {
+    const handleDelete = () => {
   
     }
     return ( <div className="page">
@@ -69,7 +71,7 @@ function Med({ onSelect, id, passid }) {
             unit={meds.unit}
             time={meds.time}
             onClick={() => {
-            //   previousStep();
+            history.goBack();
             }}
           />
          {/* )) : null}  */}
@@ -82,18 +84,20 @@ function Med({ onSelect, id, passid }) {
         <div className="buttons">
             <Link to={"/edit/"+meds.id}>
             <Button
+                margin="10px 0px"
                 text="Edit"
                 onClick={() => {
                 }}
             />
             </Link>
           <Button
+            margin="10px 0px"
             text="Delete Med"
             bgcolor={"#63AAC8"}  
             onClick={handleOpen}
           />
         </div>
-        {open && ( <div >
+        {open && ( <div className="page_popup">
           <Confirm onCancel={handleOpen} title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
           <Backdrop />
         </div>)}

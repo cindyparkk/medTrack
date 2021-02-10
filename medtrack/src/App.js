@@ -8,6 +8,7 @@ import FilterBy from "comps/FilterBy";
 import MedInfoBox from "comps/MedInfoBox";
 import Button from "comps/Button";
 import Filter from "comps/Filter";
+import ButtonBig from "comps/ButtonBig";
 
 import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
@@ -24,11 +25,8 @@ function App() {
   //backend functions
   const [allmeds, setAll] = useState([]);
   const [meds, setMeds] = useState([]);
-
-  // const getData = () => {
-  //   setAll(medsData);
-  //   console.log("get data", medsData);
-  // };
+  const [cond, setCond] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const sortEarliest = () => {
     // console.log("before sort: meds", meds);
@@ -47,12 +45,21 @@ function App() {
     // console.log("after sort: allmeds", allmeds);
   };
 
-  const setMedsWithFilteredData = (text) => {
+  const handleSelect = (cond) => {
+    setCond(cond);
+    console.log(cond);
+  };
+
+  const handleOpen = () => {
+    setOpen(state => !state);
+  }
+
+  const setMedsWithFilteredData = (cond) => {
     // let result = "";
     setMeds(
       meds.filter((o) => {
         // console.log("filtering?");
-        return o.name.includes(text);
+        return o.name.includes(cond);
         // result = o.name.includes("Aspirin");
       })
     );
@@ -67,6 +74,7 @@ function App() {
     setAll([...resp.data.meds]);
     setMeds([...resp.data.meds]);
   };
+
   useEffect(() => {
     getData();
   }, []);
@@ -80,27 +88,29 @@ function App() {
           <Route path="/add-med">
             <AddMed />
           </Route>
-          {/* <Route path="/Filter">
-            <FilterPage />
-          </Route> */}
           <Route exact path="/list-med">
             <ListMed />
           </Route>
           <Route exact path="/">
             <div className="page">
               <BannerTime />
-              <Filter />
-              {/* <Link to="/Filter">
-                <FilterBy />
-              </Link> */}
-              {/* <button onClick={sortEarliest}>Sort Earliest</button> */}
-              {/* <button onClick={sortLatest}>Sort Latest</button> */}
+              <Filter 
+              text1="Alzheimer’s"
+              text2="Angina"
+              text3="Arthritis"
+              text4="Asthma"
+              reMove="false"
+              changeIcon2="false"
+              onSelect={handleSelect}
+              onClick={handleOpen}/>
+              {open && ( <div className="bigButton">
+              <ButtonBig onClick={setMedsWithFilteredData}/>
+              </div> )}
               <div className="home_buttons">
-                <Button width="120px" text="Earliest" />
-                <Button width="120px" text="Latest" />
+                <Button width="200px"text="Earliest" onClick={sortEarliest}/>
+                <Button width="200px" text="Latest" onClick={sortLatest}/>
               </div>
               <Title />
-              {/* <button onClick={Filter}>Filter</button> */}
               {meds.map((o) => (
                 <MedInfoBox
                   medName={o.name}
@@ -111,10 +121,10 @@ function App() {
                 />
               ))}
               <Link to="/add-med">
-                <Button text="+ Add Med" />
+                <Button margin="10px 0px" text="+ Add Med" />
               </Link>
               <Link to="/list-med">
-                <Button text="See All Meds" bgcolor={"#63AAC8"} />
+                <Button margin="10px 0px" text="See All Meds" bgcolor={"#63AAC8"} />
               </Link>
             </div>
           </Route>
@@ -169,9 +179,3 @@ const sortByCondition = (a) => {
   }
   return;
 };
-
-// console.log(sortCondition);
-
-// let sortByAm = med.filter(function (e) {
-// return e.time > 12:00;
-// })

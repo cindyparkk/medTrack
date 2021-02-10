@@ -52,6 +52,7 @@ const Time = styled.input.attrs({
   outline: none;
   text-align: left;
   font-size: 2em;
+  background-color: #fff;
 `;
 
 // const Text = styled.h6`
