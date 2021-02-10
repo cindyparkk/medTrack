@@ -47,6 +47,7 @@ const Time = styled.input.attrs({
   outline: none;
   text-align: left;
   padding-left: 10px;
+  text-transform: capitalize;
 `;
 const Text = styled.h6``;
 
