@@ -13,6 +13,7 @@ import {useHistory} from "react-router-dom";
 function Edit({}) {
     const [meds, setMeds] = useState({});
     const params = useParams();
+    const history = useHistory();
     console.log("PARAMS", params);
 
     const getData = async () => {
@@ -43,11 +44,10 @@ function Edit({}) {
 
     return (
       <div className="addMed">
-        <Link to={"/med/"+meds.id}>
-        <BannerBack 
-        // onClick= {this.handleBack}
+        {/* <Link to={"/med/"+meds.id}> */}
+        <BannerBack onClick={() => history.goBack()}
         />
-        </Link >
+        {/* </Link > */}
         <div className="container">
           <Info
             leftimgurl={"/file-text.png"}

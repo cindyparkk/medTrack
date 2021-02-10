@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import MedSpecBanner from "comps/MedSpecBanner";
 import Info from "comps/Info";
 import Button from "comps/Button";
-
+import Confirm from "comps/Confirm";
+import Backdrop from "comps/Backdrop";
 import axios from "axios";
 import styled from 'styled-components';
 import { useParams, BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom';
@@ -21,7 +22,7 @@ function Med({ onSelect, id, passid }) {
     // const [meds, setMeds] = useState([]);
     const [meds, setMeds] = useState({});
     const [show, setShow] = useState(false);
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const params = useParams();
     console.log("PARAMS", params);
@@ -52,6 +53,10 @@ function Med({ onSelect, id, passid }) {
       getData();
     }, []);
   
+    const handleOpen = () => {
+      setOpen(state => !state);
+    }
+
     const handleDelete = (dis) => {
   
     }
@@ -85,17 +90,14 @@ function Med({ onSelect, id, passid }) {
           <Button
             text="Delete Med"
             bgcolor={"#63AAC8"}  
-            onClick={()=>{
-              
-              // setOpen(!open);
-              // showPopup();
-            }}
+            onClick={handleOpen}
           />
         </div>
-        <div className={open ? "open" : null}>
-          {/* <Confirm  title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
-          <Backdrop /> */}
-        </div>
+        {open && ( <div >
+          <Confirm onCancel={handleOpen} title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
+          <Backdrop />
+        </div>)}
+       
       </div>
  
     );
