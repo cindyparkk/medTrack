@@ -11,6 +11,7 @@ import MedInfoBox from "comps/MedInfoBox";
 import StepWizard from "react-step-wizard";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+const medsData = require("../../../src/meds.json");
 
 const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
     //backend functions
@@ -28,7 +29,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
     const FilterCond = (cond) => {
       setMeds(
         allmeds.filter((o) => {
-          return o.cond.includes(cond)
+          return o.medsData.includes(cond)
         })
         )
       };
@@ -59,6 +60,24 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
         //   handleSelect();
         // }}
       />
+
+{/* <Options onClick={() => setCond("alzheimer's")} />
+      <Options text="angina" onClick={() => setCond("angina")} />
+      <Options text="arthritis" onClick={() => setCond("arthritis")} />
+      <Options text="asthma" onClick={() => setCond("asthma")} />
+      <Options text="dementia" onClick={() => setCond("dementia")} />
+      <Options text="diabetes" onClick={() => setCond("diabetes")} />
+      <Options text="epilepsy" onClick={() => setCond("epilepsy")} />
+      <Options
+        text="high blood pressure"
+        onClick={() => setCond("high blood pressure")}
+      />
+      <Options text="hypertension" onClick={() => setCond("hypertension")} />
+
+ */}
+
+
+      
       <div className="bigButton">
         <ButtonBig 
         disable={cond === null}
@@ -73,7 +92,7 @@ const Step1 = ({ nextStep, goToStep, onNext, previousStep }) => {
 };
 
 const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
-  const [meds, setMeds] = useState({});
+  const [meds, setMeds] = useState(true);
 
   const getData = async () => {
     // var resp = await axios.get("http://localhost:8888/api/meds");
@@ -86,8 +105,8 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData(cond);
+  }, [cond]);
 
   return(
     <div className="page">
@@ -95,15 +114,16 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
               {/* <Link to="/Filter"> */}
                 <FilterBy onClick={previousStep}/>
               {/* </Link> */}
-              {/* {meds.map((o) => ( */}
+              {/* {meds.map((o) => <div>{o.allmeds}</div>)} */}
                 <MedInfoBox 
-                medName="hello"
+                medName={meds.medName}
                 dos={meds.dos}
                 unit={meds.unit}
                 amount={meds.amt}
                 time={meds.time}
                 onChange={(cond)=>{
-                  FilterPage(cond)
+                  FilterPage(cond);
+                  
                 }}
                 />
               {/* ))} */}
