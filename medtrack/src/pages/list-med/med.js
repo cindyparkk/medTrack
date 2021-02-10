@@ -84,12 +84,14 @@ function Med({ onSelect, id, passid }) {
         <div className="buttons">
             <Link to={"/edit/"+meds.id}>
             <Button
+                margin="10px 0px"
                 text="Edit"
                 onClick={() => {
                 }}
             />
             </Link>
           <Button
+            margin="10px 0px"
             text="Delete Med"
             bgcolor={"#63AAC8"}  
             onClick={handleOpen}

@@ -96,14 +96,17 @@ const TimeFilter = ({text1, text2, text3, text4, text5, text6, text7,
     const [selected, setSelected] = useState();
 
     return <Container>
-        <FilterBox onClick={()=>{setExpanded(!expanded);}}>
+        <FilterBox onClick={()=>{
+            setExpanded(!expanded);
+            onClick();
+            }}>
             <Title changeIcon1={changeIcon1}>
                 <Icon src="/time.svg" alt="Time"/>
                 <h5>Time</h5>
             </Title>
             <Title changeIcon2={changeIcon2}>
                 <Icon src="/symptom.png" alt="MedCond"/>
-                <h5>Medical Conditions</h5>
+                <h5>Filter by Conditions</h5>
             </Title>
             <RotateImg expanded={expanded} src="/down-white.svg" />
         </FilterBox>
@@ -197,7 +200,8 @@ TimeFilter.defaultProps = {
     expand: false,
     reMove: true,
     changeIcon1: true,
-    changeIcon2: true
+    changeIcon2: true,
+    onClick:()=>{}
 }
 
 export default TimeFilter; 
