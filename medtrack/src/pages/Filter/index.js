@@ -129,8 +129,9 @@ const Step2 = ({ nextStep, goToStep, onNext, previousStep, cond }) => {
       {/* <Link to="/Filter"> */}
       <FilterBy onClick={previousStep} />
       {/* </Link> */}
-      {meds.map((o) => (
+      {meds.map((o,i) => (
         <MedInfoBox
+          key={i}
           medName={o.name}
           dos={o.dos}
           unit={o.unit}

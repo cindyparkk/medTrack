@@ -47,7 +47,7 @@ function App() {
     // console.log("after sort: allmeds", allmeds);
   };
 
-  const Filter = (text) => {
+  const setMedsWithFilteredData = (text) => {
     // let result = "";
     setMeds(
       meds.filter((o) => {
@@ -89,6 +89,7 @@ function App() {
           <Route exact path="/">
             <div className="page">
               <BannerTime />
+              <Filter />
               {/* <Link to="/Filter">
                 <FilterBy />
               </Link> */}
