@@ -427,7 +427,7 @@ const Step6 = ({ nextStep, goToStep, onNext, previousStep }) => {
   );
 };
 
-const Step7 = ({ nextStep, goToStep, onNext, previousStep }) => {
+const Step7 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
   const [time, setTime] = useState(null);
   const [amt, setAmt] = useState(null);
 
@@ -454,6 +454,7 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep }) => {
           onClick={() => {
             nextStep();
             onNext(time, amt);
+            addData();
             // console.log(time, amt)
           }}
           text="next"
@@ -463,31 +464,31 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep }) => {
   );
 };
 
-const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
+// const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
 
-  //  a get function
+//   //  a get function
 
-  return (
-    <div className="addMed_info">
-      <BannerBack onClick={previousStep} text="Schedule Overview" />
-      <h6 className="addMed_title">medication name</h6>
-      <OverviewLine />
-      <h6 className="addMed_title">condition</h6>
-      <OverviewLine />
-      <h6 className="addMed_title">HOW MANY TIMES A DAY?</h6>
-      <OverviewLine />
-      <h6 className="addMed_title">SET TIME AND DOSE</h6>
-      <OverviewTime />
-      <h6 className="addMed_title">WHICH DAYS?</h6>
-      <OverviewLine />
-      <div className="bigButton">
-        <Link to="/">
-          <ButtonBig text="Save" onClick={addData}/>
-        </Link>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="addMed_info">
+//       <BannerBack onClick={previousStep} text="Schedule Overview" />
+//       <h6 className="addMed_title">medication name</h6>
+//       <OverviewLine />
+//       <h6 className="addMed_title">condition</h6>
+//       <OverviewLine />
+//       <h6 className="addMed_title">HOW MANY TIMES A DAY?</h6>
+//       <OverviewLine />
+//       <h6 className="addMed_title">SET TIME AND DOSE</h6>
+//       <OverviewTime />
+//       <h6 className="addMed_title">WHICH DAYS?</h6>
+//       <OverviewLine />
+//       <div className="bigButton">
+//         <Link to="/">
+//           <ButtonBig text="Save" onClick={addData}/>
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default function AddMed() {
   const [data, setData] = useState({
@@ -505,21 +506,21 @@ export default function AddMed() {
 
   console.log(data)
 
-  // const addMedData = async (c, n, d, u, days, i, t, a) => {
-  //   var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/", {
-  //     name: data.name,
-  //     cond: data.cond,
-  //     dosage: data.dos,
-  //     unit: data.unit,
-  //     days: data.days,
-  //     ins: data.ins,
-  //     time: data.time,
-  //     amt: data.amt
-  //     // data
-  //   });
-  //   //checking array status
-  //   console.log(resp.data)
-  // };
+  const addMedData = async (c, n, d, u, days, i, t, a) => {
+    var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/", {
+      name: data.name,
+      cond: data.cond,
+      dosage: data.dos,
+      unit: data.unit,
+      days: data.days,
+      ins: data.ins,
+      time: data.time,
+      amt: data.amt
+      // data
+    });
+    //checking array status
+    console.log(resp.data)
+  };
 
   return (
     <div>
@@ -582,10 +583,11 @@ export default function AddMed() {
               amt: a
             });
           }}
+          addData={addMedData}
         />
-        <Step8 
+        {/* <Step8 
         // addData={addMedData}
-        />
+        /> */}
         {/* <Step9 />
         <Step10 /> */}
       </StepWizard>
