@@ -7,14 +7,18 @@ import BannerTime from "comps/BannerTime";
 import FilterBy from "comps/FilterBy";
 import MedInfoBox from "comps/MedInfoBox";
 import Button from "comps/Button";
+import Filter from "comps/Filter";
 
 import AddMed from "pages/add-med";
 import ListMed from "pages/list-med";
 import Med from "pages/list-med/med";
 import Edit from "pages/list-med/edit";
+import Title from "comps/Title";
 
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
+
+
 
 function App() {
   //backend functions
@@ -29,10 +33,7 @@ function App() {
   const sortEarliest = () => {
     // console.log("before sort: meds", meds);
     // console.log("before sort: allmeds", allmeds);
-    setMeds(
-      allmeds.sort(sortByTime)
-      
-      );
+    setMeds(allmeds.sort(sortByTime));
     // console.log("after sort: meds", meds);
     // console.log("after sort: allmeds", allmeds);
   };
@@ -41,19 +42,17 @@ function App() {
   const sortLatest = () => {
     //   console.log("before sort: meds", meds);
     //   console.log("before sort: allmeds", allmeds);
-    setMeds(
-      allmeds.sort(sortByTimeReverse)
-      );
+    setMeds(allmeds.sort(sortByTimeReverse));
     // console.log("after sort: meds", meds);
     // console.log("after sort: allmeds", allmeds);
   };
 
-  const Filter = () => {
+  const Filter = (text) => {
     // let result = "";
     setMeds(
       meds.filter((o) => {
         // console.log("filtering?");
-        return o.name.includes("Aspirin");
+        return o.name.includes(text);
         // result = o.name.includes("Aspirin");
       })
     );
@@ -81,21 +80,26 @@ function App() {
           <Route path="/add-med">
             <AddMed />
           </Route>
-          <Route path="/Filter">
+          {/* <Route path="/Filter">
             <FilterPage />
-          </Route>
+          </Route> */}
           <Route exact path="/list-med">
             <ListMed />
           </Route>
           <Route exact path="/">
             <div className="page">
               <BannerTime />
-              <Link to="/Filter">
+              {/* <Link to="/Filter">
                 <FilterBy />
-              </Link>
-              <button onClick={sortEarliest}>Sort Earliest</button>
-              <button onClick={sortLatest}>Sort Latest</button>
-              <button onClick={Filter}>Filter</button>
+              </Link> */}
+              {/* <button onClick={sortEarliest}>Sort Earliest</button> */}
+              {/* <button onClick={sortLatest}>Sort Latest</button> */}
+              <div className="home_buttons">
+                <Button width="120px" text="Earliest" />
+                <Button width="120px" text="Latest" />
+              </div>
+              <Title />
+              {/* <button onClick={Filter}>Filter</button> */}
               {meds.map((o) => (
                 <MedInfoBox
                   medName={o.name}
@@ -170,17 +174,3 @@ const sortByCondition = (a) => {
 // let sortByAm = med.filter(function (e) {
 // return e.time > 12:00;
 // })
-
-{
-  /* <Options text="arthritis" onClick={() => setCond("arthritis")} />
-<Options text="asthma" onClick={() => setCond("asthma")} />
-<Options text="dementia" onClick={() => setCond("dementia")} />
-<Options text="diabetes" onClick={() => setCond("diabetes")} />
-<Options text="epilepsy" onClick={() => setCond("epilepsy")} />
-<Options
-  text="high blood pressure"
-  onClick={() => setCond("high blood pressure")}
-/>
-<Options text="hypertension" onClick={() => setCond("hypertension")} /> */
-
-}
