@@ -43,6 +43,10 @@ function Med({ onSelect, id, passid }) {
         // setIds(resp.data.meds[0]);
       // }
     };
+
+    const deleteMed = async () => {
+      var resp = await axios.delete("https://medtrack-midterm.herokuapp.com/api/meds/"+params.id);
+    }
   
     const HandleClick = (id) =>{
       // setIds(id)    
