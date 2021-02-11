@@ -19,8 +19,6 @@ import Title from "comps/Title";
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
 
-
-
 function App() {
   //backend functions
   const [allmeds, setAll] = useState([]);
@@ -29,20 +27,11 @@ function App() {
   const [open, setOpen] = useState(false);
 
   const sortEarliest = () => {
-    // console.log("before sort: meds", meds);
-    // console.log("before sort: allmeds", allmeds);
     setMeds(allmeds.sort(sortByTime));
-    // console.log("after sort: meds", meds);
-    // console.log("after sort: allmeds", allmeds);
   };
 
-  //this doesn't work
   const sortLatest = () => {
-    //   console.log("before sort: meds", meds);
-    //   console.log("before sort: allmeds", allmeds);
     setMeds(allmeds.sort(sortByTimeReverse));
-    // console.log("after sort: meds", meds);
-    // console.log("after sort: allmeds", allmeds);
   };
 
   const handleSelect = (cond) => {
@@ -60,17 +49,14 @@ function App() {
       meds.filter((o) => {
         // console.log("filtering?");
         return o.name.includes(cond);
-        // result = o.name.includes("Aspirin");
       })
     );
-    // return console.log(result) + result;
   };
 
   const getData = async () => {
     var resp = await axios.get(
       "https://medtrack-midterm.herokuapp.com/api/meds"
     );
-    // console.log("get data", resp);
     setAll([...resp.data.meds]);
     setMeds([...resp.data.meds]);
   };
@@ -146,36 +132,8 @@ export default App;
 
 // by time (i.e. 11:00 - use 24h clock)
 function sortByTime(a, b) {
-  // if (parseInt(a.time) < parseInt(b.time)) {
-  //   // console.log("I'm sorting things a > b");
-  //   return -1;
-  // } else if (parseInt(a.time) > parseInt(b.time)) {
-  //   // console.log("I'm sorting things a < b");
-  //   return 1;
-  // } else {
-  //   return 0;
-  // }
   return parseInt(a.time) - parseInt(b.time);
 }
 function sortByTimeReverse(a, b) {
-  // if (parseInt(a.time) < parseInt(b.time)) {
-  //   // console.log("I'm sorting things a > b");
-  //   return 1;
-  // } else if (parseInt(a.time) > parseInt(b.time)) {
-  //   // console.log("I'm sorting things a < b");
-  //   return -1;
-  // } else {
-  //   return 0;
-  // }
   return parseInt(b.time) - parseInt(a.time);
 }
-
-// App functions - FILTER
-const sortByCondition = (a) => {
-  var clicked;
-  if (clicked == a.cond) {
-    //show all Data of the input
-    // if whatever option is clicked matches ANY of meds in db
-  }
-  return;
-};

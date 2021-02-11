@@ -12,7 +12,8 @@ const Container = styled.div`
     display: inline-flex;
     flex-direction: column;
     position: relative;
-    top: -35vh;
+    top:${props=>props.top ? props.top : "-35vh"};
+    // top: -35vh;
     right: -7vw;
 `;
 
@@ -53,9 +54,9 @@ const ConfirmImage = styled.img`
     height: auto;
 `;
 
-const Confirm = ({display, title, subtitle, imgurl, text1, text2, onTop, onBottom}) => {
+const Confirm = ({top, display, title, subtitle, imgurl, text1, text2, onTop, onBottom}) => {
 
-    return <Container display={display}
+    return <Container display={display} top={top}
     >
         <TopCont>
             <ConfirmTitle>{title}</ConfirmTitle>
@@ -77,7 +78,8 @@ Confirm.defaultProps = {
     subtitle:"was deleted successfully",
     imgurl: "/check-one.svg",
     text1: "Go to Home",
-    text2: "Back to Meds"
+    text2: "Back to Meds",
+    top:null
 };
 
 export default Confirm;

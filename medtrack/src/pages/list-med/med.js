@@ -98,7 +98,13 @@ function Med({ onSelect, id, passid }) {
           />
         </div>
         {open && ( <div className="page_popup">
-          <Confirm onBottom={handleOpen} title="Are you sure?" subtitle="" imgurl="" text1="Delete" text2="Cancel"/>
+          <Confirm 
+          onBottom={handleOpen} 
+          title="Are you sure?" 
+          subtitle="" imgurl="" 
+          text1="Delete" text2="Cancel"
+          top="-70vh"
+          />
           <Backdrop />
         </div>)}
        
