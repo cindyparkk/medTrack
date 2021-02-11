@@ -29,7 +29,7 @@ const BannerTime = ({text}) => {
 };
 
 BannerTime.defaultProps = {
-text:"Today, Jan 6",
+text:"Today, Feb 10",
 };
 
 export default BannerTime;
