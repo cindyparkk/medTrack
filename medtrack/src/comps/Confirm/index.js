@@ -12,7 +12,7 @@ const Container = styled.div`
     display: inline-flex;
     flex-direction: column;
     position: relative;
-    top: -60vh;
+    top: -35vh;
     right: -7vw;
 `;
 
@@ -53,7 +53,7 @@ const ConfirmImage = styled.img`
     height: auto;
 `;
 
-const Confirm = ({display, title, subtitle, imgurl, text1, text2, onDelete, onCancel}) => {
+const Confirm = ({display, title, subtitle, imgurl, text1, text2, onTop, onBottom}) => {
 
     return <Container display={display}
     >
@@ -63,15 +63,16 @@ const Confirm = ({display, title, subtitle, imgurl, text1, text2, onDelete, onCa
         </TopCont>
         <BottomCont>
             <ConfirmImage src={imgurl}/>
-            <Button text={text1} onClick={onDelete}/>
-            <Button text={text2} bgcolor="#63AAC8" onClick={onCancel}/>
+            <Button text={text1} onClick={onTop}/>
+            <Button text={text2} bgcolor="#63AAC8" onClick={onBottom}/>
         </BottomCont>
     </Container> 
 };
 
 Confirm.defaultProps = {
     display: null,
-    onDelete:()=>{},
+    onTop:()=>{},
+    onBottom:()=>{},
     title:"donepezil",
     subtitle:"was deleted successfully",
     imgurl: "/check-one.svg",

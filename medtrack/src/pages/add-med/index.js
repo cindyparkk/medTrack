@@ -11,8 +11,10 @@ import OverviewLine from "comps/OverviewTime";
 import OverviewOften from "comps/OverviewOften";
 import OverviewTime from "comps/OverviewTime";
 import Breadcrumb from "comps/Breadcrumb";
+import Confirm from "comps/Confirm";
+import Backdrop from "comps/Backdrop";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory, BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import StepWizard from "react-step-wizard";
 import axios from "axios";
@@ -430,6 +432,13 @@ const Step6 = ({ nextStep, goToStep, onNext, previousStep }) => {
 const Step7 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
   const [time, setTime] = useState(null);
   const [amt, setAmt] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const history = useHistory();
+
+  const handleOpen = () => {
+    setOpen(state => !state);
+  }
 
   return (
     <div className="addMed">
@@ -452,13 +461,25 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
         <ButtonBig
           disable={time === null || amt === null}
           onClick={() => {
-            nextStep();
+            // nextStep();
             onNext(time, amt);
             addData();
+            handleOpen();
             // console.log(time, amt)
           }}
-          text="next"
+          text="save"
         />
+      </div>
+    <div className="page_popup">
+        <Confirm onTop={()=>{
+          history.push("/");
+        }} 
+        onBottom={()=>{
+          history.push("/list-med")
+        }} 
+        subtitle="was added successfully" 
+        text2="See All Meds"/>
+        <Backdrop />
       </div>
     </div>
   );
