@@ -19,8 +19,6 @@ import Title from "comps/Title";
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
 
-
-
 function App() {
   //backend functions
   const [allmeds, setAll] = useState([]);
@@ -51,15 +49,15 @@ function App() {
   };
 
   const handleOpen = () => {
-    setOpen(state => !state);
-  }
+    setOpen((state) => !state);
+  };
 
   const setMedsWithFilteredData = (cond) => {
     // let result = "";
     setMeds(
       meds.filter((o) => {
-        // console.log("filtering?");
-        return o.name.includes(cond);
+        console.log(cond);
+        return o.cond.includes(cond);
         // result = o.name.includes("Aspirin");
       })
     );
@@ -94,21 +92,28 @@ function App() {
           <Route exact path="/">
             <div className="page">
               <BannerTime />
-              <Filter 
-              text1="Alzheimer’s"
-              text2="Angina"
-              text3="Arthritis"
-              text4="Asthma"
-              reMove="false"
-              changeIcon2="false"
-              onSelect={handleSelect}
-              onClick={handleOpen}/>
-              {open && ( <div className="bigButton">
-              <ButtonBig onClick={setMedsWithFilteredData}/>
-              </div> )}
+              <Filter
+                text1="Alzheimer’s"
+                text2="Angina"
+                text3="Arthritis"
+                text4="Asthma"
+                reMove="false"
+                changeIcon2="false"
+                onSelect={handleSelect}
+                onClick={handleOpen}
+              />
+              {open && (
+                <div className="bigButton">
+                  <ButtonBig
+                    onClick={() => {
+                      setMedsWithFilteredData(cond);
+                    }}
+                  />
+                </div>
+              )}
               <div className="home_buttons">
-                <Button width="200px"text="Earliest" onClick={sortEarliest}/>
-                <Button width="200px" text="Latest" onClick={sortLatest}/>
+                <Button width="200px" text="Earliest" onClick={sortEarliest} />
+                <Button width="200px" text="Latest" onClick={sortLatest} />
               </div>
               <Title />
               {meds.map((o) => (
@@ -124,7 +129,11 @@ function App() {
                 <Button margin="10px 0px" text="+ Add Med" />
               </Link>
               <Link to="/list-med">
-                <Button margin="10px 0px" text="See All Meds" bgcolor={"#63AAC8"} />
+                <Button
+                  margin="10px 0px"
+                  text="See All Meds"
+                  bgcolor={"#63AAC8"}
+                />
               </Link>
             </div>
           </Route>
