@@ -68,15 +68,17 @@ const Dropdown = styled.div`
   opacity: ${(props) => (props.expanded ? 1 : 0)};
   height: ${(props) => (props.expanded ? "auto" : "0px")};
   transition: opacity 0.3s;
-  align-items:center:
-    input {
-    min-width: 200px;
-    max-height: 20px;
-  }
-  button {
-    max-height: 40px;
-    min-height: 30px;
-  }
+  align-items: center;
+  //   input {
+  //   min-width: 200px;
+  //   max-height: 20px;
+  // }
+`;
+
+const ExpandInput = styled.input`
+  min-height: 50px;
+  min-width: 230px;
+  text-transform: capitalize;
 `;
 
 const EditDropdown = ({
@@ -125,16 +127,15 @@ this.updateThings = this.updateThings.bind(this)
       </ContainerInner>
       <Divide />
       <Dropdown expanded={expanded}>
-        <input type="text"
+        <ExpandInput type="text"
          onChange={e =>
             this.ontimeupdate(e.target.value),
             console.log("filled",filled)}
         />
         <Button
           text="Update"
-          width="20px"
           margin="20px"
-          height="55px"
+          height="50px" width="120px"
           onClick={(filled) => {
             onComplete(filled);
             // console.log(filled);

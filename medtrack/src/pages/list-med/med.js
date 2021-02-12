@@ -50,9 +50,11 @@ function Med({ onSelect, id }) {
         ins: meds.ins,
         time: meds.time,
         amt: meds.amt
+        // id: meds.id
       });
       console.log("deleted", resp);
     }
+
   
     const HandleClick = (id) =>{
       // setIds(id)    
