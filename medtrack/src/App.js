@@ -106,8 +106,8 @@ function App(onSelect, nextStep) {
                 </div>
               )}
               <div className="home_buttons">
-                <Button width="200px" text="Earliest" onClick={sortEarliest} />
-                <Button width="200px" text="Latest" onClick={sortLatest} />
+                <Button height="45px" width="200px" text="Earliest" onClick={sortEarliest} />
+                <Button height="45px" width="200px" text="Latest" onClick={sortLatest} />
               </div>
               <Title />
               {meds.map((o, i) => (

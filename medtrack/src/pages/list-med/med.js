@@ -18,10 +18,10 @@ import { useParams, useHistory, BrowserRouter as Router, Switch, Route, Link } f
 // }
 // `;
 
-function Med({ onSelect, id, passid }) {
+function Med({ onSelect, id }) {
     // const [meds, setMeds] = useState([]);
     const [meds, setMeds] = useState({});
-    const [show, setShow] = useState(false);
+    const [confirm, setConfirm] = useState(false);
     const [open, setOpen] = useState(false);
 
     const params = useParams();
@@ -29,10 +29,6 @@ function Med({ onSelect, id, passid }) {
 
     const history = useHistory();
 
-    const showPopup = () =>{
-      setShow(true);
-      console.log("clicked")
-    }
   
     const getData = async () => {
       var resp = await axios.get("https://medtrack-midterm.herokuapp.com/api/meds/med_by_id/"+params.id);
@@ -45,7 +41,17 @@ function Med({ onSelect, id, passid }) {
     };
 
     const deleteMed = async () => {
-      var resp = await axios.delete("https://medtrack-midterm.herokuapp.com/api/meds/"+params.id);
+      var resp = await axios.delete("https://medtrack-midterm.herokuapp.com/api/meds/"+params.id, {
+        name: meds.name,
+        cond: meds.cond,
+        dosage: meds.dos,
+        unit: meds.unit,
+        days: meds.days,
+        ins: meds.ins,
+        time: meds.time,
+        amt: meds.amt
+      });
+      console.log("deleted", resp);
     }
   
     const HandleClick = (id) =>{
@@ -63,9 +69,11 @@ function Med({ onSelect, id, passid }) {
       setOpen(state => !state);
     }
 
-    const handleDelete = () => {
-  
+    const handleConfirm = () => {
+      setOpen(state => !state);
+      setConfirm(state => !state)
     }
+
     return ( <div className="page">
         {/* {id == id ? meds.map((o, id) => (  */}
           <MedSpecBanner
@@ -103,10 +111,27 @@ function Med({ onSelect, id, passid }) {
         </div>
         {open && ( <div className="page_popup">
           <Confirm 
+          onTop={()=>{
+            deleteMed();
+            handleConfirm();
+          }}
           onBottom={handleOpen} 
           title="Are you sure?" 
           subtitle="" imgurl="" 
           text1="Delete" text2="Cancel"
+          top="-70vh"
+          />
+          <Backdrop />
+        </div>)}
+        {confirm && ( <div className="page_popup">
+          <Confirm 
+          onTop={()=>{
+          history.push("/");
+          }} 
+          onBottom={()=>{
+          history.push("/list-med")
+          }} 
+          title={meds.name}
           top="-70vh"
           />
           <Backdrop />
