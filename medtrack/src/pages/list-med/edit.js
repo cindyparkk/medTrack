@@ -21,25 +21,25 @@ function Edit({}) {
           // setIds(resp.data.meds[0]);
         // }
       };
-    // const editData = async (filled) => {
-    //     var resp = await axios.patch("https://medtrack-midterm.herokuapp.com/api/meds/edit/"+params.id, {
-    //       name: meds.name,
-    //       cond: meds.cond,
-    //       dosage: meds.dos,
-    //       unit: meds.unit,
-    //       days: meds.days,
-    //       ins: meds.ins,
-    //       time: meds.time,
-    //       amt: meds.amt
-    //     });
-    //     // console.log("editing", resp);
-    //     // if (id == 1){
-    //       getData();
-    //       // setMeds({...resp.data.result[0]});
-    //       // setMeds(resp.data.meds)
-    //       // setIds(resp.data.meds[0]);
-    //     // }
-    //   };
+    const editData = async (filled) => {
+        var resp = await axios.patch("https://medtrack-midterm.herokuapp.com/api/meds/edit/"+params.id, {
+          name: meds.name,
+          cond: meds.cond,
+          dosage: meds.dos,
+          unit: meds.unit,
+          days: meds.days,
+          ins: meds.ins,
+          time: meds.time,
+          amt: meds.amt
+        });
+        console.log("editing", resp);
+        // if (id == 1){
+          getData();
+          // setMeds({...resp.data.result[0]});
+          // setMeds(resp.data.meds)
+          // setIds(resp.data.meds[0]);
+        // }
+      };
 
     useEffect(() => {
       getData();
@@ -58,17 +58,25 @@ function Edit({}) {
             title={meds.name}
             subtext=""
             dosage="" unit=""
+            onComplete={()=>{
+              editData(meds.name)}}
           />
         </div>
         <h6 className="addMed_title">med info</h6>
         <div className="content">
           <EditDropdown title="Medical Condition" subtext={meds.cond} dosage="" unit="" leftimgurl={"/symptom-blu.png"} rightimgurl={"/down.png"} 
-          // onComplete={()=>{
-          //   editData(meds.cond)}}
+          onComplete={()=>{
+            editData(meds.cond)}}
             />
-          <EditDropdown title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} rightimgurl={"/down.png"}/>
-          <EditDropdown title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} rightimgurl={"/down.png"}/>
-          <EditDropdown title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} rightimgurl={"/down.png"}/>
+          <EditDropdown title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} rightimgurl={"/down.png"}
+          onComplete={()=>{
+            editData(meds.dos+" "+meds.unit)}}/>
+          <EditDropdown title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} rightimgurl={"/down.png"}
+          onComplete={()=>{
+            editData(meds.ins)}}/>
+          <EditDropdown title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} rightimgurl={"/down.png"}
+          onComplete={()=>{
+            editData(meds.time)}}/>
         </div>
         {/* <div className="bigButton">
           <ButtonBig text="Update" />
