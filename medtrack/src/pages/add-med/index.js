@@ -432,13 +432,6 @@ const Step6 = ({ nextStep, goToStep, onNext, previousStep }) => {
 const Step7 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
   const [time, setTime] = useState(null);
   const [amt, setAmt] = useState(null);
-  const [open, setOpen] = useState(false);
-
-  const history = useHistory();
-
-  const handleOpen = () => {
-    setOpen(state => !state);
-  }
 
   return (
     <div className="addMed">
@@ -461,55 +454,59 @@ const Step7 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
         <ButtonBig
           disable={time === null || amt === null}
           onClick={() => {
-            // nextStep();
             onNext(time, amt);
-            addData();
-            handleOpen();
             // console.log(time, amt)
+            nextStep();
           }}
           text="save"
         />
       </div>
-    <div className="page_popup">
+    </div>
+  );
+};
+
+const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData}) => {
+
+  return (
+     <div className="page_popup">
+        <Confirm onTop={()=>{
+          if(addData()){
+            nextStep();
+          }
+        }} 
+        onBottom={previousStep}
+        title="Add Medication" 
+        imgurl=""
+        subtitle="" 
+        text1="Add Med"
+        text2="Cancel"
+        top="15vh"/>
+        <Backdrop />
+      </div>
+  );
+};
+
+const Step9 = ({name}) => {
+
+  const history = useHistory();
+
+  return (
+     <div className="page_popup">
         <Confirm onTop={()=>{
           history.push("/");
         }} 
         onBottom={()=>{
           history.push("/list-med")
         }} 
+        title={name}
         subtitle="was added successfully" 
-        text2="See All Meds"/>
+        text2="See All Meds"
+        top="15vh"/>
         <Backdrop />
       </div>
-    </div>
   );
 };
 
-// const Step8 = ({ nextStep, goToStep, onNext, previousStep, addData }) => {
-
-//   //  a get function
-
-//   return (
-//     <div className="addMed_info">
-//       <BannerBack onClick={previousStep} text="Schedule Overview" />
-//       <h6 className="addMed_title">medication name</h6>
-//       <OverviewLine />
-//       <h6 className="addMed_title">condition</h6>
-//       <OverviewLine />
-//       <h6 className="addMed_title">HOW MANY TIMES A DAY?</h6>
-//       <OverviewLine />
-//       <h6 className="addMed_title">SET TIME AND DOSE</h6>
-//       <OverviewTime />
-//       <h6 className="addMed_title">WHICH DAYS?</h6>
-//       <OverviewLine />
-//       <div className="bigButton">
-//         <Link to="/">
-//           <ButtonBig text="Save" onClick={addData}/>
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default function AddMed() {
   const [data, setData] = useState({
@@ -540,7 +537,7 @@ export default function AddMed() {
       // data
     });
     //checking array status
-    console.log(resp.data)
+    console.log("posted",resp.data);
   };
 
   return (
@@ -604,13 +601,13 @@ export default function AddMed() {
               amt: a
             });
           }}
-          addData={addMedData}
         />
-        {/* <Step8 
-        // addData={addMedData}
-        /> */}
-        {/* <Step9 />
-        <Step10 /> */}
+        <Step8 
+        addData={addMedData}
+        /> 
+        <Step9 
+        name={data.name}/>
+        {/* <Step10 /> */}
       </StepWizard>
     </div>
   );

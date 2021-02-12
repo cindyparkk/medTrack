@@ -59,11 +59,11 @@ function App(onSelect, nextStep) {
     );
     setAll([...resp.data.meds]);
     setMeds([...resp.data.meds]);
+    console.log(resp.data.meds)
   };
 
   useEffect(() => {
     getData();
-    console.log(<Link></Link>);
   }, []);
 
   const HandleClick = (id) => {
