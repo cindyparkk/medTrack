@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import BannerBack from "comps/BannerBack";
-import EditDropdown from "comps/EditDropdown";
+import Info from "comps/Info";
 import ButtonBig from "comps/ButtonBig";
 import axios from "axios";
 import styled from 'styled-components';
@@ -21,11 +21,12 @@ function Edit({}) {
           // setIds(resp.data.meds[0]);
         // }
       };
-    const editData = async () => {
+
+     
+      const editData = async () => {
         var resp = await axios.post("https://medtrack-midterm.herokuapp.com/api/meds/edit/"+params.id);
         console.log("editing", resp);
         // if (id == 1){
-          getData();
           setMeds({...resp.data.result[0]});
           // setMeds(resp.data.meds)
           // setIds(resp.data.meds[0]);
@@ -34,8 +35,7 @@ function Edit({}) {
 
       useEffect(() => {
         getData();
-
-        
+        editData();
         console.log("loading")
       }, []);
 
@@ -45,8 +45,9 @@ function Edit({}) {
         {/* <Link to={"/med/"+meds.id}> */}
         <BannerBack onClick={() => history.goBack()}
         />
+        {/* </Link > */}
         <div className="container">
-          <EditDropdown
+          <Info
             leftimgurl={"/file-text.png"}
             rightimgurl={""}
             title={meds.name}
@@ -56,44 +57,18 @@ function Edit({}) {
         </div>
         <h6 className="addMed_title">med info</h6>
         <div className="content">
-          <EditDropdown title="Medical Condition" subtext={meds.cond} dosage="" unit="" leftimgurl={"/symptom-blu.png"} rightimgurl={"/down.png"} onComplete={editData}/>
-          <EditDropdown title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} rightimgurl={"/down.png"}/>
-          <EditDropdown title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} rightimgurl={"/down.png"}/>
-          <EditDropdown title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} rightimgurl={"/down.png"}/>
+          <Info title="Medical Condition" subtext={meds.cond} dosage="" unit="" leftimgurl={"/symptom-blu.png"} />
+          <Info title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} />
+          <Info title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} />
+          <Info title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} />
+          {/* <Info title="Dosage" leftimgurl={"/appearance.png"} /> */}
         </div>
-        {/* <div className="bigButton">
+        <div className="bigButton">
           <ButtonBig text="Update" />
-        </div> */}
+        </div>
         {/* <Confirm />
         <Backdrop /> */}
       </div>
-
-
-
-
-
-      // origianl version 
-      //     <Info
-      //       leftimgurl={"/file-text.png"}
-      //       rightimgurl={""}
-      //       title={meds.name}
-      //       subtext=""
-      //       dosage="" unit=""
-      //     />
-      //   </div>
-      //   <h6 className="addMed_title">med info</h6>
-      //   <div className="content">
-      //     <Info title="Medical Condition" subtext={meds.cond} dosage="" unit="" leftimgurl={"/symptom-blu.png"} />
-      //     <Info title="Dosage" subtext="" dosage={meds.dos} unit={meds.unit} leftimgurl={"/pill-blu.png"} />
-      //     <Info title="Instructions" subtext={meds.ins} dosage="" unit="" leftimgurl={"/food.png"} />
-      //     <Info title="Time" subtext={meds.time} dosage="" unit="" leftimgurl={"/time-blu.png"} />
-      //   </div>
-      //   {/* <div className="bigButton">
-      //     <ButtonBig text="Update" />
-      //   </div> */}
-      //   {/* <Confirm />
-      //   <Backdrop /> */}
-      // </div>
     );
   };
 

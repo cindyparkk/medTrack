@@ -13,7 +13,7 @@ const NormalButton = styled.button`
   justify-content: center;
 
   min-width: ${props=>props.width ? props.width: "308px"};
-  min-height: 81px;
+  max-height: 81px;
   // background-color: #094D69;
   background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094D69")};
 
@@ -46,7 +46,7 @@ Button.defaultProps = {
   text: "Go to Home",
   bgcolor: null,
   width: null,
-  margin: null
+  margin: null,
 };
 
 export default Button;

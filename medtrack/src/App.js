@@ -19,7 +19,7 @@ import Title from "comps/Title";
 import FilterPage from "pages/Filter";
 // const medsData = require("./meds.json");
 
-function App() {
+function App(onSelect, nextStep) {
   //backend functions
   const [allmeds, setAll] = useState([]);
   const [meds, setMeds] = useState([]);
@@ -63,8 +63,14 @@ function App() {
 
   useEffect(() => {
     getData();
+    console.log(<Link></Link>);
   }, []);
 
+  const HandleClick = (id) => {
+    // setIds(id)
+    onSelect(id);
+    nextStep();
+  };
   //end of backend functions
 
   return (
@@ -104,14 +110,18 @@ function App() {
                 <Button width="200px" text="Latest" onClick={sortLatest} />
               </div>
               <Title />
-              {meds.map((o) => (
-                <MedInfoBox
-                  medName={o.name}
-                  dos={o.dos}
-                  unit={o.unit}
-                  amount={o.amt}
-                  time={o.time}
-                />
+              {meds.map((o, i) => (
+                <Link to={"/med/" + o.id} style={{ textDecoration: "none" }}>
+                  <MedInfoBox
+                    key={i}
+                    medName={o.name}
+                    dos={o.dos}
+                    unit={o.unit}
+                    amount={o.amt}
+                    time={o.time}
+                    onClick={HandleClick.bind(this, o.id)}
+                  />
+                </Link>
               ))}
               <Link to="/add-med">
                 <Button margin="10px 0px" text="+ Add Med" />
@@ -148,4 +158,3 @@ function sortByTime(a, b) {
 function sortByTimeReverse(a, b) {
   return parseInt(b.time) - parseInt(a.time);
 }
-
