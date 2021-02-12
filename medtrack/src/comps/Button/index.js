@@ -14,6 +14,7 @@ const NormalButton = styled.button`
 
   min-width: ${props=>props.width ? props.width: "308px"};
   max-height: 81px;
+  min-height: ${props=>props.height ? props.height : "81px"};
   // background-color: #094D69;
   background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#094D69")};
 
@@ -32,10 +33,10 @@ const Text = styled.h2`
   color: #ffffff;
 `;
 
-const Button = ({ text, bgcolor, onClick, width, margin}) => {
+const Button = ({ text, bgcolor, onClick, width, margin, height}) => {
   return (
     <Container onClick={onClick} margin={margin}>
-      <NormalButton bgcolor={bgcolor} width={width}>
+      <NormalButton bgcolor={bgcolor} width={width} height={height}>
         <Text>{text}</Text>
       </NormalButton>
     </Container>
@@ -47,6 +48,7 @@ Button.defaultProps = {
   bgcolor: null,
   width: null,
   margin: null,
+  height: null
 };
 
 export default Button;
